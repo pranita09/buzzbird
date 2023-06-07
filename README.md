@@ -1,2 +1,3 @@
-# buzzbird
-A social media app
+# BuzzBird
+
+A Social Media App
