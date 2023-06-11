@@ -1,6 +1,7 @@
 import axios from "axios";
 import "./App.css";
 import { useEffect, useState } from "react";
+import { AppRoutes } from "./routes/AppRoutes";
 
 function App() {
   const [posts, setPosts] = useState();
@@ -27,7 +28,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="text-5xl font-bold underline">Hello there!</h1>
+      <AppRoutes />
     </div>
   );
 }
