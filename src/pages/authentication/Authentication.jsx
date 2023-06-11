@@ -1,14 +1,11 @@
 import { Outlet } from "react-router-dom";
 import { loginPageHeroImg } from "../../utils/constants";
-import { Login } from "./formComponents/Login";
-import { Signup } from "./formComponents/Signup";
 
 const Authentication = () => {
   return (
     <div className="bg-[#ccfbf1] min-h-screen flex items-center justify-center">
       <div className="bg-[white] flex rounded-2xl shadow-2xl max-w-3xl p-5 m-4">
         <Outlet />
-
         <div className="md:block hidden w-1/2">
           <img
             src={loginPageHeroImg}
