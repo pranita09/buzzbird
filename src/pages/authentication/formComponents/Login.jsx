@@ -44,7 +44,7 @@ const Login = () => {
       <p className="my-[1rem] text-sm">
         New to BuzzBird?{" "}
         <span
-          className="font-bold text-[#115e59] hover:underline hover:cursor-pointer"
+          className="font-bold text-darkPrimary hover:underline hover:cursor-pointer"
           onClick={() => navigate("/auth/signup")}
         >
           SignUp

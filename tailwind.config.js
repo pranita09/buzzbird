@@ -9,7 +9,13 @@ module.exports = {
       xl: "1440px",
       "2xl": "1536px",
     },
-    colors: {},
+    colors: {
+      primary: "#0d9488",
+      lightPrimary: "#ccfbf1",
+      darkPrimary: "#115e59",
+      lightGrey: "#f2f2f2",
+      darkGrey: "#333333",
+    },
     fontFamily: {
       sans: [],
       serif: [],

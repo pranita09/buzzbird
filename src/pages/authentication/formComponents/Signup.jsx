@@ -70,7 +70,7 @@ const Signup = () => {
       <p className="my-[1rem] text-sm">
         Already have an account?{" "}
         <span
-          className="font-bold text-[#115e59] hover:underline hover:cursor-pointer"
+          className="font-bold text-darkPrimary hover:underline hover:cursor-pointer"
           onClick={() => navigate("/auth/login")}
         >
           LogIn
