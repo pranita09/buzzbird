@@ -2,9 +2,28 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { PrimaryButton, SecondaryButton } from "../../../components/Buttons";
 import { logoImageURL } from "../../../utils/constants";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useAuth } from "../../../contexts/auth-context";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { loginHandler } = useAuth();
+
+  const [loginDetails, setLoginDetails] = useState({
+    username: "",
+    password: "",
+    showPwd: false,
+  });
+
+  const loginFormInputHandler = (event) => {
+    const { name, value } = event.target;
+    setLoginDetails({ ...loginDetails, [name]: value });
+  };
+
+  const loginFormSubmitHandler = (event) => {
+    event.preventDefault();
+    loginHandler(loginDetails);
+  };
   return (
     <div className="md:w-1/2 px-16 pb-4">
       <div className="flex items-center justify-center max-w-[20rem]">
@@ -19,24 +38,47 @@ const Login = () => {
         Unlock the Buzz, Spread your Wings!
       </p>
 
-      <form className="flex flex-col gap-4">
+      <form className="flex flex-col gap-4" onSubmit={loginFormSubmitHandler}>
         <input
           className="p-[0.35rem] mt-4 rounded-md border"
           type="text"
           name="username"
+          value={loginDetails.username}
           placeholder="Username"
+          onChange={loginFormInputHandler}
           required
         />
         <div className="relative">
           <input
             className="p-[0.35rem] rounded-md border w-full"
-            type="password"
+            type={loginDetails.showPwd ? "text" : "password"}
             name="password"
+            value={loginDetails.password}
             placeholder="Password"
+            onChange={loginFormInputHandler}
             required
           />
-          <AiOutlineEye className="absolute top-[0.7rem] right-3 cursor-pointer" />
-          {/* <AiOutlineEyeInvisible className="absolute top-[0.9rem] right-3 cursor-pointer"  /> */}
+          {!loginDetails.showPwd ? (
+            <AiOutlineEye
+              className="absolute top-[0.7rem] right-3 cursor-pointer"
+              onClick={() =>
+                setLoginDetails({
+                  ...loginDetails,
+                  showPwd: !loginDetails.showPwd,
+                })
+              }
+            />
+          ) : (
+            <AiOutlineEyeInvisible
+              className="absolute top-[0.7rem] right-3 cursor-pointer"
+              onClick={() =>
+                setLoginDetails({
+                  ...loginDetails,
+                  showPwd: !loginDetails.showPwd,
+                })
+              }
+            />
+          )}
         </div>
         <PrimaryButton type="submit">Login</PrimaryButton>
         <SecondaryButton type="submit">Login as a Guest</SecondaryButton>

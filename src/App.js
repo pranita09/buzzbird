@@ -2,6 +2,7 @@ import axios from "axios";
 import "./App.css";
 import { useEffect, useState } from "react";
 import { AppRoutes } from "./routes/AppRoutes";
+import { ToastWrapper } from "./components/ToastWrapper";
 
 function App() {
   const [posts, setPosts] = useState();
@@ -28,6 +29,7 @@ function App() {
 
   return (
     <div className="App">
+      <ToastWrapper />
       <AppRoutes />
     </div>
   );
