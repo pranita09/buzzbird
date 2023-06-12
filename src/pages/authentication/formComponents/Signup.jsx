@@ -45,7 +45,7 @@ const Signup = () => {
 
   return (
     <div className="md:w-1/2 px-16 pb-4">
-      <div className="flex items-center justify-center max-w-[20rem]">
+      <div className="flex items-center justify-center max-w-[20rem] mx-auto">
         <img
           src={logoImageURL}
           alt="logo-img"
@@ -160,7 +160,7 @@ const Signup = () => {
             <p className="text-xs p-0 m-0 text-red">Password does not match.</p>
           )}
         </div>
-        <PrimaryButton type="submit" disabled={signupDetails.pwdMatch}>
+        <PrimaryButton type="submit" disabled={!signupDetails.pwdMatch}>
           SignUp
         </PrimaryButton>
       </form>

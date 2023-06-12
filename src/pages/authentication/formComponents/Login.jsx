@@ -26,7 +26,7 @@ const Login = () => {
   };
   return (
     <div className="md:w-1/2 px-16 pb-4">
-      <div className="flex items-center justify-center max-w-[20rem]">
+      <div className="flex items-center justify-center max-w-[20rem] mx-auto">
         <img
           src={logoImageURL}
           alt="logo-img"
