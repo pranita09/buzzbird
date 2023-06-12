@@ -19,7 +19,7 @@ module.exports = {
       red: "#ff2c2c",
     },
     fontFamily: {
-      sans: [],
+      sans: ["Poppins", "Arial"],
       serif: [],
     },
     extend: {
