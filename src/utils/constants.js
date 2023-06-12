@@ -3,3 +3,8 @@ export const logoImageURL =
 
 export const loginPageHeroImg =
   "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686487758/socialMedia/front-page-img1_ig7ywf.jpg";
+
+export const guestUserLoginDetails = {
+  username: "emilysmith",
+  password: "emily@123Smith",
+};

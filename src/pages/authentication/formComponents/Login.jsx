@@ -1,6 +1,6 @@
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { PrimaryButton, SecondaryButton } from "../../../components/Buttons";
-import { logoImageURL } from "../../../utils/constants";
+import { logoImageURL, guestUserLoginDetails } from "../../../utils/constants";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../../../contexts/auth-context";
@@ -81,7 +81,18 @@ const Login = () => {
           )}
         </div>
         <PrimaryButton type="submit">Login</PrimaryButton>
-        <SecondaryButton type="submit">Login as a Guest</SecondaryButton>
+        <SecondaryButton
+          type="submit"
+          onClick={() =>
+            setLoginDetails({
+              ...loginDetails,
+              username: guestUserLoginDetails.username,
+              password: guestUserLoginDetails.password,
+            })
+          }
+        >
+          Login as a Guest
+        </SecondaryButton>
       </form>
       <p className="my-[1rem] text-sm">
         New to BuzzBird?{" "}

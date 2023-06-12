@@ -9,7 +9,7 @@ export const users = [
     _id: "t7cZfWIp-q",
     firstName: "Emily",
     lastName: "Smith",
-    password: "emily123",
+    password: "emily@123Smith",
     username: "emilysmith",
     bio: "Aspiring Frontend Developer",
     website: "https://emilysmith.tech",
