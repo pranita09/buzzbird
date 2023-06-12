@@ -10,7 +10,7 @@ const Authentication = () => {
           <img
             src={loginPageHeroImg}
             alt="login-page-img"
-            className="max-h-[70rem] object-cover rounded-2xl"
+            className="max-h-[75rem] object-cover rounded-2xl"
           />
         </div>
       </div>

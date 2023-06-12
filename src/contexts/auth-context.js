@@ -72,8 +72,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  console.log(currentUser);
-
   const logoutHandler = () => {
     localStorage.removeItem("loginDetails");
     setToken(null);

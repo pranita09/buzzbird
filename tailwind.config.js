@@ -15,6 +15,7 @@ module.exports = {
       darkPrimary: "#115e59",
       lightGrey: "#f2f2f2",
       darkGrey: "#333333",
+      red: "#ff2c2c",
     },
     fontFamily: {
       sans: [],

@@ -8,6 +8,7 @@ import { useState } from "react";
 const Signup = () => {
   const navigate = useNavigate();
   const { signupHandler } = useAuth();
+
   const [signupDetails, setSignupDetails] = useState({
     firstName: "",
     lastName: "",
@@ -17,6 +18,7 @@ const Signup = () => {
     pwdMatch: true,
     show: { pwd: false, confirmPwd: false },
   });
+
   const signupFormInputHandler = (event) => {
     const { name, value } = event.target;
     if (name === "confirmPassword") {
@@ -25,14 +27,22 @@ const Signup = () => {
         [name]: value,
         pwdMatch: value === signupDetails.password ? true : false,
       });
+    } else if (name === "password") {
+      setSignupDetails({
+        ...signupDetails,
+        [name]: value,
+        pwdMatch: value === signupDetails.confirmPassword ? true : false,
+      });
     } else {
       setSignupDetails({ ...signupDetails, [name]: value });
     }
   };
+
   const signupFormSubmitHandler = (event) => {
     event.preventDefault();
     signupHandler(signupDetails);
   };
+
   return (
     <div className="md:w-1/2 px-16 pb-4">
       <div className="flex items-center justify-center max-w-[20rem]">
@@ -146,8 +156,13 @@ const Signup = () => {
               }
             />
           )}
+          {!signupDetails.pwdMatch && (
+            <p className="text-xs p-0 m-0 text-red">Password does not match.</p>
+          )}
         </div>
-        <PrimaryButton type="submit">SignUp</PrimaryButton>
+        <PrimaryButton type="submit" disabled={signupDetails.pwdMatch}>
+          SignUp
+        </PrimaryButton>
       </form>
       <p className="my-[1rem] text-sm">
         Already have an account?{" "}
