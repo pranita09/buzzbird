@@ -39,7 +39,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const signupHandler = async (firstName, lastName, username, password) => {
+  const signupHandler = async ({ firstName, lastName, username, password }) => {
     setIsLoading(true);
     try {
       const response = await signupService(
