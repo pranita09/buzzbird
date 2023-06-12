@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { loginService } from "../services/authServices";
+import { loginService, signupService } from "../services/authServices";
 import { toast } from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -33,10 +33,46 @@ export const AuthProvider = ({ children }) => {
       }
     } catch (error) {
       console.error(error);
+      toast.error("User does not exist! Please enter correct details.");
     } finally {
       setIsLoading(false);
     }
   };
+
+  const signupHandler = async (firstName, lastName, username, password) => {
+    setIsLoading(true);
+    try {
+      const response = await signupService(
+        firstName,
+        lastName,
+        username,
+        password
+      );
+      const {
+        status,
+        data: { createdUser, encodedToken },
+      } = response;
+      if (status === 201) {
+        localStorage.setItem(
+          "loginDetails",
+          JSON.stringify({ token: encodedToken, user: createdUser })
+        );
+        setToken(encodedToken);
+        setCurrentUser(createdUser);
+        toast.success(`Hi, ${createdUser.firstName.firstName}!`, {
+          icon: "👋",
+        });
+        navigate("/", { replace: true });
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong! Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  console.log(currentUser);
 
   const logoutHandler = () => {
     localStorage.removeItem("loginDetails");
@@ -48,7 +84,14 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ token, currentUser, loginHandler, loading, logoutHandler }}
+      value={{
+        token,
+        currentUser,
+        loginHandler,
+        loading,
+        logoutHandler,
+        signupHandler,
+      }}
     >
       {children}
     </AuthContext.Provider>

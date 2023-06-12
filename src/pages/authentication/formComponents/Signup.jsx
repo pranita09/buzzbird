@@ -2,9 +2,37 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { PrimaryButton } from "../../../components/Buttons";
 import { logoImageURL } from "../../../utils/constants";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../contexts/auth-context";
+import { useState } from "react";
 
 const Signup = () => {
   const navigate = useNavigate();
+  const { signupHandler } = useAuth();
+  const [signupDetails, setSignupDetails] = useState({
+    firstName: "",
+    lastName: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+    pwdMatch: true,
+    show: { pwd: false, confirmPwd: false },
+  });
+  const signupFormInputHandler = (event) => {
+    const { name, value } = event.target;
+    if (name === "confirmPassword") {
+      setSignupDetails({
+        ...signupDetails,
+        [name]: value,
+        pwdMatch: value === signupDetails.password ? true : false,
+      });
+    } else {
+      setSignupDetails({ ...signupDetails, [name]: value });
+    }
+  };
+  const signupFormSubmitHandler = (event) => {
+    event.preventDefault();
+    signupHandler(signupDetails);
+  };
   return (
     <div className="md:w-1/2 px-16 pb-4">
       <div className="flex items-center justify-center max-w-[20rem]">
@@ -19,20 +47,24 @@ const Signup = () => {
         Join the buzz, spread your wings, and soar with BuzzBird!
       </p>
 
-      <form className="flex flex-col gap-4">
+      <form className="flex flex-col gap-4" onSubmit={signupFormSubmitHandler}>
         <div className="flex flex-row gap-3 mt-4">
           <input
             className="p-[0.35rem] rounded-md border w-1/2"
             type="text"
             name="firstName"
+            value={signupDetails.firstName}
             placeholder="First Name"
+            onChange={signupFormInputHandler}
             required
           />
           <input
             className="p-[0.35rem] rounded-md border w-1/2"
             type="text"
             name="lastName"
+            value={signupDetails.lastName}
             placeholder="Last Name"
+            onChange={signupFormInputHandler}
             required
           />
         </div>
@@ -40,30 +72,80 @@ const Signup = () => {
           className="p-[0.35rem] rounded-md border"
           type="text"
           name="username"
+          value={signupDetails.username}
           placeholder="Username"
+          onChange={signupFormInputHandler}
           required
         />
         <div className="relative">
           <input
             className="p-[0.35rem] rounded-md border w-full"
-            type="password"
+            type={signupDetails.show.pwd ? "text" : "password"}
             name="password"
+            value={signupDetails.password}
             placeholder="Password"
+            onChange={signupFormInputHandler}
             required
           />
-          <AiOutlineEye className="absolute top-[0.7rem] right-3 cursor-pointer" />
-          {/* <AiOutlineEyeInvisible className="absolute top-[0.9rem] right-3 cursor-pointer"  /> */}
+          {!signupDetails.show.pwd ? (
+            <AiOutlineEye
+              className="absolute top-[0.7rem] right-3 cursor-pointer"
+              onClick={() =>
+                setSignupDetails({
+                  ...signupDetails,
+                  show: { ...signupDetails.show, pwd: !signupDetails.show.pwd },
+                })
+              }
+            />
+          ) : (
+            <AiOutlineEyeInvisible
+              className="absolute top-[0.7rem] right-3 cursor-pointer"
+              onClick={() =>
+                setSignupDetails({
+                  ...signupDetails,
+                  show: { ...signupDetails.show, pwd: !signupDetails.show.pwd },
+                })
+              }
+            />
+          )}
         </div>
         <div className="relative">
           <input
             className="p-[0.35rem] rounded-md border w-full"
-            type="password"
+            type={signupDetails.show.confirmPwd ? "text" : "password"}
             name="confirmPassword"
+            value={signupDetails.confirmPassword}
             placeholder="Confirm Password"
+            onChange={signupFormInputHandler}
             required
           />
-          <AiOutlineEye className="absolute top-[0.7rem] right-3 cursor-pointer" />
-          {/* <AiOutlineEyeInvisible className="absolute top-[0.9rem] right-3 cursor-pointer"  /> */}
+          {!signupDetails.show.confirmPwd ? (
+            <AiOutlineEye
+              className="absolute top-[0.7rem] right-3 cursor-pointer"
+              onClick={() =>
+                setSignupDetails({
+                  ...signupDetails,
+                  show: {
+                    ...signupDetails.show,
+                    confirmPwd: !signupDetails.show.confirmPwd,
+                  },
+                })
+              }
+            />
+          ) : (
+            <AiOutlineEyeInvisible
+              className="absolute top-[0.7rem] right-3 cursor-pointer"
+              onClick={() =>
+                setSignupDetails({
+                  ...signupDetails,
+                  show: {
+                    ...signupDetails.show,
+                    confirmPwd: !signupDetails.show.confirmPwd,
+                  },
+                })
+              }
+            />
+          )}
         </div>
         <PrimaryButton type="submit">SignUp</PrimaryButton>
       </form>

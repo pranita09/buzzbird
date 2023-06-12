@@ -6,4 +6,12 @@ const loginService = async (username, password) =>
     password: password,
   });
 
-export { loginService };
+const signupService = async (firstName, lastName, username, password) =>
+  await axios.post("/api/auth/signup", {
+    username: username,
+    password: password,
+    firstName: firstName,
+    lastName: lastName,
+  });
+
+export { loginService, signupService };
