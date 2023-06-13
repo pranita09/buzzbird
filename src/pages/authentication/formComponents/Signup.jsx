@@ -160,7 +160,11 @@ const Signup = () => {
             <p className="text-xs p-0 m-0 text-red">Password does not match.</p>
           )}
         </div>
-        <PrimaryButton type="submit" disabled={!signupDetails.pwdMatch}>
+        <PrimaryButton
+          type="submit"
+          className="py-2"
+          disabled={!signupDetails.pwdMatch}
+        >
           SignUp
         </PrimaryButton>
       </form>
