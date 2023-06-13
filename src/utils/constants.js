@@ -11,3 +11,7 @@ export const guestUserLoginDetails = {
   username: "emilysmith",
   password: "emily@123Smith",
 };
+
+export const actionTypes = {
+  GET_ALL_POSTS: "GET_ALL_POSTS",
+};

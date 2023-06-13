@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { logoImg } from "../utils/constants";
 import { MdHome, MdExplore, MdBookmark, MdPerson } from "react-icons/md";
-import { HiPlusCircle } from "react-icons/hi";
+import { HiPlusCircle, HiDotsHorizontal } from "react-icons/hi";
 import { PrimaryButton } from "./Buttons";
 import { UserAvatar } from "./UserAvatar";
 
@@ -106,6 +106,7 @@ const SideBar = () => {
             </p>
             <p className="font-normal">@{user?.username}</p>
           </div>
+          <HiDotsHorizontal className="ml-4 hidden lg:inline" />
         </li>
       </ul>
     </aside>
