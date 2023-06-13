@@ -14,4 +14,5 @@ export const guestUserLoginDetails = {
 
 export const actionTypes = {
   GET_ALL_POSTS: "GET_ALL_POSTS",
+  GET_ALL_USERS: "GET_ALL_USERS",
 };

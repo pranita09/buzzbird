@@ -37,8 +37,6 @@ export const PostsProvider = ({ children }) => {
     }
   };
 
-  console.log(postsState.posts);
-
   useEffect(() => {
     getAllPosts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
