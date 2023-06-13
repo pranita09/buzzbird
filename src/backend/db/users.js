@@ -63,6 +63,7 @@ export const users = [
           "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331058/socialMedia/Olivia-Parker_nbmkdw.jpg",
       },
     ],
+    bookmarks: [],
   },
   {
     _id: "79Gksh9otl",
@@ -80,6 +81,7 @@ export const users = [
     updatedAt: formatDate(),
     following: [],
     followers: [],
+    bookmarks: [],
   },
   {
     _id: "1T6Be1QpLm",
@@ -115,6 +117,7 @@ export const users = [
           "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331082/socialMedia/Sarah-Wilson_io6cpx.jpg",
       },
     ],
+    bookmarks: [],
   },
   {
     _id: "LCrc9f0Zl0",
@@ -132,6 +135,7 @@ export const users = [
     updatedAt: formatDate(),
     following: [],
     followers: [],
+    bookmarks: [],
   },
   {
     _id: "o5gzWjEeX_",
@@ -149,6 +153,7 @@ export const users = [
     updatedAt: formatDate(),
     following: [],
     followers: [],
+    bookmarks: [],
   },
   {
     _id: "M1NR81Bzlz",
@@ -166,6 +171,7 @@ export const users = [
     updatedAt: formatDate(),
     following: [],
     followers: [],
+    bookmarks: [],
   },
   {
     _id: "qq8zWjEeXd",
@@ -183,6 +189,7 @@ export const users = [
     updatedAt: formatDate(),
     following: [],
     followers: [],
+    bookmarks: [],
   },
   {
     _id: "ab8zWjEeXd",
@@ -200,6 +207,7 @@ export const users = [
     updatedAt: formatDate(),
     following: [],
     followers: [],
+    bookmarks: [],
   },
   {
     _id: "M1NR81Bert",
@@ -217,6 +225,7 @@ export const users = [
     updatedAt: formatDate(),
     following: [],
     followers: [],
+    bookmarks: [],
   },
   {
     _id: "1NR81Bzmuh",
@@ -234,5 +243,6 @@ export const users = [
     updatedAt: formatDate(),
     following: [],
     followers: [],
+    bookmarks: [],
   },
 ];
