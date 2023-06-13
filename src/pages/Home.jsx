@@ -1,4 +1,4 @@
-import { SideBar } from "../components/SideBar";
+import { SuggestedUsers } from "../components/SuggestedUsers";
 import { useAuth } from "../contexts/auth-context";
 import { useTheme } from "../contexts/theme-context";
 
@@ -7,7 +7,7 @@ const Home = () => {
   const { isDarkTheme, setIsDarkTheme } = useTheme();
   return (
     <div className="dark:bg-darkGrey dark:text-lightGrey transition-all duration-500 min-h-screen">
-      <SideBar />
+      <SuggestedUsers />
       <br />
       <br />
       <button onClick={logoutHandler}>Logout</button>
