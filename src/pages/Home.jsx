@@ -1,3 +1,4 @@
+import { SearchBar } from "../components/SearchBar";
 import { useAuth } from "../contexts/auth-context";
 import { useTheme } from "../contexts/theme-context";
 
@@ -12,6 +13,9 @@ const Home = () => {
       <button onClick={() => setIsDarkTheme(!isDarkTheme)}>
         Theme{isDarkTheme ? "Dark" : "Light"}
       </button>
+      <br />
+      <br />
+      <SearchBar />
     </div>
   );
 };
