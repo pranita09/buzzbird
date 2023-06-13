@@ -80,12 +80,12 @@ const Login = () => {
             />
           )}
         </div>
-        <PrimaryButton type="submit" className="py-2">
+        <PrimaryButton type="submit" className="py-2 rounded-md">
           Login
         </PrimaryButton>
         <SecondaryButton
           type="submit"
-          className="py-2"
+          className="py-2 rounded-md"
           onClick={() =>
             setLoginDetails({
               ...loginDetails,

@@ -162,7 +162,7 @@ const Signup = () => {
         </div>
         <PrimaryButton
           type="submit"
-          className="py-2"
+          className="py-2 rounded-md"
           disabled={!signupDetails.pwdMatch}
         >
           SignUp

@@ -7,7 +7,7 @@ const SearchBar = () => {
         <input
           type="text"
           placeholder="Search Users..."
-          className="bg-lightGrey text-sm xl:text-base py-2 px-4 w-[90%] outline-none rounded-lg"
+          className="bg-lightGrey text-darkGrey text-sm xl:text-base py-2 px-4 w-[90%] outline-none rounded-lg"
         />
         <FiSearch className="absolute right-4 top-2.5 xl:top-3 dark:text-darkGrey" />
       </div>

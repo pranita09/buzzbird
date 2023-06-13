@@ -1,23 +1,5 @@
-const user = {
-  _id: "LCrc9f0Zl0",
-  firstName: "Aditya",
-  lastName: "Joshi",
-  password: "aditya123",
-  username: "adityaj",
-  bio: "Composing musical journeys",
-  website: "https://adityajoshi.com",
-  profileAvatar:
-    "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331082/socialMedia/Sarah-Wilson_io6cpx.jpg",
-  backgroundImage:
-    "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686342526/socialMedia/musician-bg_qgesca.jpg",
-
-  following: [],
-  followers: [],
-  bookmarks: [],
-};
-
 const UserAvatar = (props) => {
-  const { className } = props;
+  const { className, user } = props;
 
   const classesForImg = className + " rounded-full object-cover";
   const classesForInitials =
