@@ -1,4 +1,4 @@
-import { NewPost } from "../components/NewPost";
+import { SortBar } from "../components/SortBar";
 import { useAuth } from "../contexts/auth-context";
 import { useTheme } from "../contexts/theme-context";
 
@@ -7,7 +7,7 @@ const Home = () => {
   const { isDarkTheme, setIsDarkTheme } = useTheme();
   return (
     <div className="dark:bg-darkGrey dark:text-lightGrey transition-all duration-500 min-h-screen">
-      <NewPost />
+      <SortBar />
       <br />
       <br />
       <button onClick={logoutHandler}>Logout</button>
