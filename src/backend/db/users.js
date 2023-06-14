@@ -79,8 +79,26 @@ export const users = [
       "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686341814/socialMedia/be-yourself-bg_rmxvmb.jpg",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    following: [],
-    followers: [],
+    following: [
+      {
+        _id: "1T6Be1QpLm",
+        firstName: "Jacob",
+        lastName: "Mitchell",
+        username: "jacobmitch",
+        profileAvatar:
+          "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331002/socialMedia/Jacob-Mitchell_elh9gg.jpg",
+      },
+    ],
+    followers: [
+      {
+        _id: "t7cZfWIp-q",
+        firstName: "Emily",
+        lastName: "Smith",
+        username: "emilysmith",
+        profileAvatar:
+          "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331085/socialMedia/Emily-Smith_jfepcx.jpg",
+      },
+    ],
     bookmarks: [],
   },
   {
@@ -115,6 +133,14 @@ export const users = [
         username: "wilsarah",
         profileAvatar:
           "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331082/socialMedia/Sarah-Wilson_io6cpx.jpg",
+      },
+      {
+        _id: "t7cZfWIp-q",
+        firstName: "Emily",
+        lastName: "Smith",
+        username: "emilysmith",
+        profileAvatar:
+          "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331085/socialMedia/Emily-Smith_jfepcx.jpg",
       },
     ],
     bookmarks: [],
@@ -152,7 +178,16 @@ export const users = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     following: [],
-    followers: [],
+    followers: [
+      {
+        _id: "t7cZfWIp-q",
+        firstName: "Emily",
+        lastName: "Smith",
+        username: "emilysmith",
+        profileAvatar:
+          "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331085/socialMedia/Emily-Smith_jfepcx.jpg",
+      },
+    ],
     bookmarks: [],
   },
   {
@@ -187,7 +222,16 @@ export const users = [
       "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686344328/socialMedia/pencil-sketch-bg_t0qfe9.jpg",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    following: [],
+    following: [
+      {
+        _id: "t7cZfWIp-q",
+        firstName: "Emily",
+        lastName: "Smith",
+        username: "emilysmith",
+        profileAvatar:
+          "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331085/socialMedia/Emily-Smith_jfepcx.jpg",
+      },
+    ],
     followers: [],
     bookmarks: [],
   },
@@ -205,8 +249,26 @@ export const users = [
       "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686344677/socialMedia/fashion-stage-bg_ykeinp.jpg",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    following: [],
-    followers: [],
+    following: [
+      {
+        _id: "t7cZfWIp-q",
+        firstName: "Emily",
+        lastName: "Smith",
+        username: "emilysmith",
+        profileAvatar:
+          "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331085/socialMedia/Emily-Smith_jfepcx.jpg",
+      },
+    ],
+    followers: [
+      {
+        _id: "1T6Be1QpLm",
+        firstName: "Jacob",
+        lastName: "Mitchell",
+        username: "jacobmitch",
+        profileAvatar:
+          "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331002/socialMedia/Jacob-Mitchell_elh9gg.jpg",
+      },
+    ],
     bookmarks: [],
   },
   {
