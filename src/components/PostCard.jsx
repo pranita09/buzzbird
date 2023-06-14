@@ -9,6 +9,7 @@ import {
   FaRegBookmark,
 } from "react-icons/fa";
 import { MdShare } from "react-icons/md";
+import { PostOptionsModal } from "./PostOptionsModal";
 
 const PostCard = ({ post }) => {
   const {
@@ -40,10 +41,12 @@ const PostCard = ({ post }) => {
 
           <div className="relative">
             <HiDotsHorizontal
-              className="p-2 cursor-pointer text-lg"
+              className="cursor-pointer text-lg m-2"
               onClick={() => setShowOptions((prev) => !prev)}
             />
-            {showOptions && <></>}
+            {showOptions && (
+              <PostOptionsModal post={post} setShowOptions={setShowOptions} />
+            )}
           </div>
         </div>
 
