@@ -1,6 +1,6 @@
-import { PostCard } from "../components";
-import { useAuth } from "../contexts/auth-context";
-import { useTheme } from "../contexts/theme-context";
+import { PostCard } from "../../components";
+import { useAuth } from "../../contexts/auth-context";
+import { useTheme } from "../../contexts/theme-context";
 
 const post = {
   _id: 123,

@@ -1,9 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-import { Authentication } from "../pages/authentication/Authentication";
-import { Login } from "../pages/authentication/formComponents/Login";
-import { Signup } from "../pages/authentication/formComponents/Signup";
+import { Authentication, Login, Signup, Home } from "../pages";
 import { PrivateRoutes } from "./PrivateRoutes";
-import { Home } from "../pages/Home";
 
 const AppRoutes = () => {
   return (
