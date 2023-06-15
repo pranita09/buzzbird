@@ -38,8 +38,8 @@ const Home = () => {
       <SideBar />
 
       <div className="sm:border-x border-darkGrey dark:border-lightGrey">
-        <h1 className="text-xl text-bold p-4 sticky top-0 backdrop-blur-sm z-20 border-b border-darkGrey dark:border-lightGrey flex items-center justify-between">
-          Home
+        <h1 className=" p-4 sticky top-0 backdrop-blur-md z-20 border-b border-darkGrey dark:border-lightGrey flex items-center justify-between">
+          <span className="text-xl font-bold">Home</span>
           <div className="block xl:hidden">
             <SearchBar />
           </div>

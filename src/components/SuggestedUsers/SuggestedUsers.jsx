@@ -16,7 +16,9 @@ const SuggestedUsers = () => {
     ?.filter((dbUser) => dbUser.username !== userData?.username)
     ?.filter(
       (eachUser) =>
-        !userData.following.find((item) => item.username === eachUser.username)
+        !userData?.following?.find(
+          (item) => item.username === eachUser.username
+        )
     );
 
   return (
