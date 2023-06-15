@@ -9,7 +9,6 @@ import {
 import { useAuth } from "../../contexts/auth-context";
 import { useTheme } from "../../contexts/theme-context";
 import { usePosts } from "../../contexts/post-context";
-import { useUsers } from "../../contexts/user-context";
 
 const Home = () => {
   const { currentUser, logoutHandler } = useAuth();
@@ -18,9 +17,6 @@ const Home = () => {
     postsState: { posts },
     isLoading,
   } = usePosts();
-  const {
-    usersState: { users },
-  } = useUsers();
 
   const followingusers = currentUser?.following;
 

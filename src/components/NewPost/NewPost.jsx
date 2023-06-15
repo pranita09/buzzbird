@@ -14,7 +14,7 @@ const NewPost = () => {
         <div
           role="textbox"
           contentEditable="true"
-          placeholder="What's happening?"
+          data-text="What is happening?"
           className="w-full break-all outline-none mt-1.5"
         >
           {image && (
