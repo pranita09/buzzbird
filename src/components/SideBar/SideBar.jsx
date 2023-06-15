@@ -24,11 +24,13 @@ const SideBar = () => {
 
   return (
     <aside className=" flex bg-[white] dark:bg-darkGrey sm:sticky sm:flex-col sm:justify-between sm:h-screen sm:top-0 sm:overflow-y-auto overflow-x-hidden fixed bottom-0 left-0 w-full items-center sm:border-0 border-t-2 border-darkGrey dark:border-lightGrey dark:text-lightGrey sm:z-0 z-40 ">
-      <ul className="flex items-center sm:items-start justify-around sm:justify-start px-2 py-1 sm:py-4 sm:flex-col gap-3 sm:gap-4 tracking-wide grow">
-        <li className="sm:pb-3 sm:px-3 hidden sm:block">
+      <ul className="flex items-center sm:items-start justify-around sm:justify-start px-2 py-1 sm:py-4 sm:flex-col gap-3 sm:gap-3 tracking-wide grow">
+        <li className="sm:pb-2 sm:px-1 hidden sm:block">
           <Link to="/" className="flex items-center">
-            <img src={logoImg} alt="buzzbird" className="h-12 w-12 mr-1" />
-            <span className="text-xl hidden lg:inline">BuzzBird</span>
+            <img src={logoImg} alt="buzzbird" className="h-12 w-12 mr-2" />
+            <span className="text-2xl font-semibold hidden lg:inline">
+              BuzzBird
+            </span>
           </Link>
         </li>
 
