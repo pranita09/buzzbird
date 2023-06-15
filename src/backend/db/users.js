@@ -21,6 +21,14 @@ export const users = [
     updatedAt: formatDate(),
     following: [
       {
+        _id: "LCrc9f0Zl0",
+        firstName: "Aditya",
+        lastName: "Joshi",
+        username: "adityaj",
+        profileAvatar:
+          "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331041/socialMedia/Aditya-Joshi_ajn3sy.jpg",
+      },
+      {
         _id: "1T6Be1QpLm",
         firstName: "Jacob",
         lastName: "Mitchell",
