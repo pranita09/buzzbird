@@ -24,7 +24,7 @@ const SideBar = () => {
 
   return (
     <aside className=" flex bg-[white] dark:bg-darkGrey sm:sticky sm:flex-col sm:justify-between sm:h-screen sm:top-0 sm:overflow-y-auto overflow-x-hidden fixed bottom-0 left-0 w-full items-center sm:border-0 border-t-2 border-darkGrey dark:border-lightGrey dark:text-lightGrey sm:z-0 z-40 ">
-      <ul className="flex items-center sm:items-start justify-around sm:justify-start px-3 py-1 sm:py-4 sm:flex-col gap-3 sm:gap-4 tracking-wide grow">
+      <ul className="flex items-center sm:items-start justify-around sm:justify-start px-2 py-1 sm:py-4 sm:flex-col gap-3 sm:gap-4 tracking-wide grow">
         <li className="sm:pb-3 sm:px-3 hidden sm:block">
           <Link to="/" className="flex items-center">
             <img src={logoImg} alt="buzzbird" className="h-12 w-12 mr-1" />
@@ -56,7 +56,7 @@ const SideBar = () => {
 
         <li>
           <NavLink
-            to="/explore"
+            to="/bookmarks"
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
             className="p-2 lg:py-1 lg:pl-2 lg:pr-4 w-max flex justify-center items-center hover:bg-lighterPrimary hover:rounded-full  dark:hover:text-darkColor dark:active:text-darkColor"
           >
@@ -67,7 +67,7 @@ const SideBar = () => {
 
         <li>
           <NavLink
-            to="/explore"
+            to="/profile"
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
             className="p-2 lg:py-1 lg:pl-2 lg:pr-4 w-max flex justify-center items-center hover:bg-lighterPrimary hover:rounded-full  dark:hover:text-darkColor dark:active:text-darkColor"
           >

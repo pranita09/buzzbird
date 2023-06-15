@@ -9,6 +9,22 @@ import { formatDate } from "../utils/authUtils";
 export const posts = [
   {
     _id: uuid(),
+    content: "It's my Birthday today!",
+    mediaURL:
+      "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686386278/socialMedia/cake_g0csez.jpg",
+    mediaAlt: "A piece of cake",
+    likes: {
+      likeCount: 5,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    username: "livparker",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    comments: [],
+  },
+  {
+    _id: uuid(),
     content:
       "Just had my mind blown at the A.R. Rahman concert! 🎶🤩 An absolute musical genius, his melodies transported me to another world. The energy, the soul-stirring compositions, and the electrifying atmosphere... it was an unforgettable experience! 🎵✨",
     mediaURL:
@@ -117,22 +133,6 @@ export const posts = [
       dislikedBy: [],
     },
     username: "livparker",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
-    comments: [],
-  },
-  {
-    _id: uuid(),
-    content:
-      "Food is my love language, and every bite tells a delicious story! From savory delights to sweet indulgences, I'm on a gastronomic adventure to explore flavors, share recipes, and celebrate the culinary wonders of the world. Join me on this mouthwatering journey as we savor the joys of good food together! Bon appétit! 🍽️✨",
-    mediaURL: "",
-    mediaAlt: "",
-    likes: {
-      likeCount: 5,
-      likedBy: [],
-      dislikedBy: [],
-    },
-    username: "rohaaan",
     createdAt: formatDate(),
     updatedAt: formatDate(),
     comments: [],
@@ -296,22 +296,6 @@ export const posts = [
       dislikedBy: [],
     },
     username: "imkriti",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
-    comments: [],
-  },
-  {
-    _id: uuid(),
-    content: "It's my Birthday today!",
-    mediaURL:
-      "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686386278/socialMedia/cake_g0csez.jpg",
-    mediaAlt: "A piece of cake",
-    likes: {
-      likeCount: 5,
-      likedBy: [],
-      dislikedBy: [],
-    },
-    username: "livparker",
     createdAt: formatDate(),
     updatedAt: formatDate(),
     comments: [],

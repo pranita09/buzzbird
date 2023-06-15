@@ -15,7 +15,7 @@ const NewPost = () => {
           role="textbox"
           contentEditable="true"
           placeholder="What's happening?"
-          className="w-full break-all bg-inherit outline-none mt-1.5"
+          className="w-full break-all outline-none mt-1.5"
         >
           {image && (
             <div className="relative">
