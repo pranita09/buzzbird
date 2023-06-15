@@ -2,8 +2,8 @@ import { FiSearch } from "../../utils/icons";
 
 const SearchBar = () => {
   return (
-    <div className="sticky top-[15px] mr-4 xl:mr-0 z-40">
-      <div className="relative mx-4 2xl:my-3 w-full rounded-lg border border-darkGrey focus-within:border-darkPrimary bg-lightGrey  ">
+    <div className="sticky top-[15px] mr-1 xl:mr-0 z-40">
+      <div className="relative xl:mx-4 2xl:my-3 rounded-lg border border-darkGrey focus-within:border-darkPrimary bg-lightGrey ">
         <input
           type="text"
           placeholder="Search Users..."
