@@ -1,5 +1,5 @@
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { PrimaryButton } from "../../../components/Buttons";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "../../../utils/icons";
+import { PrimaryButton } from "../../../components";
 import { logoImageURL } from "../../../utils/constants";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../contexts/auth-context";

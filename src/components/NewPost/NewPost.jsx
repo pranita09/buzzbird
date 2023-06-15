@@ -1,9 +1,7 @@
 import { useState } from "react";
-import { useAuth } from "../contexts/auth-context";
-import { UserAvatar } from "./UserAvatar";
-import { MdCancel } from "react-icons/md";
-import { FaImage, FaSmile } from "react-icons/fa";
-import { PrimaryButton } from "./Buttons";
+import { useAuth } from "../../contexts/auth-context";
+import { PrimaryButton, UserAvatar } from "..";
+import { FaImage, FaSmile, MdCancel } from "../../utils/icons";
 
 const NewPost = () => {
   const { currentUser } = useAuth();
@@ -12,7 +10,7 @@ const NewPost = () => {
   return (
     <div className="grid grid-cols-[2rem_1fr] gap-2 items-start text-sm border-b border-darkGrey px-4 py-3 cursor-text dark:border-lightGrey">
       <UserAvatar user={currentUser} className="h-9 w-9" />
-      <form className="flex flex-col gap-4" onSublit="">
+      <form className="flex flex-col gap-4" onSubmit="">
         <div
           role="textbox"
           contentEditable="true"

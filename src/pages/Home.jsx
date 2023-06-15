@@ -1,4 +1,4 @@
-import { PostCard } from "../components/PostCard";
+import { PostCard } from "../components";
 import { useAuth } from "../contexts/auth-context";
 import { useTheme } from "../contexts/theme-context";
 

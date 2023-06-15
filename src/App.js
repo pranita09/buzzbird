@@ -1,6 +1,6 @@
 import "./App.css";
 import { AppRoutes } from "./routes/AppRoutes";
-import { ToastWrapper } from "./components/ToastWrapper";
+import { ToastWrapper } from "./components";
 
 function App() {
   return (

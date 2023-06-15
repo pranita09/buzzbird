@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaFilter, FaFire, FaArrowUp, FaArrowDown } from "react-icons/fa";
+import { FaFilter, FaFire, FaArrowUp, FaArrowDown } from "../../utils/icons";
 
 const SortBar = () => {
   const [showSortModal, setShowSortModal] = useState(false);

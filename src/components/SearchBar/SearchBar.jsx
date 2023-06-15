@@ -1,4 +1,4 @@
-import { FiSearch } from "react-icons/fi";
+import { FiSearch } from "../../utils/icons";
 
 const SearchBar = () => {
   return (

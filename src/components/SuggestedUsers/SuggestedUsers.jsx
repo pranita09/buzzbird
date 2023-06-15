@@ -1,7 +1,6 @@
-import { useAuth } from "../contexts/auth-context";
-import { useUsers } from "../contexts/user-context";
-import { UserAvatar } from "./UserAvatar";
-import { PrimaryButton } from "./Buttons";
+import { useAuth } from "../../contexts/auth-context";
+import { useUsers } from "../../contexts/user-context";
+import { PrimaryButton, UserAvatar } from "..";
 
 const SuggestedUsers = () => {
   const { currentUser } = useAuth();

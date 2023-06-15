@@ -1,15 +1,14 @@
 import { useState } from "react";
-import { useUsers } from "../contexts/user-context";
-import { UserAvatar } from "./UserAvatar";
-import { HiDotsHorizontal } from "react-icons/hi";
+import { useUsers } from "../../contexts/user-context";
+import { UserAvatar, PostOptionsModal } from "..";
 import {
+  HiDotsHorizontal,
   FaRegHeart,
   FaHeart,
   FaRegComments,
   FaRegBookmark,
-} from "react-icons/fa";
-import { MdShare } from "react-icons/md";
-import { PostOptionsModal } from "./PostOptionsModal";
+  MdShare,
+} from "../../utils/icons";
 
 const PostCard = ({ post }) => {
   const {

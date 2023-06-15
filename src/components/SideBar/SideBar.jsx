@@ -1,9 +1,14 @@
 import { Link, NavLink } from "react-router-dom";
-import { logoImg } from "../utils/constants";
-import { MdHome, MdExplore, MdBookmark, MdPerson } from "react-icons/md";
-import { HiPlusCircle, HiDotsHorizontal } from "react-icons/hi";
-import { PrimaryButton } from "./Buttons";
-import { UserAvatar } from "./UserAvatar";
+import { logoImg } from "../../utils/constants";
+import {
+  MdHome,
+  MdExplore,
+  MdBookmark,
+  MdPerson,
+  HiPlusCircle,
+  HiDotsHorizontal,
+} from "../../utils/icons";
+import { PrimaryButton, UserAvatar } from "..";
 
 const user = {
   _id: "LCrc9f0Zl0",
