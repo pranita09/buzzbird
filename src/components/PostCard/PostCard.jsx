@@ -13,6 +13,7 @@ import {
 import { usePosts } from "../../contexts/post-context";
 import { useAuth } from "../../contexts/auth-context";
 import { debounce } from "../../utils/debounce";
+import { getPostDate } from "../../utils/getPostDate";
 
 const PostCard = ({ post }) => {
   const { currentUser } = useAuth();
@@ -55,7 +56,9 @@ const PostCard = ({ post }) => {
               <span className="text-[grey]">@{userWhoPosted?.username}</span>
             </div>
             <span className="text-[grey]">.</span>
-            <div className="text-[grey]">02 June 2023</div>
+            <div className="text-[grey]">
+              {getPostDate(currentPost?.createdAt)}
+            </div>
           </div>
 
           <div className="relative">
