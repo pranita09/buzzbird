@@ -7,6 +7,7 @@ import {
   FaHeart,
   FaRegComments,
   FaRegBookmark,
+  FaBookmark,
   MdShare,
 } from "../../utils/icons";
 import { usePosts } from "../../contexts/post-context";
@@ -18,6 +19,9 @@ const PostCard = ({ post }) => {
 
   const {
     usersState: { users },
+    addBookmarkHandler,
+    removeBookmarkHandler,
+    postAlreadyInBookmarks,
   } = useUsers();
 
   const {
@@ -84,12 +88,11 @@ const PostCard = ({ post }) => {
           <div className="flex justify-center p-2 pr-4">
             <button
               className="cursor-pointer"
-              onClick={(event) => {
-                event.stopPropagation();
+              onClick={() =>
                 likedByLoggedUser(currentPost, currentUser)
                   ? dislikePostHandler(currentPost?._id)
-                  : likePostHandler(currentPost?._id);
-              }}
+                  : likePostHandler(currentPost?._id)
+              }
             >
               {likedByLoggedUser(currentPost, currentUser) ? (
                 <FaHeart className="text-lg text-red" />
@@ -111,8 +114,19 @@ const PostCard = ({ post }) => {
             )}
           </div>
 
-          <button className="cursor-pointer p-2 pr-4">
-            <FaRegBookmark className="text-lg" />
+          <button
+            className="cursor-pointer p-2 pr-4"
+            onClick={() =>
+              postAlreadyInBookmarks(currentPost?._id)
+                ? removeBookmarkHandler(currentPost?._id)
+                : addBookmarkHandler(currentPost?._id)
+            }
+          >
+            {postAlreadyInBookmarks(currentPost?._id) ? (
+              <FaBookmark className="text-lg" />
+            ) : (
+              <FaRegBookmark className="text-lg" />
+            )}
           </button>
 
           <button className="cursor-pointer p-2 pr-4">
