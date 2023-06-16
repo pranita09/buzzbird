@@ -1,5 +1,5 @@
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { PrimaryButton, SecondaryButton } from "../../../components/Buttons";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "../../../utils/icons";
+import { PrimaryButton, SecondaryButton } from "../../../components";
 import { logoImageURL, guestUserLoginDetails } from "../../../utils/constants";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";

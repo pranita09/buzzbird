@@ -8,3 +8,7 @@
   padding: 0;
   margin: 0;
 }
+
+[contentEditable="true"]:empty:not(:focus):before {
+  content: attr(data-text);
+}

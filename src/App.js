@@ -1,10 +1,10 @@
 import "./App.css";
 import { AppRoutes } from "./routes/AppRoutes";
-import { ToastWrapper } from "./components/ToastWrapper";
+import { ToastWrapper } from "./components";
 
 function App() {
   return (
-    <div className="App">
+    <div className={`App`}>
       <ToastWrapper />
       <AppRoutes />
     </div>
