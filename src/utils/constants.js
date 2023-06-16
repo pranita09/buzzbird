@@ -14,5 +14,7 @@ export const guestUserLoginDetails = {
 
 export const actionTypes = {
   GET_ALL_POSTS: "GET_ALL_POSTS",
+  LIKE_POST: "LIKE_POST",
+  DISLIKE_POST: "DISLIKE_POST",
   GET_ALL_USERS: "GET_ALL_USERS",
 };

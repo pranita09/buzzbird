@@ -16,6 +16,7 @@ import {
   MdHome,
   MdExplore,
   MdBookmark,
+  MdBookmarks,
   MdPerson,
 } from "react-icons/md";
 import { HiDotsHorizontal, HiPlusCircle } from "react-icons/hi";
@@ -39,6 +40,7 @@ export {
   MdHome,
   MdExplore,
   MdBookmark,
+  MdBookmarks,
   MdPerson,
   HiDotsHorizontal,
   HiPlusCircle,

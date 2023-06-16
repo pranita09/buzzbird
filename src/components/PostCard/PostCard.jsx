@@ -9,15 +9,31 @@ import {
   FaRegBookmark,
   MdShare,
 } from "../../utils/icons";
+import { usePosts } from "../../contexts/post-context";
+import { useAuth } from "../../contexts/auth-context";
+import { debounce } from "../../utils/debounce";
 
 const PostCard = ({ post }) => {
+  const { currentUser } = useAuth();
+
   const {
     usersState: { users },
   } = useUsers();
 
+  const {
+    postsState: { posts },
+    likePostHandler,
+    dislikePostHandler,
+    likedByLoggedUser,
+  } = usePosts();
+
   const [showOptions, setShowOptions] = useState(false);
 
-  const userWhoPosted = users?.find((user) => user.username === post?.username);
+  const currentPost = posts?.find((item) => item.username === post.username);
+
+  const userWhoPosted = users?.find(
+    (user) => user.username === currentPost?.username
+  );
 
   return (
     <div className="grid grid-cols-[2rem_1fr] gap-2 text-sm border-b border-darkGrey dark:border-lightGrey px-4 py-3 cursor-pointer">
@@ -49,28 +65,40 @@ const PostCard = ({ post }) => {
           </div>
         </div>
 
-        <div>{post?.content}</div>
+        <div>{currentPost?.content}</div>
 
-        {post?.mediaURL &&
-          (post?.mediaURL.split("/")[4] === "image" ? (
+        {currentPost?.mediaURL &&
+          (currentPost?.mediaURL.split("/")[4] === "image" ? (
             <img
-              src={post?.mediaURL}
-              alt={post?.mediaAlt}
+              src={currentPost?.mediaURL}
+              alt={currentPost?.mediaAlt}
               className="w-full h-auto rounded-md"
             />
           ) : (
             <video controls className="w-full h-auto rounded-md">
-              <source src={post?.mediaURL} type="video/mp4" />
+              <source src={currentPost?.mediaURL} type="video/mp4" />
             </video>
           ))}
 
         <div className="flex gap-6 -ml-2 mt-1">
           <div className="flex justify-center p-2 pr-4">
-            <button className="cursor-pointer">
-              <FaRegHeart className="text-lg" />
+            <button
+              className="cursor-pointer"
+              onClick={(event) => {
+                event.stopPropagation();
+                likedByLoggedUser(currentPost, currentUser)
+                  ? dislikePostHandler(currentPost?._id)
+                  : likePostHandler(currentPost?._id);
+              }}
+            >
+              {likedByLoggedUser(currentPost, currentUser) ? (
+                <FaHeart className="text-lg text-red" />
+              ) : (
+                <FaRegHeart className="text-lg" />
+              )}
             </button>
-            {post?.likes?.likeCount > 0 && (
-              <span className="ml-1">{post?.likes?.likeCount}</span>
+            {currentPost?.likes?.likeCount > 0 && (
+              <span className="ml-1">{currentPost?.likes?.likeCount}</span>
             )}
           </div>
 
@@ -78,8 +106,8 @@ const PostCard = ({ post }) => {
             <button className="cursor-pointer">
               <FaRegComments className="text-lg" />
             </button>
-            {post?.comments.length > 0 && (
-              <span className="ml-1">{post?.comments.length}</span>
+            {currentPost?.comments.length > 0 && (
+              <span className="ml-1">{currentPost?.comments.length}</span>
             )}
           </div>
 
