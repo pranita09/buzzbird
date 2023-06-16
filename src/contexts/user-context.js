@@ -72,11 +72,18 @@ export const UsersProvider = ({ children }) => {
       } = await addBookmarkService(postId, token);
       if (status === 200) {
         usersDispatch({ type: ADD_BOOKMARK, payload: bookmarks });
-        toast.success("Added to bookmarks");
+        toast.success("Added to bookmarks.");
       }
     } catch (error) {
-      console.error(error);
-      toast.error("Something went wrong!");
+      const {
+        response: { status },
+      } = error;
+      if (status === 400) {
+        toast.error("Post is already bookmarked.");
+      } else {
+        console.error(error);
+        toast.error("Something went wrong!");
+      }
     }
   };
 
@@ -88,18 +95,23 @@ export const UsersProvider = ({ children }) => {
       } = await removeBookmarkService(postId, token);
       if (status === 200) {
         usersDispatch({ type: REMOVE_BOOKMARK, payload: bookmarks });
-        toast.success("Removed from bookmarks");
+        toast.success("Removed from bookmarks.");
       }
     } catch (error) {
-      console.error(error);
-      toast.error("Something went wrong!");
+      const {
+        response: { status },
+      } = error;
+      if (status === 400) {
+        toast.error("Post not bookmarked yet.");
+      } else {
+        console.error(error);
+        toast.error("Something went wrong!");
+      }
     }
   };
 
   const postAlreadyInBookmarks = (postId) =>
     usersState?.bookmarks?.find((id) => id === postId);
-
-  console.log(usersState.bookmarks);
 
   useEffect(() => {
     getAllUsers();
