@@ -50,7 +50,9 @@ const Home = () => {
                 <PostCard key={post._id} post={post} />
               ))
             ) : (
-              <div className="p-4 text-center">No posts</div>
+              <div className="p-4 text-center text-lg font-bold">
+                No posts yet.
+              </div>
             )}
           </div>
         </div>
