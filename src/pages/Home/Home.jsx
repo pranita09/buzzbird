@@ -18,24 +18,12 @@ const Home = () => {
     isLoading,
   } = usePosts();
 
-  // const followingusers = currentUser?.following;
-
-  // const postsOfFollowingUsers = posts?.filter(
-  //   (post) =>
-  //     followingusers.some(
-  //       (followingUser) => followingUser.username === post.username
-  //     ) || currentUser.username === post.username
-  // );
-
-  const postsOfFollowingUsers = posts?.filter((post) =>
-    currentUser?.following?.find(
-      (user) =>
-        user.username === post.username ||
-        currentUser?.username === post.username
-    )
+  const postsOfFollowingUsers = posts?.filter(
+    (post) =>
+      currentUser?.following.some(
+        (followingUser) => followingUser.username === post.username
+      ) || currentUser.username === post.username
   );
-
-  console.log(postsOfFollowingUsers);
 
   return (
     <div className="grid sm:grid-cols-[5rem_1fr] lg:grid-cols-[12rem_1fr] xl:grid-cols-[13rem_1fr_20rem] w-[100%] lg:w-[80%] mb-16 sm:m-auto dark:bg-darkGrey dark:text-lightGrey transition-all duration-500">

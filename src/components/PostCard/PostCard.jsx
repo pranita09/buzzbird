@@ -25,20 +25,11 @@ const PostCard = ({ post }) => {
     postAlreadyInBookmarks,
   } = useUsers();
 
-  const {
-    postsState: { posts },
-    likePostHandler,
-    dislikePostHandler,
-    likedByLoggedUser,
-  } = usePosts();
+  const { likePostHandler, dislikePostHandler, likedByLoggedUser } = usePosts();
 
   const [showOptions, setShowOptions] = useState(false);
 
-  const currentPost = posts?.find((item) => item.username === post.username);
-
-  const userWhoPosted = users?.find(
-    (user) => user.username === currentPost?.username
-  );
+  const userWhoPosted = users?.find((user) => user.username === post?.username);
 
   return (
     <div className="grid grid-cols-[2rem_1fr] gap-2 text-sm border-b border-darkGrey dark:border-lightGrey px-4 py-3 cursor-pointer">
@@ -56,9 +47,7 @@ const PostCard = ({ post }) => {
               <span className="text-[grey]">@{userWhoPosted?.username}</span>
             </div>
             <span className="text-[grey]">.</span>
-            <div className="text-[grey]">
-              {getPostDate(currentPost?.createdAt)}
-            </div>
+            <div className="text-[grey]">{getPostDate(post?.createdAt)}</div>
           </div>
 
           <div className="relative">
@@ -72,18 +61,18 @@ const PostCard = ({ post }) => {
           </div>
         </div>
 
-        <div>{currentPost?.content}</div>
+        <div>{post?.content}</div>
 
-        {currentPost?.mediaURL &&
-          (currentPost?.mediaURL.split("/")[4] === "image" ? (
+        {post?.mediaURL &&
+          (post?.mediaURL.split("/")[4] === "image" ? (
             <img
-              src={currentPost?.mediaURL}
-              alt={currentPost?.mediaAlt}
+              src={post?.mediaURL}
+              alt={post?.mediaAlt}
               className="w-full h-auto rounded-md"
             />
           ) : (
             <video controls className="w-full h-auto rounded-md">
-              <source src={currentPost?.mediaURL} type="video/mp4" />
+              <source src={post?.mediaURL} type="video/mp4" />
             </video>
           ))}
 
@@ -92,19 +81,19 @@ const PostCard = ({ post }) => {
             <button
               className="cursor-pointer"
               onClick={() =>
-                likedByLoggedUser(currentPost, currentUser)
-                  ? dislikePostHandler(currentPost?._id)
-                  : likePostHandler(currentPost?._id)
+                likedByLoggedUser(post, currentUser)
+                  ? dislikePostHandler(post?._id)
+                  : likePostHandler(post?._id)
               }
             >
-              {likedByLoggedUser(currentPost, currentUser) ? (
+              {likedByLoggedUser(post, currentUser) ? (
                 <FaHeart className="text-lg text-red" />
               ) : (
                 <FaRegHeart className="text-lg" />
               )}
             </button>
-            {currentPost?.likes?.likeCount > 0 && (
-              <span className="ml-1">{currentPost?.likes?.likeCount}</span>
+            {post?.likes?.likeCount > 0 && (
+              <span className="ml-1">{post?.likes?.likeCount}</span>
             )}
           </div>
 
@@ -112,20 +101,20 @@ const PostCard = ({ post }) => {
             <button className="cursor-pointer">
               <FaRegComments className="text-lg" />
             </button>
-            {currentPost?.comments.length > 0 && (
-              <span className="ml-1">{currentPost?.comments.length}</span>
+            {post?.comments.length > 0 && (
+              <span className="ml-1">{post?.comments.length}</span>
             )}
           </div>
 
           <button
             className="cursor-pointer p-2 pr-4"
             onClick={() =>
-              postAlreadyInBookmarks(currentPost?._id)
-                ? removeBookmarkHandler(currentPost?._id)
-                : addBookmarkHandler(currentPost?._id)
+              postAlreadyInBookmarks(post?._id)
+                ? removeBookmarkHandler(post?._id)
+                : addBookmarkHandler(post?._id)
             }
           >
-            {postAlreadyInBookmarks(currentPost?._id) ? (
+            {postAlreadyInBookmarks(post?._id) ? (
               <FaBookmark className="text-lg" />
             ) : (
               <FaRegBookmark className="text-lg" />
