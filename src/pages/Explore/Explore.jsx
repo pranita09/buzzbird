@@ -5,7 +5,11 @@ const Explore = () => {
   const {
     postsState: { posts },
     isLoading,
+    filteredPosts,
   } = usePosts();
+
+  const sortedPosts = filteredPosts(posts);
+
   return (
     <div className="grid sm:grid-cols-[5rem_1fr] lg:grid-cols-[12rem_1fr] xl:grid-cols-[13rem_1fr_20rem] w-[100%] lg:w-[80%] mb-16 sm:m-auto dark:bg-darkGrey dark:text-lightGrey transition-all duration-500">
       <SideBar />
@@ -22,8 +26,10 @@ const Explore = () => {
           <div>
             {isLoading ? (
               "Loader"
-            ) : posts?.length > 0 ? (
-              [...posts].map((post) => <PostCard key={post._id} post={post} />)
+            ) : sortedPosts?.length > 0 ? (
+              [...sortedPosts].map((post) => (
+                <PostCard key={post._id} post={post} />
+              ))
             ) : (
               <div className="p-4 text-center text-lg font-bold">
                 No posts yet.

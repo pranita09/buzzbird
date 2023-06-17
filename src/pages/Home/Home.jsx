@@ -16,6 +16,7 @@ const Home = () => {
   const {
     postsState: { posts },
     isLoading,
+    filteredPosts,
   } = usePosts();
 
   const postsOfFollowingUsers = posts?.filter(
@@ -24,6 +25,8 @@ const Home = () => {
         (followingUser) => followingUser.username === post.username
       ) || currentUser.username === post.username
   );
+
+  const sortedPosts = filteredPosts(postsOfFollowingUsers);
 
   return (
     <div className="grid sm:grid-cols-[5rem_1fr] lg:grid-cols-[12rem_1fr] xl:grid-cols-[13rem_1fr_20rem] w-[100%] lg:w-[80%] mb-16 sm:m-auto dark:bg-darkGrey dark:text-lightGrey transition-all duration-500">
@@ -43,8 +46,8 @@ const Home = () => {
           <div>
             {isLoading ? (
               "Loader"
-            ) : postsOfFollowingUsers?.length > 0 ? (
-              postsOfFollowingUsers?.map((post) => (
+            ) : sortedPosts?.length > 0 ? (
+              sortedPosts?.map((post) => (
                 <PostCard key={post._id} post={post} />
               ))
             ) : (
