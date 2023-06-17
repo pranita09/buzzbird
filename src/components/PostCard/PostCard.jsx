@@ -7,13 +7,25 @@ import {
   FaHeart,
   FaRegComments,
   FaRegBookmark,
+  FaBookmark,
   MdShare,
 } from "../../utils/icons";
+import { usePosts } from "../../contexts/post-context";
+import { useAuth } from "../../contexts/auth-context";
+import { debounce } from "../../utils/debounce";
+import { getPostDate } from "../../utils/getPostDate";
 
 const PostCard = ({ post }) => {
+  const { currentUser } = useAuth();
+
   const {
     usersState: { users },
+    addBookmarkHandler,
+    removeBookmarkHandler,
+    postAlreadyInBookmarks,
   } = useUsers();
+
+  const { likePostHandler, dislikePostHandler, likedByLoggedUser } = usePosts();
 
   const [showOptions, setShowOptions] = useState(false);
 
@@ -35,7 +47,7 @@ const PostCard = ({ post }) => {
               <span className="text-[grey]">@{userWhoPosted?.username}</span>
             </div>
             <span className="text-[grey]">.</span>
-            <div className="text-[grey]">02 June 2023</div>
+            <div className="text-[grey]">{getPostDate(post?.createdAt)}</div>
           </div>
 
           <div className="relative">
@@ -66,8 +78,19 @@ const PostCard = ({ post }) => {
 
         <div className="flex gap-6 -ml-2 mt-1">
           <div className="flex justify-center p-2 pr-4">
-            <button className="cursor-pointer">
-              <FaRegHeart className="text-lg" />
+            <button
+              className="cursor-pointer"
+              onClick={() =>
+                likedByLoggedUser(post, currentUser)
+                  ? dislikePostHandler(post?._id)
+                  : likePostHandler(post?._id)
+              }
+            >
+              {likedByLoggedUser(post, currentUser) ? (
+                <FaHeart className="text-lg text-red" />
+              ) : (
+                <FaRegHeart className="text-lg" />
+              )}
             </button>
             {post?.likes?.likeCount > 0 && (
               <span className="ml-1">{post?.likes?.likeCount}</span>
@@ -83,8 +106,19 @@ const PostCard = ({ post }) => {
             )}
           </div>
 
-          <button className="cursor-pointer p-2 pr-4">
-            <FaRegBookmark className="text-lg" />
+          <button
+            className="cursor-pointer p-2 pr-4"
+            onClick={() =>
+              postAlreadyInBookmarks(post?._id)
+                ? removeBookmarkHandler(post?._id)
+                : addBookmarkHandler(post?._id)
+            }
+          >
+            {postAlreadyInBookmarks(post?._id) ? (
+              <FaBookmark className="text-lg" />
+            ) : (
+              <FaRegBookmark className="text-lg" />
+            )}
           </button>
 
           <button className="cursor-pointer p-2 pr-4">

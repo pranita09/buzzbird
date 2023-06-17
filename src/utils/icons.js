@@ -5,6 +5,7 @@ import {
   FaHeart,
   FaRegComments,
   FaRegBookmark,
+  FaBookmark,
   FaFilter,
   FaFire,
   FaArrowUp,
@@ -15,7 +16,7 @@ import {
   MdShare,
   MdHome,
   MdExplore,
-  MdBookmark,
+  MdBookmarks,
   MdPerson,
 } from "react-icons/md";
 import { HiDotsHorizontal, HiPlusCircle } from "react-icons/hi";
@@ -29,6 +30,7 @@ export {
   FaHeart,
   FaRegComments,
   FaRegBookmark,
+  FaBookmark,
   FaFilter,
   FaFire,
   FaArrowUp,
@@ -38,7 +40,7 @@ export {
   MdShare,
   MdHome,
   MdExplore,
-  MdBookmark,
+  MdBookmarks,
   MdPerson,
   HiDotsHorizontal,
   HiPlusCircle,

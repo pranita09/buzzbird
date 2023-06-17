@@ -1,5 +1,12 @@
 import { Routes, Route } from "react-router-dom";
-import { Authentication, Login, Signup, Home, Explore } from "../pages";
+import {
+  Authentication,
+  Login,
+  Signup,
+  Home,
+  Explore,
+  Bookmarks,
+} from "../pages";
 import { PrivateRoutes } from "./PrivateRoutes";
 
 const AppRoutes = () => {
@@ -9,6 +16,7 @@ const AppRoutes = () => {
         <Route element={<PrivateRoutes />}>
           <Route path="/" element={<Home />} />
           <Route path="/explore" element={<Explore />} />
+          <Route path="/bookmarks" element={<Bookmarks />} />
         </Route>
         <Route path="/auth" element={<Authentication />}>
           <Route path="login" element={<Login />} />
