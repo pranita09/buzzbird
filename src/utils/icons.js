@@ -10,6 +10,9 @@ import {
   FaFire,
   FaArrowUp,
   FaArrowDown,
+  FaEdit,
+  FaTrash,
+  FaUserPlus,
 } from "react-icons/fa";
 import {
   MdCancel,
@@ -22,6 +25,7 @@ import {
 import { HiDotsHorizontal, HiPlusCircle } from "react-icons/hi";
 import { FiSearch } from "react-icons/fi";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { RiUserUnfollowFill } from "react-icons/ri";
 
 export {
   FaImage,
@@ -35,6 +39,9 @@ export {
   FaFire,
   FaArrowUp,
   FaArrowDown,
+  FaEdit,
+  FaTrash,
+  FaUserPlus,
   FiSearch,
   MdCancel,
   MdShare,
@@ -46,4 +53,5 @@ export {
   HiPlusCircle,
   AiOutlineEye,
   AiOutlineEyeInvisible,
+  RiUserUnfollowFill,
 };

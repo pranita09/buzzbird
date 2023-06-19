@@ -18,7 +18,7 @@ const SearchedUsersModal = () => {
           </div>
         ))
       ) : (
-        <div>Oops, no match found!</div>
+        <div className="text-center">Oops, no match found!</div>
       )}
     </div>
   );
