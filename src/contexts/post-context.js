@@ -7,6 +7,7 @@ import {
 } from "react";
 import { initialPostsState, postsReducer } from "../reducers/postsReducer";
 import {
+  createPostService,
   dislikePostService,
   getAllPostsService,
   likePostService,
@@ -25,7 +26,8 @@ export const PostsProvider = ({ children }) => {
   );
   const [isLoading, setIsLoading] = useState(false);
 
-  const { GET_ALL_POSTS, LIKE_POST, DISLIKE_POST } = actionTypes;
+  const { GET_ALL_POSTS, LIKE_POST, DISLIKE_POST, CREATE_NEW_POST } =
+    actionTypes;
 
   const getAllPosts = async () => {
     setIsLoading(true);
@@ -41,6 +43,21 @@ export const PostsProvider = ({ children }) => {
       console.error(error);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const createPostHandler = async ({ content, media, mediaAlt }) => {
+    try {
+      const {
+        status,
+        data: { posts },
+      } = await createPostService(content, media, mediaAlt, token);
+      if (status === 201) {
+        postsDispatch({ type: CREATE_NEW_POST, payload: posts });
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong, try again!");
     }
   };
 
@@ -126,6 +143,7 @@ export const PostsProvider = ({ children }) => {
         dislikePostHandler,
         likedByLoggedUser,
         filteredPosts,
+        createPostHandler,
       }}
     >
       {children}

@@ -28,6 +28,7 @@ const SortBar = () => {
               style={{
                 backgroundColor:
                   filterType === "Trending" ? "#99f6e4" : "#d1fae5",
+                fontWeight: filterType === "Trending" && "bold",
               }}
               className="flex justify-center py-1 px-3 rounded-md w-full hover:bg-lightPrimary"
               onClick={() =>
@@ -41,6 +42,7 @@ const SortBar = () => {
               style={{
                 backgroundColor:
                   filterType === "Latest" ? "#99f6e4" : "#d1fae5",
+                fontWeight: filterType === "Latest" && "bold",
               }}
               className="flex justify-center py-1 px-3 rounded-md w-full hover:bg-lightPrimary"
               onClick={() =>
@@ -54,6 +56,7 @@ const SortBar = () => {
               style={{
                 backgroundColor:
                   filterType === "Oldest" ? "#99f6e4" : "#d1fae5",
+                fontWeight: filterType === "Oldest" && "bold",
               }}
               className="flex justify-center py-1 px-3 rounded-md w-full hover:bg-lightPrimary"
               onClick={() =>
