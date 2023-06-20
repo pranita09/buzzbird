@@ -8,7 +8,7 @@ import { uploadMedia } from "../../utils/uploadMedia";
 
 const NewPost = () => {
   const { currentUser } = useAuth();
-  const { createPostHandler } = usePosts();
+  const { createPostHandler, isLoading } = usePosts();
   const [content, setContent] = useState("");
   const [media, setMedia] = useState(null);
 
@@ -16,8 +16,6 @@ const NewPost = () => {
 
   const submitPostHandler = async (e) => {
     e.preventDefault();
-    toast.success("Adding new post");
-
     if (media) {
       const resp = await uploadMedia(media);
       createPostHandler({
@@ -28,6 +26,7 @@ const NewPost = () => {
     } else {
       createPostHandler({ content, media: "", mediaAlt: "" });
     }
+    !isLoading && toast.success("Added new post successfully");
     setContent("");
     setMedia(null);
     newPostRef.current.innerText = "";

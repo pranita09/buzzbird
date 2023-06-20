@@ -47,6 +47,7 @@ export const PostsProvider = ({ children }) => {
   };
 
   const createPostHandler = async ({ content, media, mediaAlt }) => {
+    setIsLoading(true);
     try {
       const {
         status,
@@ -58,6 +59,8 @@ export const PostsProvider = ({ children }) => {
     } catch (error) {
       console.error(error);
       toast.error("Something went wrong, try again!");
+    } finally {
+      setIsLoading(false);
     }
   };
 
