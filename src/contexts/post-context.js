@@ -8,6 +8,7 @@ import {
 import { initialPostsState, postsReducer } from "../reducers/postsReducer";
 import {
   createPostService,
+  deletePostService,
   dislikePostService,
   getAllPostsService,
   likePostService,
@@ -26,8 +27,13 @@ export const PostsProvider = ({ children }) => {
   );
   const [isLoading, setIsLoading] = useState(false);
 
-  const { GET_ALL_POSTS, LIKE_POST, DISLIKE_POST, CREATE_NEW_POST } =
-    actionTypes;
+  const {
+    GET_ALL_POSTS,
+    LIKE_POST,
+    DISLIKE_POST,
+    CREATE_NEW_POST,
+    DELETE_POST,
+  } = actionTypes;
 
   const getAllPosts = async () => {
     setIsLoading(true);
@@ -61,6 +67,22 @@ export const PostsProvider = ({ children }) => {
       toast.error("Something went wrong, try again!");
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const deletePostHandler = async (postId) => {
+    try {
+      const {
+        status,
+        data: { posts },
+      } = await deletePostService(postId, token);
+      if (status === 201) {
+        postsDispatch({ type: DELETE_POST, payload: posts });
+        toast.success("Post deleted successfully!");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong, try again");
     }
   };
 
@@ -147,6 +169,7 @@ export const PostsProvider = ({ children }) => {
         likedByLoggedUser,
         filteredPosts,
         createPostHandler,
+        deletePostHandler,
       }}
     >
       {children}

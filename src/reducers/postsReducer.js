@@ -18,6 +18,7 @@ const {
   DISLIKE_POST,
   FILTER_POSTS,
   CREATE_NEW_POST,
+  DELETE_POST,
 } = actionTypes;
 
 const postsReducer = (state, { type, payload }) => {
@@ -29,6 +30,8 @@ const postsReducer = (state, { type, payload }) => {
     case LIKE_POST:
       return { ...state, posts: payload };
     case DISLIKE_POST:
+      return { ...state, posts: payload };
+    case DELETE_POST:
       return { ...state, posts: payload };
     case FILTER_POSTS:
       return { ...state, filterType: payload };

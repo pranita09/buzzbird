@@ -9,6 +9,11 @@ const createPostService = async (content, mediaURL, mediaAlt, encodedToken) =>
     { headers: { authorization: encodedToken } }
   );
 
+const deletePostService = async (postId, encodedToken) =>
+  await axios.delete(`/api/posts/${postId}`, {
+    headers: { authorization: encodedToken },
+  });
+
 const likePostService = async (postId, encodedToken) =>
   await axios.post(
     `/api/posts/like/${postId}`,
@@ -30,6 +35,7 @@ const dislikePostService = async (postId, encodedToken) =>
 export {
   getAllPostsService,
   createPostService,
+  deletePostService,
   likePostService,
   dislikePostService,
 };

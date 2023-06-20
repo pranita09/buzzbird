@@ -1,4 +1,5 @@
 import { useAuth } from "../../contexts/auth-context";
+import { usePosts } from "../../contexts/post-context";
 import { useUsers } from "../../contexts/user-context";
 import {
   FaEdit,
@@ -8,11 +9,12 @@ import {
 } from "../../utils/icons";
 
 const PostOptionsModal = ({ post, setShowOptions }) => {
-  const { username } = post;
+  const { _id, username } = post;
   const { currentUser } = useAuth();
   const {
     usersState: { users },
   } = useUsers();
+  const { deletePostHandler } = usePosts();
 
   const userToFollow = users.find((user) => user.username === username);
 
@@ -28,7 +30,13 @@ const PostOptionsModal = ({ post, setShowOptions }) => {
             <FaEdit className="mr-2" />
             Edit
           </button>
-          <button className="py-2 px-4 text-left cursor-pointer rounded-md hover:bg-lightPrimary text-red flex items-center justify-center">
+          <button
+            className="py-2 px-4 text-left cursor-pointer rounded-md hover:bg-lightPrimary text-red flex items-center justify-center"
+            onClick={() => {
+              deletePostHandler(_id);
+              setShowOptions((prev) => !prev);
+            }}
+          >
             <FaTrash className="mr-2 " />
             Delete
           </button>
