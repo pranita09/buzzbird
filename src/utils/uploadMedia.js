@@ -1,4 +1,4 @@
-const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/dxnbnviuz/image/upload";
+const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/dxnbnviuz/auto/upload";
 const CLOUDINARY_UPLOAD_PRESET = "buzzbird";
 
 export const uploadMedia = (media) => {

@@ -18,7 +18,6 @@ const {
   DISLIKE_POST,
   FILTER_POSTS,
   CREATE_NEW_POST,
-  GET_POST_DATA,
 } = actionTypes;
 
 const postsReducer = (state, { type, payload }) => {
@@ -33,8 +32,6 @@ const postsReducer = (state, { type, payload }) => {
       return { ...state, posts: payload };
     case FILTER_POSTS:
       return { ...state, filterType: payload };
-    case GET_POST_DATA:
-      return { ...state, postData: payload };
     default:
       return state;
   }

@@ -3,47 +3,32 @@ import { useAuth } from "../../contexts/auth-context";
 import { PrimaryButton, UserAvatar } from "..";
 import { FaImage, FaSmile, MdCancel } from "../../utils/icons";
 import { usePosts } from "../../contexts/post-context";
-import { actionTypes } from "../../utils/constants";
 import { toast } from "react-hot-toast";
 import { uploadMedia } from "../../utils/uploadMedia";
 
-// const postData = {
-//   input: "Hey",
-//   media: "",
-//   mediaAlt: "",
-// };
-
 const NewPost = () => {
   const { currentUser } = useAuth();
-  const {
-    postsState: { postInput, postMedia, postMediaAlt },
-    postsDispatch,
-    createPostHandler,
-  } = usePosts();
-  const { GET_POST_DATA } = actionTypes;
-  const [input, setInput] = useState("");
+  const { createPostHandler } = usePosts();
+  const [content, setContent] = useState("");
   const [media, setMedia] = useState(null);
 
   const newPostRef = useRef();
 
-  console.log(input, media);
-
-  const submitPostHandler = (e) => {
+  const submitPostHandler = async (e) => {
     e.preventDefault();
     toast.success("Adding new post");
 
     if (media) {
-      const resp = uploadMedia(media);
-      console.log(resp);
+      const resp = await uploadMedia(media);
       createPostHandler({
-        input,
-        media: resp.URL,
+        content,
+        media: resp.url,
         mediaAlt: resp.original_filename,
       });
     } else {
-      createPostHandler({ input, media: "", mediaAlt: "" });
+      createPostHandler({ content, media: "", mediaAlt: "" });
     }
-    setInput("");
+    setContent("");
     setMedia(null);
     newPostRef.current.innerText = "";
   };
@@ -52,21 +37,14 @@ const NewPost = () => {
     <div className="grid grid-cols-[2rem_1fr] gap-2 items-start text-sm border-b border-darkGrey px-4 py-3 cursor-text dark:border-lightGrey">
       <UserAvatar user={currentUser} className="h-9 w-9" />
       <form className="flex flex-col gap-4" onSubmit={submitPostHandler}>
-        <div
-          // role="textbox"
-          // ref={newPostRef}
-          // contentEditable="true"
-          // data-text="What is happening?!"
-          className="w-full break-all outline-none mt-1.5"
-          // onInput={(e) => setInput(e.currentTarget.textContent)}
-        >
+        <div className="w-full break-all outline-none mt-1.5">
           <input
             type="text"
             ref={newPostRef}
-            value={input}
-            className="w-full break-all outline-none mt-1.5"
+            value={content}
+            className="w-full break-all outline-none"
             placeholder="What is happening?!"
-            onChange={(e) => setInput(e.target.value)}
+            onChange={(e) => setContent(e.target.value)}
           />
           {media ? (
             <div className="relative">
@@ -88,7 +66,7 @@ const NewPost = () => {
           )}
         </div>
 
-        <div className="ml-auto flex items-center gap-4">
+        <div className="ml-auto flex items-center gap-4 mt-1.5">
           <label className="cursor-pointer text-xl">
             <input
               type="file"
@@ -109,7 +87,7 @@ const NewPost = () => {
           <PrimaryButton
             type="submit"
             className="py-1 px-4 rounded-md disabled:opacity-50 disabled:cursor-not-allowed"
-            disabled={!input.trim() && !media}
+            disabled={!content.trim() && !media}
           >
             Post
           </PrimaryButton>
