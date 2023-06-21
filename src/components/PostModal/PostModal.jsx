@@ -8,7 +8,7 @@ import { usePosts } from "../../contexts/post-context";
 
 const PostModal = ({ post, setShowPostModal, setShowOptions }) => {
   const { currentUser } = useAuth();
-  const { createPostHandler } = usePosts();
+  const { createPostHandler, editPostHandler } = usePosts();
 
   const [content, setContent] = useState(post || {});
   const [media, setMedia] = useState(null);
@@ -18,6 +18,23 @@ const PostModal = ({ post, setShowPostModal, setShowOptions }) => {
   const submitHandler = async (event) => {
     event.preventDefault();
     if (post) {
+      const toastId = toast.loading("Updating post...");
+      if (media) {
+        const resp = await uploadMedia(media);
+        editPostHandler(post._id, {
+          content: content?.content,
+          media: resp.url,
+          mediaAlt: resp.original_filename,
+        });
+      } else {
+        editPostHandler(post._id, {
+          content: content?.content,
+          media: content?.mediaURL,
+          mediaAlt: content?.mediaAlt,
+        });
+      }
+      toast.success("Updated post successfully", { id: toastId });
+      setShowOptions((prev) => !prev);
     } else {
       const toastId = toast.loading("Creating new post..");
       if (media) {
@@ -53,9 +70,10 @@ const PostModal = ({ post, setShowPostModal, setShowOptions }) => {
       <UserAvatar user={currentUser} className="h-9 w-9" />
       <form className="flex flex-col gap-4" onSubmit={submitHandler}>
         <div className="w-full break-all outline-none mt-1.5 bg-lighterPrimary">
-          <input
+          <textarea
             type="text"
             ref={postRef}
+            value={content?.content}
             className="w-full break-all outline-none bg-lighterPrimary"
             placeholder="What is happening?!"
             onChange={(e) =>

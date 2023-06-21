@@ -24,4 +24,5 @@ export const actionTypes = {
   SEARCH_USER: "SEARCH_USER",
   CREATE_NEW_POST: "CREATE_NEW_POST",
   DELETE_POST: "DELETE_POST",
+  EDIT_POST: "EDIT_POST",
 };

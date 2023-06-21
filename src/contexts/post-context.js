@@ -10,6 +10,7 @@ import {
   createPostService,
   deletePostService,
   dislikePostService,
+  editPostService,
   getAllPostsService,
   likePostService,
 } from "../services/postsServices";
@@ -33,6 +34,7 @@ export const PostsProvider = ({ children }) => {
     DISLIKE_POST,
     CREATE_NEW_POST,
     DELETE_POST,
+    EDIT_POST,
   } = actionTypes;
 
   const getAllPosts = async () => {
@@ -83,6 +85,21 @@ export const PostsProvider = ({ children }) => {
     } catch (error) {
       console.error(error);
       toast.error("Something went wrong, try again");
+    }
+  };
+
+  const editPostHandler = async (postId, { content, media, mediaAlt }) => {
+    try {
+      const {
+        status,
+        data: { posts },
+      } = await editPostService(postId, content, media, mediaAlt, token);
+      if (status === 201) {
+        postsDispatch({ type: EDIT_POST, payload: posts });
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong!");
     }
   };
 
@@ -170,6 +187,7 @@ export const PostsProvider = ({ children }) => {
         filteredPosts,
         createPostHandler,
         deletePostHandler,
+        editPostHandler,
       }}
     >
       {children}
