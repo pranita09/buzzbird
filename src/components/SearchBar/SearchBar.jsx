@@ -10,7 +10,7 @@ const SearchBar = () => {
   } = useUsers();
   const { SEARCH_USER } = actionTypes;
   return (
-    <div className="sticky top-[15px] mr-1 xl:mr-0 z-40">
+    <div className="sticky top-[15px] mr-1 xl:mr-0 z-30">
       <div className="relative xl:mx-4 2xl:my-3 rounded-lg border border-darkGrey focus-within:border-darkPrimary bg-lightGrey ">
         <input
           type="text"

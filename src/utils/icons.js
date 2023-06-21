@@ -1,5 +1,4 @@
 import {
-  FaImage,
   FaSmile,
   FaRegHeart,
   FaHeart,
@@ -26,9 +25,9 @@ import { HiDotsHorizontal, HiPlusCircle } from "react-icons/hi";
 import { FiSearch } from "react-icons/fi";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { RiUserUnfollowFill } from "react-icons/ri";
+import { BsFillImageFill } from "react-icons/bs";
 
 export {
-  FaImage,
   FaSmile,
   FaRegHeart,
   FaHeart,
@@ -54,4 +53,5 @@ export {
   AiOutlineEye,
   AiOutlineEyeInvisible,
   RiUserUnfollowFill,
+  BsFillImageFill,
 };

@@ -43,7 +43,7 @@ const Bookmarks = () => {
         </div>
       </div>
 
-      <div className="hidden xl:block">
+      <div className="hidden xl:block z-[-1]">
         <SearchBar />
         <SuggestedUsers />
       </div>

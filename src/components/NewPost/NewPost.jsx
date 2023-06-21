@@ -1,21 +1,22 @@
 import { useRef, useState } from "react";
 import { useAuth } from "../../contexts/auth-context";
 import { PrimaryButton, UserAvatar } from "..";
-import { FaImage, FaSmile, MdCancel } from "../../utils/icons";
+import { BsFillImageFill, FaSmile, MdCancel } from "../../utils/icons";
 import { usePosts } from "../../contexts/post-context";
 import { toast } from "react-hot-toast";
 import { uploadMedia } from "../../utils/uploadMedia";
 
 const NewPost = () => {
   const { currentUser } = useAuth();
-  const { createPostHandler, isLoading } = usePosts();
+  const { createPostHandler } = usePosts();
   const [content, setContent] = useState("");
   const [media, setMedia] = useState(null);
 
   const newPostRef = useRef();
 
-  const submitPostHandler = async (e) => {
-    e.preventDefault();
+  const submitPostHandler = async (event) => {
+    event.preventDefault();
+    const toastId = toast.loading("Creating new post..");
     if (media) {
       const resp = await uploadMedia(media);
       createPostHandler({
@@ -26,10 +27,16 @@ const NewPost = () => {
     } else {
       createPostHandler({ content, media: "", mediaAlt: "" });
     }
-    !isLoading && toast.success("Added new post successfully");
+    toast.success("Added new post successfully", { id: toastId });
     setContent("");
     setMedia(null);
     newPostRef.current.innerText = "";
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+    }
   };
 
   return (
@@ -44,6 +51,7 @@ const NewPost = () => {
             className="w-full break-all outline-none"
             placeholder="What is happening?!"
             onChange={(e) => setContent(e.target.value)}
+            onKeyPress={handleKeyPress}
           />
           {media ? (
             <div className="relative">
@@ -77,7 +85,7 @@ const NewPost = () => {
                   : setMedia(e.target.files[0])
               }
             />
-            <FaImage />
+            <BsFillImageFill />
           </label>
           <label className="cursor-pointer text-xl">
             <input className="hidden" />
@@ -85,7 +93,7 @@ const NewPost = () => {
           </label>
           <PrimaryButton
             type="submit"
-            className="py-1 px-4 rounded-md disabled:opacity-50 disabled:cursor-not-allowed"
+            className="py-1 px-4 rounded-md disabled:opacity-80 disabled:cursor-not-allowed"
             disabled={!content.trim() && !media}
           >
             Post
