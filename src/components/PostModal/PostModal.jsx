@@ -3,17 +3,43 @@ import { PrimaryButton, SecondaryButton, UserAvatar } from "..";
 import { useRef, useState } from "react";
 import { BsFillImageFill, FaSmile, MdCancel } from "../../utils/icons";
 import { toast } from "react-hot-toast";
+import { uploadMedia } from "../../utils/uploadMedia";
+import { usePosts } from "../../contexts/post-context";
 
 const PostModal = ({ post, setShowPostModal, setShowOptions }) => {
   const { currentUser } = useAuth();
+  const { createPostHandler } = usePosts();
 
   const [content, setContent] = useState(post || {});
   const [media, setMedia] = useState(null);
 
   const postRef = useRef();
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
+    if (post) {
+    } else {
+      const toastId = toast.loading("Creating new post..");
+      if (media) {
+        const resp = await uploadMedia(media);
+        createPostHandler({
+          content: content?.content,
+          media: resp.url,
+          mediaAlt: resp.original_filename,
+        });
+      } else {
+        createPostHandler({
+          content: content?.content,
+          media: "",
+          mediaAlt: "",
+        });
+      }
+      toast.success("Added new post successfully", { id: toastId });
+    }
+    setShowPostModal(false);
+    setContent({});
+    setMedia(null);
+    postRef.current.innterText = "";
   };
 
   const handleKeyPress = (event) => {
