@@ -33,26 +33,19 @@ const NewPost = () => {
     newPostRef.current.innerText = "";
   };
 
-  const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-    }
-  };
-
   return (
     <div className="grid grid-cols-[2rem_1fr] gap-2 items-start text-sm border-b border-darkGrey px-4 py-3 cursor-text dark:border-lightGrey">
       <UserAvatar user={currentUser} className="h-9 w-9" />
-      <form className="flex flex-col gap-4" onSubmit={submitPostHandler}>
-        <div className="w-full break-all outline-none mt-1.5">
-          <input
-            type="text"
+      <form className="flex flex-col gap-2" onSubmit={submitPostHandler}>
+        <div className="w-full outline-none mt-1.5 h-auto">
+          <textarea
             ref={newPostRef}
             value={content}
-            className="w-full break-all outline-none"
+            rows={2}
+            className="w-full outline-none resize-none h-auto"
             placeholder="What is happening?!"
             onChange={(e) => setContent(e.target.value)}
-            onKeyPress={handleKeyPress}
-          />
+          ></textarea>
           {media ? (
             <div className="relative">
               <img

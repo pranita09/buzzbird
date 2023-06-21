@@ -59,27 +59,19 @@ const PostModal = ({ post, setShowPostModal, setShowOptions }) => {
     postRef.current.innterText = "";
   };
 
-  const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-    }
-  };
-
   return (
     <div className="grid grid-cols-[2rem_1fr] gap-2 items-start bg-lighterPrimary text-sm border-darkGrey px-4 py-3 cursor-text w-[80%] sm:w-[50%] shadow-dark shadow-lg rounded-md border">
       <UserAvatar user={currentUser} className="h-9 w-9" />
       <form className="flex flex-col gap-4" onSubmit={submitHandler}>
         <div className="w-full break-all outline-none mt-1.5 bg-lighterPrimary">
           <textarea
-            type="text"
             ref={postRef}
             value={content?.content}
-            className="w-full break-all outline-none bg-lighterPrimary"
+            className="w-full break-all outline-none bg-lighterPrimary resize-none h-[6rem]"
             placeholder="What is happening?!"
             onChange={(e) =>
               setContent((prev) => ({ ...prev, content: e.target.value }))
             }
-            onKeyPress={handleKeyPress}
           />
 
           {content?.mediaURL || media ? (
