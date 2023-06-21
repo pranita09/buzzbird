@@ -113,6 +113,12 @@ export const UsersProvider = ({ children }) => {
   const postAlreadyInBookmarks = (postId) =>
     usersState?.bookmarks?.find((id) => id === postId);
 
+  const searchedUsers =
+    usersState.searchInput &&
+    usersState.users.filter((user) =>
+      user.username.toLowerCase().includes(usersState.searchInput.toLowerCase())
+    );
+
   useEffect(() => {
     getAllUsers();
     if (token) {
@@ -130,6 +136,7 @@ export const UsersProvider = ({ children }) => {
         addBookmarkHandler,
         removeBookmarkHandler,
         postAlreadyInBookmarks,
+        searchedUsers,
       }}
     >
       {children}

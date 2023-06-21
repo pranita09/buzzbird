@@ -7,7 +7,10 @@ import {
 } from "react";
 import { initialPostsState, postsReducer } from "../reducers/postsReducer";
 import {
+  createPostService,
+  deletePostService,
   dislikePostService,
+  editPostService,
   getAllPostsService,
   likePostService,
 } from "../services/postsServices";
@@ -25,7 +28,14 @@ export const PostsProvider = ({ children }) => {
   );
   const [isLoading, setIsLoading] = useState(false);
 
-  const { GET_ALL_POSTS, LIKE_POST, DISLIKE_POST } = actionTypes;
+  const {
+    GET_ALL_POSTS,
+    LIKE_POST,
+    DISLIKE_POST,
+    CREATE_NEW_POST,
+    DELETE_POST,
+    EDIT_POST,
+  } = actionTypes;
 
   const getAllPosts = async () => {
     setIsLoading(true);
@@ -41,6 +51,55 @@ export const PostsProvider = ({ children }) => {
       console.error(error);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const createPostHandler = async ({ content, media, mediaAlt }) => {
+    setIsLoading(true);
+    try {
+      const {
+        status,
+        data: { posts },
+      } = await createPostService(content, media, mediaAlt, token);
+      if (status === 201) {
+        postsDispatch({ type: CREATE_NEW_POST, payload: posts });
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong, try again!");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const deletePostHandler = async (postId) => {
+    try {
+      const {
+        status,
+        data: { posts },
+      } = await deletePostService(postId, token);
+      if (status === 201) {
+        postsDispatch({ type: DELETE_POST, payload: posts });
+        toast.success("Post deleted successfully!");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong, try again");
+    }
+  };
+
+  const editPostHandler = async (postId, { content, media, mediaAlt }) => {
+    try {
+      const {
+        status,
+        data: { posts },
+      } = await editPostService(postId, content, media, mediaAlt, token);
+      if (status === 201) {
+        postsDispatch({ type: EDIT_POST, payload: posts });
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong!");
     }
   };
 
@@ -126,6 +185,9 @@ export const PostsProvider = ({ children }) => {
         dislikePostHandler,
         likedByLoggedUser,
         filteredPosts,
+        createPostHandler,
+        deletePostHandler,
+        editPostHandler,
       }}
     >
       {children}

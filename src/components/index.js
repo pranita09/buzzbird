@@ -9,3 +9,4 @@ export { SortBar } from "./SortBar/SortBar";
 export { SuggestedUsers } from "./SuggestedUsers/SuggestedUsers";
 export { ToastWrapper } from "./ToastWrapper/ToastWrapper";
 export { UserAvatar } from "./UserAvatar/UserAvatar";
+export { PostModal } from "./PostModal/PostModal";

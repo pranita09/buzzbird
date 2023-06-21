@@ -3,11 +3,11 @@ const PrimaryButton = (props) => {
 
   const classes =
     className +
-    " bg-primary text-lightGrey text-sm transition-all duration-500 hover:bg-darkPrimary hover:ease-in-out  active:scale-[0.97]";
+    " bg-primary text-lightGrey text-sm transition-all duration-500 hover:bg-darkPrimary hover:ease-in-out active:scale-[0.97]";
 
   const classesForDisabled =
     className +
-    " bg-primary text-lightGrey text-sm transition-all duration-500 hover:cursor-not-allowed hover:bg-[#5eead4] hover:text-darkGrey";
+    " bg-primary text-lightGrey text-sm transition-all duration-500 hover:cursor-not-allowed";
 
   return (
     <button

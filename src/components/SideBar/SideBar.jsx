@@ -8,11 +8,13 @@ import {
   HiPlusCircle,
   HiDotsHorizontal,
 } from "../../utils/icons";
-import { PrimaryButton, UserAvatar } from "..";
+import { PostModal, PrimaryButton, UserAvatar } from "..";
 import { useAuth } from "../../contexts/auth-context";
+import { useState } from "react";
 
 const SideBar = () => {
   const { currentUser } = useAuth();
+  const [showPostModal, setShowPostModal] = useState(false);
 
   const activeStyle = {
     backgroundColor: "#d1fae5",
@@ -78,7 +80,10 @@ const SideBar = () => {
           </NavLink>
         </li>
 
-        <li className=" sm:flex px-0 sm:px-1 lg:p-0 w-max lg:w-full">
+        <li
+          className=" sm:flex px-0 sm:px-1 lg:p-0 w-max lg:w-full cursor-pointer"
+          onClick={() => setShowPostModal(true)}
+        >
           <HiPlusCircle className="px-2 text-[2.75rem] hover:bg-lighterPrimary hover:rounded-full  dark:hover:text-darkColor lg:hidden" />
           <PrimaryButton className="mx-2 rounded-lg w-max lf:w-full py-1 pl-2 pr-4  justify-center items-center hidden lg:flex">
             <HiPlusCircle className="px-0.5 text-3xl lg:pr-2" />
@@ -103,6 +108,14 @@ const SideBar = () => {
           <HiDotsHorizontal className="ml-4 hidden lg:inline" />
         </li>
       </ul>
+
+      {showPostModal ? (
+        <div className="fixed top-0 left-0 w-full h-full z-90 flex justify-center items-center cursor-default bg-[#00000070] backdrop-blur-[1px]">
+          <PostModal setShowPostModal={setShowPostModal} />
+        </div>
+      ) : (
+        <></>
+      )}
     </aside>
   );
 };
