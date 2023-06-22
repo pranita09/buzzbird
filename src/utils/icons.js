@@ -12,6 +12,7 @@ import {
   FaEdit,
   FaTrash,
   FaUserPlus,
+  FaArrowLeft,
 } from "react-icons/fa";
 import {
   MdCancel,
@@ -41,6 +42,7 @@ export {
   FaEdit,
   FaTrash,
   FaUserPlus,
+  FaArrowLeft,
   FiSearch,
   MdCancel,
   MdShare,

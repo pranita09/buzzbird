@@ -71,7 +71,7 @@ const SideBar = () => {
 
         <li>
           <NavLink
-            to="/profile"
+            to={`/profile/${currentUser?.username}`}
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
             className="p-2 lg:py-1 lg:pl-2 lg:pr-4 w-max flex justify-center items-center hover:bg-lighterPrimary hover:rounded-full  dark:hover:text-darkColor dark:active:text-darkColor"
           >
