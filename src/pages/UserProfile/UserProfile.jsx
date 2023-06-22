@@ -44,7 +44,7 @@ const UserProfile = () => {
         </h1>
 
         <div>
-          {user ? <ProfileDetails /> : <></>}
+          {user ? <ProfileDetails user={user} /> : <></>}
           {isLoading ? (
             "Loader"
           ) : !user ? (

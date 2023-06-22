@@ -17,10 +17,10 @@ const getPostDate = (createdDate) => {
         return hr > 1 ? `${hr} hrs ago` : `${hr} hr ago`;
       }
     } else {
-      return min > 1 ? `${min} mins ago` : `${min} mins ago`;
+      return min > 1 ? `${min} mins ago` : `${min} min ago`;
     }
   } else {
-    return sec > 1 ? `${sec} mins ago` : `${sec} mins ago`;
+    return sec > 1 ? `${sec} secs ago` : `${sec} sec ago`;
   }
 };
 

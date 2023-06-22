@@ -1,4 +1,5 @@
 import {
+  FaLink,
   FaSmile,
   FaRegHeart,
   FaHeart,
@@ -29,6 +30,7 @@ import { RiUserUnfollowFill } from "react-icons/ri";
 import { BsFillImageFill } from "react-icons/bs";
 
 export {
+  FaLink,
   FaSmile,
   FaRegHeart,
   FaHeart,
