@@ -17,7 +17,7 @@ const ProfileDetails = ({ user }) => {
     followers,
   } = user;
   return (
-    <div className="relative flex flex-col items-center w-full border-b border-darkGrey dark:border-lightGrey z-[-1]">
+    <div className="relative flex flex-col items-center w-full border-b border-darkGrey dark:border-lightGrey">
       <img
         src={backgroundImage}
         alt={username + " bgImage"}
@@ -47,7 +47,7 @@ const ProfileDetails = ({ user }) => {
           <FaLink />
           <Link to={website} target="_blank">
             <span className="hover:underline cursor-pointer text-sm">
-              {website}
+              {website.split("/")[2]}
             </span>
           </Link>
         </div>

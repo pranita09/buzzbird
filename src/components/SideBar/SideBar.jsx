@@ -11,6 +11,7 @@ import {
 import { PostModal, PrimaryButton, UserAvatar } from "..";
 import { useAuth } from "../../contexts/auth-context";
 import { useState } from "react";
+import { Modal } from "@mui/material";
 
 const SideBar = () => {
   const { currentUser } = useAuth();
@@ -109,13 +110,9 @@ const SideBar = () => {
         </li>
       </ul>
 
-      {showPostModal ? (
-        <div className="fixed top-0 left-0 w-full h-full z-90 flex justify-center items-center cursor-default bg-[#00000070] backdrop-blur-[1px]">
-          <PostModal setShowPostModal={setShowPostModal} />
-        </div>
-      ) : (
-        <></>
-      )}
+      <Modal open={showPostModal} onClose={() => setShowPostModal(false)}>
+        <PostModal setShowPostModal={setShowPostModal} />
+      </Modal>
     </aside>
   );
 };
