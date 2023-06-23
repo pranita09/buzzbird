@@ -59,7 +59,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="hidden xl:block z-[-1]">
+      <div className="hidden xl:block">
         <SearchBar />
         <SuggestedUsers />
       </div>
