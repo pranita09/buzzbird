@@ -12,6 +12,7 @@ import {
   addBookmarkService,
   getAllBookmarksService,
   getAllUsersService,
+  getUserByIdService,
   removeBookmarkService,
 } from "../services/usersServices";
 import { toast } from "react-hot-toast";
@@ -27,8 +28,13 @@ export const UsersProvider = ({ children }) => {
   );
   const [isLoading, setIsLoading] = useState(false);
 
-  const { GET_ALL_USERS, GET_ALL_BOOKMARKS, ADD_BOOKMARK, REMOVE_BOOKMARK } =
-    actionTypes;
+  const {
+    GET_ALL_USERS,
+    GET_ALL_BOOKMARKS,
+    ADD_BOOKMARK,
+    REMOVE_BOOKMARK,
+    GET_ONE_USER,
+  } = actionTypes;
 
   const getAllUsers = async () => {
     setIsLoading(true);
@@ -39,6 +45,23 @@ export const UsersProvider = ({ children }) => {
       } = await getAllUsersService();
       if (status === 200) {
         usersDispatch({ type: GET_ALL_USERS, payload: users });
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const getUserById = async (username) => {
+    setIsLoading(true);
+    try {
+      const {
+        status,
+        data: { user },
+      } = await getUserByIdService(username);
+      if (status === 200) {
+        usersDispatch({ type: GET_ONE_USER, payload: user });
       }
     } catch (error) {
       console.error(error);
@@ -137,6 +160,7 @@ export const UsersProvider = ({ children }) => {
         removeBookmarkHandler,
         postAlreadyInBookmarks,
         searchedUsers,
+        getUserById,
       }}
     >
       {children}

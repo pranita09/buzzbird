@@ -9,21 +9,27 @@ import {
 import { useUsers } from "../../contexts/user-context";
 import { usePosts } from "../../contexts/post-context";
 import { FaArrowLeft } from "../../utils/icons";
+import { useEffect } from "react";
 
 const UserProfile = () => {
-  const { username } = useParams();
   const navigate = useNavigate();
+  const { username } = useParams();
 
   const {
-    usersState: { users },
+    usersState: { user },
+    getUserById,
   } = useUsers();
   const {
     postsState: { posts },
     isLoading,
   } = usePosts();
 
-  const user = users?.find((user) => user.username === username);
-  const userPosts = posts?.filter((post) => post.username === username);
+  const userPosts = posts?.filter((post) => post.username === user?.username);
+
+  useEffect(() => {
+    getUserById(username);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="grid sm:grid-cols-[5rem_1fr] lg:grid-cols-[12rem_1fr] xl:grid-cols-[13rem_1fr_20rem] w-[100%] lg:w-[80%] mb-16 sm:m-auto dark:bg-darkGrey dark:text-lightGrey transition-all duration-500">

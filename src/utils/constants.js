@@ -25,4 +25,5 @@ export const actionTypes = {
   CREATE_NEW_POST: "CREATE_NEW_POST",
   DELETE_POST: "DELETE_POST",
   EDIT_POST: "EDIT_POST",
+  GET_ONE_USER: "GET_ONE_USER",
 };

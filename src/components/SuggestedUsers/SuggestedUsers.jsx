@@ -1,8 +1,11 @@
 import { useAuth } from "../../contexts/auth-context";
 import { useUsers } from "../../contexts/user-context";
 import { PrimaryButton, UserAvatar } from "..";
+import { useNavigate } from "react-router-dom";
 
 const SuggestedUsers = () => {
+  const navigate = useNavigate();
+
   const { currentUser } = useAuth();
   const {
     usersState: { users },
@@ -24,13 +27,14 @@ const SuggestedUsers = () => {
   return (
     <>
       {filteredUsers.length ? (
-        <div className="flex flex-col justify-center gap-4 m-4 mt-0 px-4 py-3 bg-lighterPrimary rounded-md h-max sticky top-[85px] z-0 dark:text-darkColor">
+        <div className="flex flex-col justify-center gap-4 m-4 mt-0 px-4 py-3 bg-lighterPrimary rounded-md h-max sticky top-[85px] dark:text-darkColor">
           <div className="text-lg font-bold tracking-wide">Who to Follow</div>
 
           {filteredUsers?.map((user) => (
             <div
               key={user._id}
               className="flex items-start gap-2 cursor-pointer"
+              onClick={() => navigate(`/profile/${user?.username}`)}
             >
               <UserAvatar user={user} className="h-9 w-9" />
 

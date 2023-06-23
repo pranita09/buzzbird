@@ -10,7 +10,7 @@ import {
 } from "../../utils/icons";
 import { PostModal, PrimaryButton, UserAvatar } from "..";
 import { useAuth } from "../../contexts/auth-context";
-import { useState } from "react";
+import { React, useState } from "react";
 import { Modal } from "@mui/material";
 
 const SideBar = () => {
@@ -111,9 +111,10 @@ const SideBar = () => {
       </ul>
 
       <Modal open={showPostModal} onClose={() => setShowPostModal(false)}>
-        <PostModal setShowPostModal={setShowPostModal} />
+        <>
+          <PostModal setShowPostModal={setShowPostModal} />
+        </>
       </Modal>
-
     </aside>
   );
 };

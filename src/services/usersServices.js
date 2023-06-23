@@ -2,6 +2,9 @@ import axios from "axios";
 
 const getAllUsersService = async () => await axios.get("/api/users");
 
+const getUserByIdService = async (username) =>
+  await axios.get(`/api/users/${username}`);
+
 const getAllBookmarksService = async (encodedToken) =>
   axios.get("/api/users/bookmark", {
     headers: { authorization: encodedToken },
@@ -30,4 +33,5 @@ export {
   getAllBookmarksService,
   addBookmarkService,
   removeBookmarkService,
+  getUserByIdService,
 };

@@ -77,11 +77,13 @@ const PostOptionsModal = ({ post, setShowOptions }) => {
       )}
 
       <Modal open={showPostModal} onClose={() => setShowPostModal(false)}>
-        <PostModal
-          post={post}
-          setShowOptions={setShowOptions}
-          setShowPostModal={setShowPostModal}
-        />
+        <>
+          <PostModal
+            post={post}
+            setShowOptions={setShowOptions}
+            setShowPostModal={setShowPostModal}
+          />
+        </>
       </Modal>
     </div>
   );

@@ -2,12 +2,10 @@ const UserAvatar = (props) => {
   const { className } = props;
 
   const classesForImg = className + " rounded-full object-cover";
-  const classesForInitials =
-    className +
-    " text-sm flex justify-center items-center rounded-full bg-primary text-lightGrey";
 
   const avatar = props?.user?.profileAvatar;
-  const userInitials = props?.user?.firstName[0] + props?.user?.lastName[0];
+  const dummyProfileImage =
+    "https://res.cloudinary.com/dxnbnviuz/image/upload/v1687527846/socialMedia/cat-5646889_1280_wgwzkh.jpg";
 
   return (
     <span className="user-avatar cursor-pointer select-none">
@@ -18,7 +16,11 @@ const UserAvatar = (props) => {
           className={classesForImg}
         />
       ) : (
-        <span className={classesForInitials}>{userInitials}</span>
+        <img
+          src={dummyProfileImage}
+          alt="DummyProfile"
+          className={classesForImg}
+        />
       )}
     </span>
   );

@@ -17,7 +17,7 @@ export const users = [
       "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331085/socialMedia/Emily-Smith_jfepcx.jpg",
     backgroundImage:
       "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686332490/socialMedia/programming-bg_znumg2.jpg",
-    createdAt: formatDate(),
+    createdAt: "2019-02-02T01:06:00+05:30",
     updatedAt: formatDate(),
     following: [
       {
@@ -85,7 +85,7 @@ export const users = [
       "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331082/socialMedia/Sarah-Wilson_io6cpx.jpg",
     backgroundImage:
       "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686341814/socialMedia/be-yourself-bg_rmxvmb.jpg",
-    createdAt: formatDate(),
+    createdAt: "2018-06-12T01:06:00+05:30",
     updatedAt: formatDate(),
     following: [
       {
@@ -121,7 +121,7 @@ export const users = [
       "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331002/socialMedia/Jacob-Mitchell_elh9gg.jpg",
     backgroundImage:
       "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686342238/socialMedia/adventure-explorer-bg_i4p63w.jpg",
-    createdAt: formatDate(),
+    createdAt: "2018-11-26T01:06:00+05:30",
     updatedAt: formatDate(),
     following: [
       {
@@ -165,7 +165,7 @@ export const users = [
       "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331041/socialMedia/Aditya-Joshi_ajn3sy.jpg",
     backgroundImage:
       "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686342526/socialMedia/musician-bg_qgesca.jpg",
-    createdAt: formatDate(),
+    createdAt: "2017-05-15T01:06:00+05:30",
     updatedAt: formatDate(),
     following: [],
     followers: [],
@@ -183,7 +183,7 @@ export const users = [
       "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686330965/socialMedia/Rohan-Roy_zk6dlm.jpg",
     backgroundImage:
       "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686343623/socialMedia/food-bg_dgsyce.jpg",
-    createdAt: formatDate(),
+    createdAt: "2019-08-19T01:06:00+05:30",
     updatedAt: formatDate(),
     following: [],
     followers: [
@@ -210,7 +210,7 @@ export const users = [
       "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331046/socialMedia/Kriti-Desai_wuflhp.jpg",
     backgroundImage:
       "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686343958/socialMedia/storyteller-bg_xzxtd7.jpg",
-    createdAt: formatDate(),
+    createdAt: "2021-01-11T01:06:00+05:30",
     updatedAt: formatDate(),
     following: [],
     followers: [],
@@ -228,7 +228,7 @@ export const users = [
       "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331058/socialMedia/Olivia-Parker_nbmkdw.jpg",
     backgroundImage:
       "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686344328/socialMedia/pencil-sketch-bg_t0qfe9.jpg",
-    createdAt: formatDate(),
+    createdAt: "2020-01-22T01:06:00+05:30",
     updatedAt: formatDate(),
     following: [
       {
@@ -255,7 +255,7 @@ export const users = [
       "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331038/socialMedia/James-Murphy_djl3zv.jpg",
     backgroundImage:
       "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686344677/socialMedia/fashion-stage-bg_ykeinp.jpg",
-    createdAt: formatDate(),
+    createdAt: "2018-05-02T01:06:00+05:30",
     updatedAt: formatDate(),
     following: [
       {
@@ -291,7 +291,7 @@ export const users = [
       "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331028/socialMedia/Ava-Turner_vqavsz.jpg",
     backgroundImage:
       "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686344889/socialMedia/fashion-designer-bg_osgyw8.jpg",
-    createdAt: formatDate(),
+    createdAt: "2020-10-10T01:06:00+05:30",
     updatedAt: formatDate(),
     following: [],
     followers: [],
@@ -309,7 +309,7 @@ export const users = [
       "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686330990/socialMedia/Aryan-Patel_cwyebe.jpg",
     backgroundImage:
       "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686345193/socialMedia/businessman-table-bg_dhgla4.jpg",
-    createdAt: formatDate(),
+    createdAt: "2019-04-15T01:06:00+05:30",
     updatedAt: formatDate(),
     following: [],
     followers: [],
