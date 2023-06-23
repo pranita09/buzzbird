@@ -9,17 +9,18 @@ const SuggestedUsers = () => {
   const { currentUser } = useAuth();
   const {
     usersState: { users },
+    followUserHandler,
   } = useUsers();
 
-  const userData = users?.find(
-    (user) => user.username === currentUser.username
-  );
+  // const userData = users?.find(
+  //   (user) => user.username === currentUser.username
+  // );
 
   const filteredUsers = users
-    ?.filter((dbUser) => dbUser.username !== userData?.username)
+    ?.filter((dbUser) => dbUser.username !== currentUser?.username)
     ?.filter(
       (eachUser) =>
-        !userData?.following?.find(
+        !currentUser?.following?.find(
           (item) => item.username === eachUser.username
         )
     );
@@ -34,11 +35,13 @@ const SuggestedUsers = () => {
             <div
               key={user._id}
               className="flex items-start gap-2 cursor-pointer"
-              onClick={() => navigate(`/profile/${user?.username}`)}
             >
               <UserAvatar user={user} className="h-9 w-9" />
 
-              <div className="flex flex-col grow -mt-0.5">
+              <div
+                className="flex flex-col grow -mt-0.5"
+                onClick={() => navigate(`/profile/${user?.username}`)}
+              >
                 <span className="text-sm">
                   {user.firstName + " " + user.lastName}
                 </span>
@@ -47,7 +50,10 @@ const SuggestedUsers = () => {
                 </span>
               </div>
 
-              <PrimaryButton className="py-1 px-2 rounded-md">
+              <PrimaryButton
+                className="py-1 px-2 rounded-md"
+                onClick={() => followUserHandler(user?._id)}
+              >
                 Follow
               </PrimaryButton>
             </div>

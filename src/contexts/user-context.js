@@ -10,6 +10,7 @@ import { usersReducer, initialUsersState } from "../reducers/usersReducer";
 import { actionTypes } from "../utils/constants";
 import {
   addBookmarkService,
+  followUserService,
   getAllBookmarksService,
   getAllUsersService,
   getUserByIdService,
@@ -20,7 +21,7 @@ import { toast } from "react-hot-toast";
 export const UsersContext = createContext();
 
 export const UsersProvider = ({ children }) => {
-  const { token } = useAuth();
+  const { token, setCurrentUser } = useAuth();
 
   const [usersState, usersDispatch] = useReducer(
     usersReducer,
@@ -133,6 +134,23 @@ export const UsersProvider = ({ children }) => {
     }
   };
 
+  const followUserHandler = async (followUserId) => {
+    setIsLoading(true);
+    try {
+      const {
+        status,
+        data: { user },
+      } = await followUserService(followUserId, token);
+      if (status === 200) {
+        setCurrentUser(user);
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const postAlreadyInBookmarks = (postId) =>
     usersState?.bookmarks?.find((id) => id === postId);
 
@@ -161,6 +179,7 @@ export const UsersProvider = ({ children }) => {
         postAlreadyInBookmarks,
         searchedUsers,
         getUserById,
+        followUserHandler,
       }}
     >
       {children}

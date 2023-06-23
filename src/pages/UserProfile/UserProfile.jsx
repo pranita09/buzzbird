@@ -10,10 +10,13 @@ import { useUsers } from "../../contexts/user-context";
 import { usePosts } from "../../contexts/post-context";
 import { FaArrowLeft } from "../../utils/icons";
 import { useEffect } from "react";
+import { useAuth } from "../../contexts/auth-context";
 
 const UserProfile = () => {
   const navigate = useNavigate();
   const { username } = useParams();
+
+  const { currentUser } = useAuth();
 
   const {
     usersState: { user },
@@ -30,7 +33,7 @@ const UserProfile = () => {
     getUserById(username);
     window.scroll({ top: 0, behavior: "smooth" });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [username]);
+  }, [username, currentUser]);
 
   return (
     <div className="grid sm:grid-cols-[5rem_1fr] lg:grid-cols-[12rem_1fr] xl:grid-cols-[13rem_1fr_20rem] w-[100%] lg:w-[80%] mb-16 sm:m-auto dark:bg-darkGrey dark:text-lightGrey transition-all duration-500">
