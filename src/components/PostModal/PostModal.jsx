@@ -15,7 +15,6 @@ const PostModal = ({ post, setShowPostModal, setShowOptions }) => {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 500,
     bgcolor: "background.paper",
     border: "1px solid #000",
     boxShadow: 24,
@@ -74,9 +73,9 @@ const PostModal = ({ post, setShowPostModal, setShowOptions }) => {
   return (
     <div
       style={styles}
-      className="grid grid-cols-[2rem_1fr] gap-2 items-start bg-lighterPrimary text-sm border-darkGrey px-4 py-3 cursor-text w-[80%] sm:w-[50%] shadow-dark shadow-lg rounded-md border"
+      className="grid grid-cols-[2.5rem_1fr] gap-2 items-start bg-lighterPrimary text-sm border-darkGrey px-4 py-3 cursor-text w-[90%] sm:w-[60%] xl:w-[45%] shadow-dark shadow-lg rounded-md border"
     >
-      <UserAvatar user={currentUser} className="h-9 w-9" />
+      <UserAvatar user={currentUser} className="h-10 w-10" />
       <form className="flex flex-col gap-4" onSubmit={submitHandler}>
         <div className="w-full break-all outline-none mt-1.5 bg-lighterPrimary">
           <textarea
