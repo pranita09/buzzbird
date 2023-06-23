@@ -14,8 +14,11 @@ import { usePosts } from "../../contexts/post-context";
 import { useAuth } from "../../contexts/auth-context";
 import { debounce } from "../../utils/debounce";
 import { getPostDate } from "../../utils/getPostDate";
+import { useNavigate } from "react-router-dom";
 
 const PostCard = ({ post }) => {
+  const navigate = useNavigate();
+
   const { currentUser } = useAuth();
 
   const {
@@ -32,15 +35,18 @@ const PostCard = ({ post }) => {
   const userWhoPosted = users?.find((user) => user.username === post?.username);
 
   return (
-    <div className="grid grid-cols-[2rem_1fr] gap-2 text-sm border-b border-darkGrey dark:border-lightGrey px-4 py-3 cursor-pointer">
-      <div>
+    <div className="grid grid-cols-[2.25rem_1fr] gap-2 text-sm border-b border-darkGrey dark:border-lightGrey px-3 py-3 cursor-pointer">
+      <div onClick={() => navigate(`profile/${userWhoPosted?.username}`)}>
         <UserAvatar user={userWhoPosted} className="h-9 w-9" />
       </div>
 
       <div className="flex flex-col gap-2 break-all">
         <div className="flex justify-between">
           <div className="flex items-start 2xl:items-center gap-1.5">
-            <div className="flex flex-col gap-0 2xl:flex-row 2xl:gap-1">
+            <div
+              className="flex flex-col gap-0 2xl:flex-row 2xl:gap-1"
+              onClick={() => navigate(`profile/${userWhoPosted?.username}`)}
+            >
               <span className="font-bold tracking-wide">
                 {userWhoPosted?.firstName + " " + userWhoPosted?.lastName}
               </span>
