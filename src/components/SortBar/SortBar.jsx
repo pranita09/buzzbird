@@ -31,9 +31,10 @@ const SortBar = () => {
                 fontWeight: filterType === "Trending" && "bold",
               }}
               className="flex justify-center py-1 px-3 rounded-md w-full hover:bg-lightPrimary"
-              onClick={() =>
-                postsDispatch({ type: FILTER_POSTS, payload: "Trending" })
-              }
+              onClick={() => {
+                postsDispatch({ type: FILTER_POSTS, payload: "Trending" });
+                setShowSortModal((prev) => !prev);
+              }}
             >
               <FaFire className="pr-2 text-xl " />
               Trending
@@ -45,9 +46,10 @@ const SortBar = () => {
                 fontWeight: filterType === "Latest" && "bold",
               }}
               className="flex justify-center py-1 px-3 rounded-md w-full hover:bg-lightPrimary"
-              onClick={() =>
-                postsDispatch({ type: FILTER_POSTS, payload: "Latest" })
-              }
+              onClick={() => {
+                postsDispatch({ type: FILTER_POSTS, payload: "Latest" });
+                setShowSortModal((prev) => !prev);
+              }}
             >
               <FaArrowUp className="pr-2 text-xl" />
               Latest
@@ -59,9 +61,10 @@ const SortBar = () => {
                 fontWeight: filterType === "Oldest" && "bold",
               }}
               className="flex justify-center py-1 px-3 rounded-md w-full hover:bg-lightPrimary"
-              onClick={() =>
-                postsDispatch({ type: FILTER_POSTS, payload: "Oldest" })
-              }
+              onClick={() => {
+                postsDispatch({ type: FILTER_POSTS, payload: "Oldest" });
+                setShowSortModal((prev) => !prev);
+              }}
             >
               <FaArrowDown className="pr-2 text-xl" />
               Oldest

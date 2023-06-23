@@ -114,19 +114,6 @@ const SideBar = () => {
         <PostModal setShowPostModal={setShowPostModal} />
       </Modal>
 
-      {/* {showPostModal &&
-        createPortal(
-          <PostModal setShowPostModal={setShowPostModal} />,
-          document.body
-        )} */}
-
-      {/* {showPostModal ? (
-        <div className="fixed left-0 w-full h-full z-90 flex justify-center items-center cursor-default bg-[#00000070] backdrop-blur-[1px]">
-          <PostModal setShowPostModal={setShowPostModal} />
-        </div>
-      ) : (
-        <></>
-      )} */}
     </aside>
   );
 };

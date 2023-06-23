@@ -10,6 +10,7 @@ import {
 } from "../../utils/icons";
 import { PostModal } from "..";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Modal } from "@mui/material";
 
 const PostOptionsModal = ({ post, setShowOptions }) => {
   const { _id, username } = post;
@@ -75,17 +76,13 @@ const PostOptionsModal = ({ post, setShowOptions }) => {
         </button>
       )}
 
-      {showPostModal ? (
-        <div className="fixed top-0 left-0 w-full h-full z-90 flex justify-center items-center cursor-default bg-[#00000070] backdrop-blur-[1px]">
-          <PostModal
-            post={post}
-            setShowOptions={setShowOptions}
-            setShowPostModal={setShowPostModal}
-          />
-        </div>
-      ) : (
-        <></>
-      )}
+      <Modal open={showPostModal} onClose={() => setShowPostModal(false)}>
+        <PostModal
+          post={post}
+          setShowOptions={setShowOptions}
+          setShowPostModal={setShowPostModal}
+        />
+      </Modal>
     </div>
   );
 };
