@@ -7,12 +7,10 @@ import {
   SuggestedUsers,
 } from "../../components";
 import { useAuth } from "../../contexts/auth-context";
-import { useTheme } from "../../contexts/theme-context";
 import { usePosts } from "../../contexts/post-context";
 
 const Home = () => {
-  const { currentUser, logoutHandler } = useAuth();
-  const { isDarkTheme, setIsDarkTheme } = useTheme();
+  const { currentUser } = useAuth();
   const {
     postsState: { posts },
     isLoading,
@@ -63,11 +61,6 @@ const Home = () => {
         <SearchBar />
         <SuggestedUsers />
       </div>
-      <button onClick={logoutHandler}>Logout</button>
-      <br />
-      <button onClick={() => setIsDarkTheme(!isDarkTheme)}>
-        Theme{isDarkTheme ? "Dark" : "Light"}
-      </button>
     </div>
   );
 };

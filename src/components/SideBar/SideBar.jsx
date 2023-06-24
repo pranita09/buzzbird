@@ -8,7 +8,7 @@ import {
   HiPlusCircle,
   HiDotsHorizontal,
 } from "../../utils/icons";
-import { PostModal, PrimaryButton, UserAvatar } from "..";
+import { PostModal, PrimaryButton, SettingsModal, UserAvatar } from "..";
 import { useAuth } from "../../contexts/auth-context";
 import { React, useState } from "react";
 import { Modal } from "@mui/material";
@@ -16,6 +16,7 @@ import { Modal } from "@mui/material";
 const SideBar = () => {
   const { currentUser } = useAuth();
   const [showPostModal, setShowPostModal] = useState(false);
+  const [showSettingsModal, setShowSettingsModal] = useState(false);
 
   const activeStyle = {
     backgroundColor: "#d1fae5",
@@ -98,7 +99,10 @@ const SideBar = () => {
       </ul>
 
       <ul className="hidden sm:flex tracking-wide pr-2">
-        <li className="p-3 w-max flex items-center justify-center gap-2">
+        <li
+          className="p-3 w-max flex items-center justify-center gap-2 cursor-pointer"
+          onClick={() => setShowSettingsModal(true)}
+        >
           <UserAvatar className="h-10 w-10" user={currentUser} />
           <div className="hidden text-sm lg:inline">
             <p className="font-bold">
@@ -113,6 +117,15 @@ const SideBar = () => {
       <Modal open={showPostModal} onClose={() => setShowPostModal(false)}>
         <>
           <PostModal setShowPostModal={setShowPostModal} />
+        </>
+      </Modal>
+
+      <Modal
+        open={showSettingsModal}
+        onClose={() => setShowSettingsModal(false)}
+      >
+        <>
+          <SettingsModal setShowSettingsModal={setShowSettingsModal} />
         </>
       </Modal>
     </aside>

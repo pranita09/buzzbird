@@ -23,6 +23,9 @@ import {
   MdBookmarks,
   MdPerson,
   MdDateRange,
+  MdOutlineLightMode,
+  MdOutlineDarkMode,
+  MdLogout,
 } from "react-icons/md";
 import { HiDotsHorizontal, HiPlusCircle, HiLink } from "react-icons/hi";
 import { FiSearch } from "react-icons/fi";
@@ -54,6 +57,9 @@ export {
   MdBookmarks,
   MdPerson,
   MdDateRange,
+  MdOutlineLightMode,
+  MdOutlineDarkMode,
+  MdLogout,
   HiDotsHorizontal,
   HiPlusCircle,
   HiLink,
