@@ -93,7 +93,10 @@ const SideBar = () => {
           </PrimaryButton>
         </li>
 
-        <li className="flex p-2 w-max sm:hidden">
+        <li
+          className="flex p-2 w-max sm:hidden"
+          onClick={() => setShowSettingsModal(true)}
+        >
           <UserAvatar className="h-8 w-8" user={currentUser} />
         </li>
       </ul>
