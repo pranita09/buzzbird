@@ -5,9 +5,10 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/auth-context";
 import { getPostDate } from "../../utils/getPostDate";
 import { useUsers } from "../../contexts/user-context";
+import { defaultBgImage } from "../../utils/constants";
 
 const ProfileDetails = ({ user }) => {
-  const { currentUser } = useAuth();
+  const { currentUser, logoutHandler } = useAuth();
 
   const { followUserHandler, unfollowUserHandler } = useUsers();
 
@@ -18,8 +19,8 @@ const ProfileDetails = ({ user }) => {
   return (
     <div className="relative flex flex-col items-center w-full border-b border-darkGrey dark:border-lightGrey">
       <img
-        src={user?.backgroundImage}
-        alt={user?.username + " bgImage"}
+        src={user?.backgroundImage ? user?.backgroundImage : defaultBgImage}
+        alt={user?.username ? user?.username + " bgImage" : "BuzzBird_Bg_Image"}
         className="h-[11.5rem] w-full object-cover"
       />
       <div className="flex flex-col w-full px-4 py-2 gap-2">
@@ -34,7 +35,10 @@ const ProfileDetails = ({ user }) => {
                 <SecondaryButton className="py-1 px-3 rounded">
                   Edit Profile
                 </SecondaryButton>
-                <SecondaryButton className="py-1 px-3 rounded hover:bg-red">
+                <SecondaryButton
+                  className="py-1 px-3 rounded hover:bg-red"
+                  onClick={logoutHandler}
+                >
                   Logout
                 </SecondaryButton>
               </>
@@ -60,15 +64,17 @@ const ProfileDetails = ({ user }) => {
           </p>
           <span className="text-[grey] p-0">@{user?.username}</span>
         </div>
-        <span>{user?.bio}</span>
-        <div className="flex gap-2 items-center">
-          <HiLink className="text-lg" />
-          <Link to={user?.website} target="_blank">
-            <span className="hover:underline cursor-pointer text-sm hover:text-[blue]">
-              {user?.website?.split("/")[2]}
-            </span>
-          </Link>
-        </div>
+        {user?.bio && <span>{user?.bio}</span>}
+        {user?.website && (
+          <div className="flex gap-2 items-center">
+            <HiLink className="text-lg" />
+            <Link to={user?.website} target="_blank">
+              <span className="hover:underline cursor-pointer text-sm hover:text-[blue]">
+                {user?.website?.split("/")[2]}
+              </span>
+            </Link>
+          </div>
+        )}
         <div className="flex gap-2 items-center">
           <MdDateRange />
           <span className="text-sm">{getPostDate(user?.createdAt)}</span>

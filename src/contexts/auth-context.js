@@ -59,7 +59,7 @@ export const AuthProvider = ({ children }) => {
         );
         setToken(encodedToken);
         setCurrentUser(createdUser);
-        toast.success(`Hi, ${createdUser.firstName.firstName}!`, {
+        toast.success(`Hi, ${createdUser.firstName}!`, {
           icon: "👋",
         });
         navigate("/", { replace: true });

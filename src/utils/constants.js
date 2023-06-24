@@ -7,6 +7,12 @@ export const loginPageHeroImg =
 export const logoImg =
   "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686667729/socialMedia/bird_yilt7i.png";
 
+export const defaultBgImage =
+  "https://res.cloudinary.com/dxnbnviuz/image/upload/v1687604239/socialMedia/buzzbird-default-bg_deqxio.png";
+
+export const dummyProfileImage =
+  "https://res.cloudinary.com/dxnbnviuz/image/upload/v1687603602/socialMedia/AvatarTwo_isbynr.png";
+
 export const guestUserLoginDetails = {
   username: "emilysmith",
   password: "emily@123Smith",
