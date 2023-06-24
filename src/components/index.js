@@ -11,3 +11,4 @@ export { ToastWrapper } from "./ToastWrapper/ToastWrapper";
 export { UserAvatar } from "./UserAvatar/UserAvatar";
 export { PostModal } from "./PostModal/PostModal";
 export { ProfileDetails } from "./ProfileDetails/ProfileDetails";
+export { UsersModal } from "./UsersModal/UsersModal";
