@@ -20,7 +20,7 @@ const UserProfile = () => {
 
   const {
     usersState: { user },
-    getUserById,
+    getUserByUsername,
   } = useUsers();
   const {
     postsState: { posts },
@@ -30,7 +30,7 @@ const UserProfile = () => {
   const userPosts = posts?.filter((post) => post.username === user?.username);
 
   useEffect(() => {
-    getUserById(username);
+    getUserByUsername(username);
     window.scroll({ top: 0, behavior: "smooth" });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [username, currentUser]);

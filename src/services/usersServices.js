@@ -2,7 +2,7 @@ import axios from "axios";
 
 const getAllUsersService = async () => await axios.get("/api/users");
 
-const getUserByIdService = async (username) =>
+const getUserByUsernameService = async (username) =>
   await axios.get(`/api/users/${username}`);
 
 const getAllBookmarksService = async (encodedToken) =>
@@ -47,7 +47,7 @@ export {
   getAllBookmarksService,
   addBookmarkService,
   removeBookmarkService,
-  getUserByIdService,
+  getUserByUsernameService,
   followUserService,
   unfollowUserService,
 };

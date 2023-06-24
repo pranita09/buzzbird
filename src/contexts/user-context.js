@@ -13,7 +13,7 @@ import {
   followUserService,
   getAllBookmarksService,
   getAllUsersService,
-  getUserByIdService,
+  getUserByUsernameService,
   removeBookmarkService,
   unfollowUserService,
 } from "../services/usersServices";
@@ -56,13 +56,13 @@ export const UsersProvider = ({ children }) => {
     }
   };
 
-  const getUserById = async (username) => {
+  const getUserByUsername = async (username) => {
     setIsLoading(true);
     try {
       const {
         status,
         data: { user },
-      } = await getUserByIdService(username);
+      } = await getUserByUsernameService(username);
       if (status === 200) {
         usersDispatch({ type: GET_ONE_USER, payload: user });
       }
@@ -209,7 +209,7 @@ export const UsersProvider = ({ children }) => {
         removeBookmarkHandler,
         postAlreadyInBookmarks,
         searchedUsers,
-        getUserById,
+        getUserByUsername,
         followUserHandler,
         unfollowUserHandler,
       }}
