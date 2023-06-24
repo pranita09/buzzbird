@@ -28,7 +28,7 @@ const SuggestedUsers = () => {
   return (
     <>
       {filteredUsers.length ? (
-        <div className="flex flex-col justify-center gap-4 m-4 mt-0 px-4 py-3 bg-lighterPrimary rounded-md h-max sticky top-[85px] dark:text-darkColor">
+        <div className="flex flex-col gap-4 m-4 mt-0 px-4 py-3 bg-lighterPrimary rounded-md max-h-[315px] overflow-hidden justify-start sticky top-[85px] dark:text-darkColor">
           <div className="text-lg font-bold tracking-wide">Who to Follow</div>
 
           {filteredUsers?.map((user) => (

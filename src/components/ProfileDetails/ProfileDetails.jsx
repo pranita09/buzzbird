@@ -4,9 +4,12 @@ import { HiLink, MdDateRange } from "../../utils/icons";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/auth-context";
 import { getPostDate } from "../../utils/getPostDate";
+import { useUsers } from "../../contexts/user-context";
 
 const ProfileDetails = ({ user }) => {
   const { currentUser } = useAuth();
+
+  const { followUserHandler, unfollowUserHandler } = useUsers();
 
   const userAlreadyFollowing = user?.followers?.find(
     (user) => user.username === currentUser.username
@@ -37,7 +40,14 @@ const ProfileDetails = ({ user }) => {
               </>
             ) : (
               <>
-                <SecondaryButton className="py-1 px-3 rounded">
+                <SecondaryButton
+                  className="py-1 px-3 rounded"
+                  onClick={() =>
+                    userAlreadyFollowing
+                      ? unfollowUserHandler(user?._id)
+                      : followUserHandler(user?._id)
+                  }
+                >
                   {userAlreadyFollowing ? "UnFollow" : "Follow"}
                 </SecondaryButton>
               </>

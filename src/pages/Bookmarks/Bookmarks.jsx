@@ -31,7 +31,6 @@ const Bookmarks = () => {
             ) : bookmarks?.length > 0 ? (
               [...bookmarks]?.reverse()?.map((bookmarkPostId) => {
                 const post = posts.find(({ _id }) => _id === bookmarkPostId);
-                console.log(post);
                 return <PostCard key={post._id} post={post} />;
               })
             ) : (

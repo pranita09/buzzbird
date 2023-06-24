@@ -14,6 +14,7 @@ const {
   REMOVE_BOOKMARK,
   SEARCH_USER,
   GET_ONE_USER,
+  UPDATE_FOLLOW_USER,
 } = actionTypes;
 
 const usersReducer = (state, { type, payload }) => {
@@ -30,6 +31,14 @@ const usersReducer = (state, { type, payload }) => {
       return { ...state, searchInput: payload };
     case GET_ONE_USER:
       return { ...state, user: payload };
+    case UPDATE_FOLLOW_USER:
+      return {
+        ...state,
+        users: state.users.map((user) => {
+          const updatedUser = payload.find(({ _id }) => _id === user._id);
+          return updatedUser ? updatedUser : user;
+        }),
+      };
     default:
       return state;
   }

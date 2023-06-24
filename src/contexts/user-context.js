@@ -15,6 +15,7 @@ import {
   getAllUsersService,
   getUserByIdService,
   removeBookmarkService,
+  unfollowUserService,
 } from "../services/usersServices";
 import { toast } from "react-hot-toast";
 
@@ -35,6 +36,7 @@ export const UsersProvider = ({ children }) => {
     ADD_BOOKMARK,
     REMOVE_BOOKMARK,
     GET_ONE_USER,
+    UPDATE_FOLLOW_USER,
   } = actionTypes;
 
   const getAllUsers = async () => {
@@ -139,13 +141,42 @@ export const UsersProvider = ({ children }) => {
     try {
       const {
         status,
-        data: { user },
+        data: { user, followUser },
       } = await followUserService(followUserId, token);
       if (status === 200) {
+        usersDispatch({
+          type: UPDATE_FOLLOW_USER,
+          payload: [followUser, user],
+        });
         setCurrentUser(user);
+        toast.success(`Followed @${followUser.username}`);
       }
     } catch (error) {
       console.error(error);
+      toast.error("Something went wrong.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const unfollowUserHandler = async (followUserId) => {
+    setIsLoading(true);
+    try {
+      const {
+        status,
+        data: { user, followUser },
+      } = await unfollowUserService(followUserId, token);
+      if (status === 200) {
+        usersDispatch({
+          type: UPDATE_FOLLOW_USER,
+          payload: [followUser, user],
+        });
+        setCurrentUser(user);
+        toast.success(`Unfollowed @${followUser.username}`);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong.");
     } finally {
       setIsLoading(false);
     }
@@ -180,6 +211,7 @@ export const UsersProvider = ({ children }) => {
         searchedUsers,
         getUserById,
         followUserHandler,
+        unfollowUserHandler,
       }}
     >
       {children}
