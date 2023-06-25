@@ -1,5 +1,4 @@
 import {
-  FaSmile,
   FaRegHeart,
   FaHeart,
   FaRegComments,
@@ -27,15 +26,16 @@ import {
   MdOutlineLightMode,
   MdOutlineDarkMode,
   MdLogout,
+  MdOutlineAddPhotoAlternate,
+  MdInsertEmoticon,
 } from "react-icons/md";
 import { HiDotsHorizontal, HiPlusCircle, HiLink } from "react-icons/hi";
 import { FiSearch } from "react-icons/fi";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { RiUserUnfollowFill } from "react-icons/ri";
-import { BsFillImageFill, BsPersonCircle } from "react-icons/bs";
+import { BsPersonCircle } from "react-icons/bs";
 
 export {
-  FaSmile,
   FaRegHeart,
   FaHeart,
   FaRegComments,
@@ -62,12 +62,13 @@ export {
   MdOutlineLightMode,
   MdOutlineDarkMode,
   MdLogout,
+  MdOutlineAddPhotoAlternate,
+  MdInsertEmoticon,
   HiDotsHorizontal,
   HiPlusCircle,
   HiLink,
   AiOutlineEye,
   AiOutlineEyeInvisible,
   RiUserUnfollowFill,
-  BsFillImageFill,
   BsPersonCircle,
 };

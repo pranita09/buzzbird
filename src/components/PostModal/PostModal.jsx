@@ -1,7 +1,11 @@
 import { useAuth } from "../../contexts/auth-context";
 import { PrimaryButton, SecondaryButton, UserAvatar } from "..";
-import { useRef, useState } from "react";
-import { BsFillImageFill, FaSmile, MdCancel } from "../../utils/icons";
+import {  useRef, useState } from "react";
+import {
+  MdOutlineAddPhotoAlternate,
+  MdInsertEmoticon,
+  MdCancel,
+} from "../../utils/icons";
 import { toast } from "react-hot-toast";
 import { uploadMedia } from "../../utils/uploadMedia";
 import { usePosts } from "../../contexts/post-context";
@@ -120,21 +124,15 @@ const PostModal = ({ post, setShowPostModal, setShowOptions }) => {
             <label className="cursor-pointer text-lg">
               <input
                 type="file"
-                accept="/image*"
+                accept="image/*, video/*"
                 className="hidden"
-                onChange={(e) => {
-                  if (Math.round(e.target.files[0].size / 1024000) > 1) {
-                    toast.error("File size should not be more than 1Mb");
-                  } else {
-                    setMedia(e.target.files[0]);
-                  }
-                }}
+                onChange={(e) => setMedia(e.target.files[0])}
               />
-              <BsFillImageFill />
+              <MdOutlineAddPhotoAlternate className="text-xl" />
             </label>
             <label className="cursor-pointer text-xl">
               <input className="hidden" />
-              <FaSmile />
+              <MdInsertEmoticon className="text-xl" />
             </label>
           </div>
           <div className="flex gap-3">

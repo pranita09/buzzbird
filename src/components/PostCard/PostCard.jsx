@@ -14,7 +14,6 @@ import { usePosts } from "../../contexts/post-context";
 import { useAuth } from "../../contexts/auth-context";
 import { debounce } from "../../utils/debounce";
 import { getPostDate } from "../../utils/getPostDate";
-import { useOnClickOutside } from "../../utils/useOnClickOutside";
 import { useNavigate } from "react-router-dom";
 
 const PostCard = ({ post }) => {
@@ -36,8 +35,6 @@ const PostCard = ({ post }) => {
   const postModalRef = useRef();
 
   const userWhoPosted = users?.find((user) => user.username === post?.username);
-
-  useOnClickOutside(postModalRef, setShowOptions);
 
   return (
     <div
@@ -91,7 +88,7 @@ const PostCard = ({ post }) => {
           ))}
 
         <div className="flex gap-6 -ml-2 mt-1">
-          <div className="flex justify-center p-2 pr-4">
+          <div className="flex justify-center p-2 mr-4">
             <button
               className="cursor-pointer"
               onClick={() =>
@@ -111,7 +108,7 @@ const PostCard = ({ post }) => {
             )}
           </div>
 
-          <div className="flex justify-center p-2 pr-4">
+          <div className="flex justify-center p-2 mr-4">
             <button className="cursor-pointer">
               <FaRegComments className="text-lg" />
             </button>
@@ -121,7 +118,7 @@ const PostCard = ({ post }) => {
           </div>
 
           <button
-            className="cursor-pointer p-2 pr-4"
+            className="cursor-pointer p-2 mr-4"
             onClick={() =>
               postAlreadyInBookmarks(post?._id)
                 ? removeBookmarkHandler(post?._id)
@@ -135,7 +132,7 @@ const PostCard = ({ post }) => {
             )}
           </button>
 
-          <button className="cursor-pointer p-2 pr-4">
+          <button className="cursor-pointer p-2 mr-4">
             <MdShare className="text-lg" />
           </button>
         </div>

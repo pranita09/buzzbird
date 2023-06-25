@@ -1,7 +1,11 @@
 import { useRef, useState } from "react";
 import { useAuth } from "../../contexts/auth-context";
 import { PrimaryButton, UserAvatar } from "..";
-import { BsFillImageFill, FaSmile, MdCancel } from "../../utils/icons";
+import {
+  MdOutlineAddPhotoAlternate,
+  MdInsertEmoticon,
+  MdCancel,
+} from "../../utils/icons";
 import { usePosts } from "../../contexts/post-context";
 import { toast } from "react-hot-toast";
 import { uploadMedia } from "../../utils/uploadMedia";
@@ -70,19 +74,15 @@ const NewPost = () => {
           <label className="cursor-pointer text-xl">
             <input
               type="file"
-              accept="image/*"
+              accept="image/*, video/*"
               className="hidden"
-              onChange={(e) =>
-                Math.round(e.target.files[0].size / 1024000) > 1
-                  ? toast.error("File size should not be more than 1Mb")
-                  : setMedia(e.target.files[0])
-              }
+              onChange={(e) => setMedia(e.target.files[0])}
             />
-            <BsFillImageFill />
+            <MdOutlineAddPhotoAlternate />
           </label>
           <label className="cursor-pointer text-xl">
             <input className="hidden" />
-            <FaSmile />
+            <MdInsertEmoticon />
           </label>
           <PrimaryButton
             type="submit"
