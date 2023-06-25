@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useUsers } from "../../contexts/user-context";
 import { UserAvatar, PostOptionsModal } from "..";
 import {
@@ -14,6 +14,7 @@ import { usePosts } from "../../contexts/post-context";
 import { useAuth } from "../../contexts/auth-context";
 import { debounce } from "../../utils/debounce";
 import { getPostDate } from "../../utils/getPostDate";
+import { useOnClickOutside } from "../../utils/useOnClickOutside";
 import { useNavigate } from "react-router-dom";
 
 const PostCard = ({ post }) => {
@@ -32,10 +33,17 @@ const PostCard = ({ post }) => {
 
   const [showOptions, setShowOptions] = useState(false);
 
+  const postModalRef = useRef();
+
   const userWhoPosted = users?.find((user) => user.username === post?.username);
 
+  useOnClickOutside(postModalRef, setShowOptions);
+
   return (
-    <div className="grid grid-cols-[2.25rem_1fr] gap-2 text-sm border-b border-darkGrey dark:border-lightGrey px-3 py-3 cursor-pointer">
+    <div
+      className="grid grid-cols-[2.25rem_1fr] gap-2 text-sm border-b border-darkGrey dark:border-lightGrey px-3 py-3 cursor-pointer"
+      ref={postModalRef}
+    >
       <div onClick={() => navigate(`profile/${userWhoPosted?.username}`)}>
         <UserAvatar user={userWhoPosted} className="h-9 w-9" />
       </div>

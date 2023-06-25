@@ -1,20 +1,28 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { FaFilter, FaFire, FaArrowUp, FaArrowDown } from "../../utils/icons";
 import { actionTypes } from "../../utils/constants";
 import { usePosts } from "../../contexts/post-context";
+import { useOnClickOutside } from "../../utils/useOnClickOutside";
 
 const SortBar = () => {
   const {
     postsState: { filterType },
     postsDispatch,
   } = usePosts();
+
   const [showSortModal, setShowSortModal] = useState(false);
+
+  const modalRef = useRef();
+
   const { FILTER_POSTS } = actionTypes;
+
+  useOnClickOutside(modalRef, setShowSortModal);
+
   return (
     <div className="w-full px-4 py-2 flex justify-between items-center border-b border-darkGrey dark:border-lightGrey">
       <div>{filterType} Posts</div>
 
-      <div className="relative">
+      <div className="relative" ref={modalRef}>
         <button
           className="p-1 px-2 text-lg"
           onClick={() => setShowSortModal((prev) => !prev)}
