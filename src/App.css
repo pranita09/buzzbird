@@ -1,1 +1,20 @@
+body::-webkit-scrollbar {
+  width: 0.4rem;
+}
 
+body::-webkit-scrollbar-track {
+  border-radius: 2px;
+  background: lightgray;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #0d9488;
+  border-radius: 5px;
+}
+
+@supports (scrollbar-color: red blue) {
+  * {
+    scrollbar-color: lightgray #0d9488;
+    scrollbar-width: thin;
+  }
+}

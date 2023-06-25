@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useAuth } from "../../contexts/auth-context";
 import { PrimaryButton, UserAvatar } from "..";
 import {
