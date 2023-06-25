@@ -69,7 +69,7 @@ const EditUserModal = ({ setEditUserModal }) => {
               className="object-cover h-24 w-full rounded opacity-90 "
             />
             <div
-              className="absolute top-1/3 left-[45%] p-2 rounded-full bg-lightGrey cursor-pointer"
+              className="absolute top-2/4 left-2/4 -translate-x-1/2 -translate-y-2/4 p-2 rounded-full bg-lightGrey cursor-pointer"
               title="Change Cover Photo"
             >
               <input
@@ -106,7 +106,7 @@ const EditUserModal = ({ setEditUserModal }) => {
                 }
               />
               <div
-                className="absolute top-[40%] left-[37%] p-1 rounded-full bg-lightGrey cursor-pointer"
+                className="absolute top-2/4 left-2/4 -translate-x-1/2 -translate-y-2/4 p-1 rounded-full bg-lightGrey cursor-pointer"
                 title="Change Profile Picture"
               >
                 <input
@@ -142,7 +142,7 @@ const EditUserModal = ({ setEditUserModal }) => {
                 }
               />
               <div
-                className="absolute top-[40%] left-[37%] p-1 rounded-full bg-lightGrey cursor-pointer"
+                className="absolute top-2/4 left-2/4 -translate-x-1/2 -translate-y-2/4 p-1 rounded-full bg-lightGrey cursor-pointer"
                 title="Add Avatar"
                 onClick={() => setShowAvatarOptions(true)}
               >

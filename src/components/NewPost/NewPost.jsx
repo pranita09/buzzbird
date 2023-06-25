@@ -34,7 +34,7 @@ const NewPost = () => {
   };
 
   return (
-    <div className="grid grid-cols-[2rem_1fr] gap-2 items-start text-sm border-b border-darkGrey px-4 py-3 cursor-text dark:border-lightGrey">
+    <div className="grid grid-cols-[2.25rem_1fr] gap-2 items-start text-sm border-b border-darkGrey px-4 py-3 cursor-text dark:border-lightGrey">
       <UserAvatar user={currentUser} className="h-9 w-9" />
       <form className="flex flex-col gap-2" onSubmit={submitPostHandler}>
         <div className="w-full outline-none mt-1.5 h-auto">

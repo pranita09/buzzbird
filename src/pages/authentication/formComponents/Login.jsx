@@ -59,7 +59,7 @@ const Login = () => {
             required
           />
           {!loginDetails.showPwd ? (
-            <AiOutlineEye
+            <AiOutlineEyeInvisible
               className="absolute top-[0.7rem] right-3 cursor-pointer"
               onClick={() =>
                 setLoginDetails({
@@ -69,7 +69,7 @@ const Login = () => {
               }
             />
           ) : (
-            <AiOutlineEyeInvisible
+            <AiOutlineEye
               className="absolute top-[0.7rem] right-3 cursor-pointer"
               onClick={() =>
                 setLoginDetails({

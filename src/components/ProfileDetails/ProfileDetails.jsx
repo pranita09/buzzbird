@@ -86,7 +86,7 @@ const ProfileDetails = ({ user }) => {
             <div className="flex gap-2 items-center">
               <HiLink className="text-lg" />
               <Link to={user?.website} target="_blank">
-                <span className="hover:underline cursor-pointer text-sm hover:text-[blue]">
+                <span className="hover:underline cursor-pointer text-sm text-[blue]">
                   {user?.website?.split("/")[2]}
                 </span>
               </Link>

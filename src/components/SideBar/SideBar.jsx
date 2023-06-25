@@ -19,7 +19,7 @@ const SideBar = () => {
   const [showSettingsModal, setShowSettingsModal] = useState(false);
 
   const activeStyle = {
-    backgroundColor: "#d1fae5",
+    backgroundColor: "#ccfbf1",
     borderRadius: "9999px",
     width: "max-content",
     fontWeight: "bold",
@@ -28,7 +28,7 @@ const SideBar = () => {
 
   return (
     <aside className=" flex bg-[white] dark:bg-darkGrey sm:sticky sm:flex-col sm:justify-between sm:h-screen sm:top-0 sm:overflow-y-auto overflow-x-hidden fixed bottom-0 left-0 w-full items-center sm:border-0 border-t-2 border-darkGrey dark:border-lightGrey dark:text-lightGrey sm:z-0 z-40 ">
-      <ul className="flex items-center sm:items-start justify-around sm:justify-start px-2 py-1 sm:py-4 sm:flex-col gap-3 sm:gap-3 tracking-wide grow">
+      <ul className="flex items-center sm:items-start justify-around sm:justify-start px-2 py-1 sm:py-4 sm:flex-col gap-3 sm:gap-2 tracking-wide grow">
         <li className="sm:pb-2 sm:px-1 hidden sm:block">
           <Link to="/" className="flex items-center">
             <img src={logoImg} alt="buzzbird" className="h-12 w-12 mr-2" />
