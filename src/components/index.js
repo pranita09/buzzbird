@@ -13,3 +13,4 @@ export { PostModal } from "./PostModal/PostModal";
 export { ProfileDetails } from "./ProfileDetails/ProfileDetails";
 export { UsersModal } from "./UsersModal/UsersModal";
 export { SettingsModal } from "./SettingsModal/SettingsModal";
+export { EditUserModal } from "./EditUserModal/EditUserModal";

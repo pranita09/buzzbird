@@ -9,12 +9,14 @@ import { defaultBgImage } from "../../utils/constants";
 import { useState } from "react";
 import { Modal } from "@mui/material";
 import { UsersModal } from "../UsersModal/UsersModal";
+import { EditUserModal } from "../EditUserModal/EditUserModal";
 
 const ProfileDetails = ({ user }) => {
   const { currentUser, logoutHandler } = useAuth();
 
   const { followUserHandler, unfollowUserHandler } = useUsers();
 
+  const [editUserModal, setEditUserModal] = useState(false);
   const [usersListModal, setUsersListModal] = useState({
     show: false,
     title: "",
@@ -44,7 +46,10 @@ const ProfileDetails = ({ user }) => {
             <div className="flex justify-center items-center gap-4 mb-2">
               {user?.username === currentUser?.username ? (
                 <>
-                  <SecondaryButton className="py-1 px-3 rounded">
+                  <SecondaryButton
+                    className="py-1 px-3 rounded"
+                    onClick={() => setEditUserModal(true)}
+                  >
                     Edit Profile
                   </SecondaryButton>
                   <SecondaryButton
@@ -134,6 +139,14 @@ const ProfileDetails = ({ user }) => {
               usersListModal={usersListModal}
               setUsersListModal={setUsersListModal}
             />
+          </>
+        </Modal>
+      )}
+
+      {editUserModal && (
+        <Modal open={editUserModal} onClose={() => setEditUserModal(false)}>
+          <>
+            <EditUserModal setEditUserModal={setEditUserModal} />
           </>
         </Modal>
       )}

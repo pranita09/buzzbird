@@ -14,6 +14,7 @@ import {
   FaUserPlus,
   FaArrowLeft,
   FaTimes,
+  FaCamera,
 } from "react-icons/fa";
 import {
   MdCancel,
@@ -31,7 +32,7 @@ import { HiDotsHorizontal, HiPlusCircle, HiLink } from "react-icons/hi";
 import { FiSearch } from "react-icons/fi";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { RiUserUnfollowFill } from "react-icons/ri";
-import { BsFillImageFill } from "react-icons/bs";
+import { BsFillImageFill, BsPersonCircle } from "react-icons/bs";
 
 export {
   FaSmile,
@@ -49,6 +50,7 @@ export {
   FaUserPlus,
   FaArrowLeft,
   FaTimes,
+  FaCamera,
   FiSearch,
   MdCancel,
   MdShare,
@@ -67,4 +69,5 @@ export {
   AiOutlineEyeInvisible,
   RiUserUnfollowFill,
   BsFillImageFill,
+  BsPersonCircle,
 };
