@@ -1,6 +1,6 @@
 import { useAuth } from "../../contexts/auth-context";
 import { PrimaryButton, SecondaryButton, UserAvatar } from "..";
-import {  useRef, useState } from "react";
+import { useRef, useState } from "react";
 import {
   MdOutlineAddPhotoAlternate,
   MdInsertEmoticon,
@@ -9,8 +9,13 @@ import {
 import { toast } from "react-hot-toast";
 import { uploadMedia } from "../../utils/uploadMedia";
 import { usePosts } from "../../contexts/post-context";
+import { Modal } from "@mui/material";
+import data from "@emoji-mart/data";
+import Picker from "@emoji-mart/react";
+import { useTheme } from "../../contexts/theme-context";
 
 const PostModal = ({ post, setShowPostModal, setShowOptions }) => {
+  const { isDarkTheme } = useTheme();
   const { currentUser } = useAuth();
   const { createPostHandler, editPostHandler } = usePosts();
 
@@ -20,11 +25,11 @@ const PostModal = ({ post, setShowPostModal, setShowOptions }) => {
     left: "50%",
     transform: "translate(-50%, -50%)",
     bgcolor: "background.paper",
-    border: "1px solid #000",
     boxShadow: 24,
     p: 4,
   };
 
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [content, setContent] = useState(post || {});
   const [media, setMedia] = useState(null);
 
@@ -71,6 +76,7 @@ const PostModal = ({ post, setShowPostModal, setShowOptions }) => {
     setShowPostModal(false);
     setContent({});
     setMedia(null);
+    setShowEmojiPicker(false);
     postRef.current.innterText = "";
   };
 
@@ -130,8 +136,10 @@ const PostModal = ({ post, setShowPostModal, setShowOptions }) => {
               />
               <MdOutlineAddPhotoAlternate className="text-xl" />
             </label>
-            <label className="cursor-pointer text-xl">
-              <input className="hidden" />
+            <label
+              className="cursor-pointer text-xl"
+              onClick={() => setShowEmojiPicker((prev) => !prev)}
+            >
               <MdInsertEmoticon className="text-xl" />
             </label>
           </div>
@@ -156,6 +164,29 @@ const PostModal = ({ post, setShowPostModal, setShowOptions }) => {
           </div>
         </div>
       </form>
+
+      <Modal open={showEmojiPicker} onClose={() => setShowEmojiPicker(false)}>
+        <div style={styles}>
+          <Picker
+            data={data}
+            emojiSize={20}
+            emojiButtonSize={28}
+            maxFrequentRows={0}
+            navPosition="bottom"
+            previewPosition="none"
+            theme={isDarkTheme ? "dark" : "light"}
+            onEmojiSelect={(emoji) => {
+              setContent((prev) => ({
+                ...prev,
+                content: prev.content
+                  ? prev.content + emoji.native
+                  : emoji.native,
+              }));
+              setShowEmojiPicker(false);
+            }}
+          />
+        </div>
+      </Modal>
     </div>
   );
 };

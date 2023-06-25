@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../../contexts/auth-context";
 import { PrimaryButton, UserAvatar } from "..";
 import {
@@ -9,10 +9,27 @@ import {
 import { usePosts } from "../../contexts/post-context";
 import { toast } from "react-hot-toast";
 import { uploadMedia } from "../../utils/uploadMedia";
+import { Modal } from "@mui/material";
+import data from "@emoji-mart/data";
+import Picker from "@emoji-mart/react";
+import { useTheme } from "../../contexts/theme-context";
+
+const styles = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  bgcolor: "background.paper",
+  boxShadow: 24,
+  p: 4,
+};
 
 const NewPost = () => {
+  const { isDarkTheme } = useTheme();
   const { currentUser } = useAuth();
   const { createPostHandler } = usePosts();
+
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [content, setContent] = useState("");
   const [media, setMedia] = useState(null);
 
@@ -34,6 +51,7 @@ const NewPost = () => {
     toast.success("Added new post successfully", { id: toastId });
     setContent("");
     setMedia(null);
+    setShowEmojiPicker(false);
     newPostRef.current.innerText = "";
   };
 
@@ -80,8 +98,11 @@ const NewPost = () => {
             />
             <MdOutlineAddPhotoAlternate />
           </label>
-          <label className="cursor-pointer text-xl">
-            <input className="hidden" />
+          <label
+            className="cursor-pointer text-xl"
+            onClick={() => setShowEmojiPicker((prev) => !prev)}
+          >
+            {/* <input className="hidden" /> */}
             <MdInsertEmoticon />
           </label>
           <PrimaryButton
@@ -93,6 +114,24 @@ const NewPost = () => {
           </PrimaryButton>
         </div>
       </form>
+
+      <Modal open={showEmojiPicker} onClose={() => setShowEmojiPicker(false)}>
+        <div style={styles}>
+          <Picker
+            data={data}
+            emojiSize={20}
+            emojiButtonSize={28}
+            maxFrequentRows={0}
+            navPosition="bottom"
+            previewPosition="none"
+            theme={isDarkTheme ? "dark" : "light"}
+            onEmojiSelect={(emoji) => {
+              setContent(content + emoji.native);
+              setShowEmojiPicker(false);
+            }}
+          />
+        </div>
+      </Modal>
     </div>
   );
 };
