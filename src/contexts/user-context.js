@@ -10,6 +10,7 @@ import { usersReducer, initialUsersState } from "../reducers/usersReducer";
 import { actionTypes } from "../utils/constants";
 import {
   addBookmarkService,
+  editUserProfileService,
   followUserService,
   getAllBookmarksService,
   getAllUsersService,
@@ -37,6 +38,7 @@ export const UsersProvider = ({ children }) => {
     REMOVE_BOOKMARK,
     GET_ONE_USER,
     UPDATE_FOLLOW_USER,
+    EDIT_USER_PROFILE,
   } = actionTypes;
 
   const getAllUsers = async () => {
@@ -182,6 +184,26 @@ export const UsersProvider = ({ children }) => {
     }
   };
 
+  const editUserProfileHandler = async (editInput) => {
+    setIsLoading(true);
+    try {
+      const {
+        status,
+        data: { user },
+      } = await editUserProfileService(editInput, token);
+      if (status === 201) {
+        usersDispatch({ type: EDIT_USER_PROFILE, payload: user });
+        setCurrentUser(user);
+        toast.success("Updated profile successfully!");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const postAlreadyInBookmarks = (postId) =>
     usersState?.bookmarks?.find((id) => id === postId);
 
@@ -212,6 +234,7 @@ export const UsersProvider = ({ children }) => {
         getUserByUsername,
         followUserHandler,
         unfollowUserHandler,
+        editUserProfileHandler,
       }}
     >
       {children}

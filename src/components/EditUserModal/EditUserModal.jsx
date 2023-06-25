@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { avatarImages, defaultBgImage } from "../../utils/constants";
+import { avatarImages } from "../../utils/constants";
 import { FaTimes, FaCamera, BsPersonCircle } from "../../utils/icons";
 import { PrimaryButton } from "../Buttons/Buttons";
 import { UserAvatar } from "../UserAvatar/UserAvatar";
 import { Modal } from "@mui/material";
+import { useUsers } from "../../contexts/user-context";
+import { useAuth } from "../../contexts/auth-context";
 
 const styles = {
   position: "absolute",
@@ -17,14 +19,28 @@ const styles = {
 };
 
 const EditUserModal = ({ setEditUserModal }) => {
+  const { currentUser } = useAuth();
+  const { editUserProfileHandler } = useUsers();
+
+  const [editInput, setEditInput] = useState(currentUser);
+  const [profileImage, setProfileImage] = useState(null);
+  const [profileAvatarImage, setProfileAvatarImage] = useState(null);
+  const [coverImage, setCoverImage] = useState(null);
+
   const [showAvatarOptions, setShowAvatarOptions] = useState(false);
+
+  const editProfileFormHandler = async (e) => {
+    e.preventDefault();
+    editUserProfileHandler(editInput);
+    setEditUserModal(false);
+  };
 
   return (
     <div
       style={styles}
       className="mx-4 text-sm border border-darkGrey p-4 w-80 rounded overflow-y-auto bg-lighterPrimary"
     >
-      <form className="flex flex-col gap-2.5">
+      <form className="flex flex-col gap-2.5" onSubmit={editProfileFormHandler}>
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <button
@@ -44,15 +60,30 @@ const EditUserModal = ({ setEditUserModal }) => {
         <label className="w-full">
           <div className="w-full relative ">
             <img
-              src={defaultBgImage}
-              alt="Dummy"
-              className="object-cover h-24 w-full rounded opacity-80 "
+              src={
+                coverImage
+                  ? URL.createObjectURL(coverImage)
+                  : editInput.backgroundImage
+              }
+              alt={coverImage ? "UpdatedCoverImage" : "CoverImage"}
+              className="object-cover h-24 w-full rounded opacity-90 "
             />
             <div
               className="absolute top-1/3 left-[45%] p-2 rounded-full bg-lightGrey cursor-pointer"
               title="Change Cover Photo"
             >
-              <input type="file" accept="image/*" className="hidden" />
+              <input
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={(e) => {
+                  setCoverImage(e.target.files[0]);
+                  setEditInput({
+                    ...editInput,
+                    backgroundImage: URL.createObjectURL(e.target.files[0]),
+                  });
+                }}
+              />
               <FaCamera className="text-md text-darkGrey" />
             </div>
           </div>
@@ -61,12 +92,35 @@ const EditUserModal = ({ setEditUserModal }) => {
         <div className="flex wrap mx-6">
           <label className="w-max cursor-pointer mx-auto">
             <div className="relative">
-              <UserAvatar className="w-[4.5rem] h-[4.5rem] opacity-80" />
+              <UserAvatar
+                className="w-[4.5rem] h-[4.5rem] opacity-90"
+                user={
+                  profileImage
+                    ? {
+                        ...currentUser,
+                        profileAvatar: URL.createObjectURL(profileImage),
+                      }
+                    : profileAvatarImage
+                    ? { ...currentUser, profileAvatar: profileAvatarImage }
+                    : currentUser
+                }
+              />
               <div
                 className="absolute top-[40%] left-[37%] p-1 rounded-full bg-lightGrey cursor-pointer"
                 title="Change Profile Picture"
               >
-                <input type="file" accept="image/*" className="hidden" />
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={(e) => {
+                    setProfileImage(e.target.files[0]);
+                    setEditInput({
+                      ...editInput,
+                      profileAvatar: URL.createObjectURL(e.target.files[0]),
+                    });
+                  }}
+                />
                 <FaCamera className="text-darkGrey text-sm" />
               </div>
             </div>
@@ -74,7 +128,19 @@ const EditUserModal = ({ setEditUserModal }) => {
 
           <label className="w-max cursor-pointer mx-auto">
             <div className="relative">
-              <UserAvatar className="w-[4.5rem] h-[4.5rem] opacity-80" />
+              <UserAvatar
+                className="w-[4.5rem] h-[4.5rem] opacity-90"
+                user={
+                  profileImage
+                    ? {
+                        ...currentUser,
+                        profileAvatar: URL.createObjectURL(profileImage),
+                      }
+                    : profileAvatarImage
+                    ? { ...currentUser, profileAvatar: profileAvatarImage }
+                    : currentUser
+                }
+              />
               <div
                 className="absolute top-[40%] left-[37%] p-1 rounded-full bg-lightGrey cursor-pointer"
                 title="Add Avatar"
@@ -93,6 +159,10 @@ const EditUserModal = ({ setEditUserModal }) => {
               className="bg-lighterPrimary w-full text-sm outline-none border-none"
               type="text"
               name="firstName"
+              value={editInput.firstName}
+              onChange={(e) =>
+                setEditInput({ ...editInput, firstName: e.target.value })
+              }
             />
           </label>
         </div>
@@ -104,6 +174,10 @@ const EditUserModal = ({ setEditUserModal }) => {
               className="bg-lighterPrimary w-full text-sm outline-none border-none"
               type="text"
               name="lastName"
+              value={editInput.lastName}
+              onChange={(e) =>
+                setEditInput({ ...editInput, lastName: e.target.value })
+              }
             />
           </label>
         </div>
@@ -115,6 +189,10 @@ const EditUserModal = ({ setEditUserModal }) => {
               className="bg-lighterPrimary w-full text-sm outline-none border-none"
               type="text"
               name="bio"
+              value={editInput.bio}
+              onChange={(e) =>
+                setEditInput({ ...editInput, bio: e.target.value })
+              }
             />
           </label>
         </div>
@@ -126,6 +204,10 @@ const EditUserModal = ({ setEditUserModal }) => {
               className="bg-lighterPrimary w-full text-sm outline-none border-none"
               type="text"
               name="website"
+              value={editInput.website}
+              onChange={(e) =>
+                setEditInput({ ...editInput, website: e.target.value })
+              }
             />
           </label>
         </div>
@@ -151,7 +233,18 @@ const EditUserModal = ({ setEditUserModal }) => {
           </div>
           <div className="flex items-center justify-center gap-2 flex-wrap">
             {avatarImages.map((avatar, index) => (
-              <span className="user-avatar cursor-pointer">
+              <span
+                key={index}
+                className="user-avatar cursor-pointer"
+                onClick={() => {
+                  setProfileAvatarImage(avatar);
+                  setEditInput({
+                    ...editInput,
+                    profileAvatar: avatar,
+                  });
+                  setShowAvatarOptions(false);
+                }}
+              >
                 <img
                   src={avatar}
                   alt={`Avatar${index}`}
