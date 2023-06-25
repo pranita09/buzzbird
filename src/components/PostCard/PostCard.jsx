@@ -15,6 +15,7 @@ import { useAuth } from "../../contexts/auth-context";
 import { debounce } from "../../utils/debounce";
 import { getPostDate } from "../../utils/getPostDate";
 import { useNavigate } from "react-router-dom";
+import { sharePost } from "../../utils/sharePost";
 
 const PostCard = ({ post }) => {
   const navigate = useNavigate();
@@ -132,7 +133,13 @@ const PostCard = ({ post }) => {
             )}
           </button>
 
-          <button className="cursor-pointer p-2 mr-4">
+          <button
+            className="cursor-pointer p-2 mr-4"
+            onClick={(e) => {
+              e.stopPropagation();
+              sharePost(post?._id);
+            }}
+          >
             <MdShare className="text-lg" />
           </button>
         </div>
