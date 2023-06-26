@@ -98,7 +98,7 @@ const Signup = () => {
             required
           />
           {!signupDetails.show.pwd ? (
-            <AiOutlineEye
+            <AiOutlineEyeInvisible
               className="absolute top-[0.7rem] right-3 cursor-pointer"
               onClick={() =>
                 setSignupDetails({
@@ -108,7 +108,7 @@ const Signup = () => {
               }
             />
           ) : (
-            <AiOutlineEyeInvisible
+            <AiOutlineEye
               className="absolute top-[0.7rem] right-3 cursor-pointer"
               onClick={() =>
                 setSignupDetails({
@@ -130,7 +130,7 @@ const Signup = () => {
             required
           />
           {!signupDetails.show.confirmPwd ? (
-            <AiOutlineEye
+            <AiOutlineEyeInvisible
               className="absolute top-[0.7rem] right-3 cursor-pointer"
               onClick={() =>
                 setSignupDetails({
@@ -143,7 +143,7 @@ const Signup = () => {
               }
             />
           ) : (
-            <AiOutlineEyeInvisible
+            <AiOutlineEye
               className="absolute top-[0.7rem] right-3 cursor-pointer"
               onClick={() =>
                 setSignupDetails({

@@ -10,16 +10,20 @@ import { usersReducer, initialUsersState } from "../reducers/usersReducer";
 import { actionTypes } from "../utils/constants";
 import {
   addBookmarkService,
+  editUserProfileService,
+  followUserService,
   getAllBookmarksService,
   getAllUsersService,
+  getUserByUsernameService,
   removeBookmarkService,
+  unfollowUserService,
 } from "../services/usersServices";
 import { toast } from "react-hot-toast";
 
 export const UsersContext = createContext();
 
 export const UsersProvider = ({ children }) => {
-  const { token } = useAuth();
+  const { token, setCurrentUser } = useAuth();
 
   const [usersState, usersDispatch] = useReducer(
     usersReducer,
@@ -27,8 +31,15 @@ export const UsersProvider = ({ children }) => {
   );
   const [isLoading, setIsLoading] = useState(false);
 
-  const { GET_ALL_USERS, GET_ALL_BOOKMARKS, ADD_BOOKMARK, REMOVE_BOOKMARK } =
-    actionTypes;
+  const {
+    GET_ALL_USERS,
+    GET_ALL_BOOKMARKS,
+    ADD_BOOKMARK,
+    REMOVE_BOOKMARK,
+    GET_ONE_USER,
+    UPDATE_FOLLOW_USER,
+    EDIT_USER_PROFILE,
+  } = actionTypes;
 
   const getAllUsers = async () => {
     setIsLoading(true);
@@ -39,6 +50,23 @@ export const UsersProvider = ({ children }) => {
       } = await getAllUsersService();
       if (status === 200) {
         usersDispatch({ type: GET_ALL_USERS, payload: users });
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const getUserByUsername = async (username) => {
+    setIsLoading(true);
+    try {
+      const {
+        status,
+        data: { user },
+      } = await getUserByUsernameService(username);
+      if (status === 200) {
+        usersDispatch({ type: GET_ONE_USER, payload: user });
       }
     } catch (error) {
       console.error(error);
@@ -110,6 +138,72 @@ export const UsersProvider = ({ children }) => {
     }
   };
 
+  const followUserHandler = async (followUserId) => {
+    setIsLoading(true);
+    try {
+      const {
+        status,
+        data: { user, followUser },
+      } = await followUserService(followUserId, token);
+      if (status === 200) {
+        usersDispatch({
+          type: UPDATE_FOLLOW_USER,
+          payload: [followUser, user],
+        });
+        setCurrentUser(user);
+        toast.success(`Followed @${followUser.username}`);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const unfollowUserHandler = async (followUserId) => {
+    setIsLoading(true);
+    try {
+      const {
+        status,
+        data: { user, followUser },
+      } = await unfollowUserService(followUserId, token);
+      if (status === 200) {
+        usersDispatch({
+          type: UPDATE_FOLLOW_USER,
+          payload: [followUser, user],
+        });
+        setCurrentUser(user);
+        toast.success(`Unfollowed @${followUser.username}`);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const editUserProfileHandler = async (editInput) => {
+    setIsLoading(true);
+    try {
+      const {
+        status,
+        data: { user },
+      } = await editUserProfileService(editInput, token);
+      if (status === 201) {
+        usersDispatch({ type: EDIT_USER_PROFILE, payload: user });
+        setCurrentUser(user);
+        toast.success("Updated profile successfully!");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const postAlreadyInBookmarks = (postId) =>
     usersState?.bookmarks?.find((id) => id === postId);
 
@@ -137,6 +231,10 @@ export const UsersProvider = ({ children }) => {
         removeBookmarkHandler,
         postAlreadyInBookmarks,
         searchedUsers,
+        getUserByUsername,
+        followUserHandler,
+        unfollowUserHandler,
+        editUserProfileHandler,
       }}
     >
       {children}

@@ -31,7 +31,6 @@ const Bookmarks = () => {
             ) : bookmarks?.length > 0 ? (
               [...bookmarks]?.reverse()?.map((bookmarkPostId) => {
                 const post = posts.find(({ _id }) => _id === bookmarkPostId);
-                console.log(post);
                 return <PostCard key={post._id} post={post} />;
               })
             ) : (
@@ -43,7 +42,7 @@ const Bookmarks = () => {
         </div>
       </div>
 
-      <div className="hidden xl:block z-[-1]">
+      <div className="hidden xl:block">
         <SearchBar />
         <SuggestedUsers />
       </div>

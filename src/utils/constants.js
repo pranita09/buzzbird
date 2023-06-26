@@ -7,6 +7,21 @@ export const loginPageHeroImg =
 export const logoImg =
   "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686667729/socialMedia/bird_yilt7i.png";
 
+export const defaultBgImage =
+  "https://res.cloudinary.com/dxnbnviuz/image/upload/v1687604239/socialMedia/buzzbird-default-bg_deqxio.png";
+
+export const dummyProfileImage =
+  "https://res.cloudinary.com/dxnbnviuz/image/upload/v1687603602/socialMedia/AvatarTwo_isbynr.png";
+
+export const avatarImages = [
+  "https://res.cloudinary.com/dxnbnviuz/image/upload/v1687603622/socialMedia/AvatarSix_wqf4ya.png",
+  "https://res.cloudinary.com/dxnbnviuz/image/upload/v1687603611/socialMedia/AvatarFour_otab93.png",
+  "https://res.cloudinary.com/dxnbnviuz/image/upload/v1687603607/socialMedia/AvatarThree_vyhlpx.png",
+  "https://res.cloudinary.com/dxnbnviuz/image/upload/v1687603615/socialMedia/AvatarFive_siczhk.png",
+  "https://res.cloudinary.com/dxnbnviuz/image/upload/v1687603596/socialMedia/AvatarOne_a3knbz.png",
+  "https://res.cloudinary.com/dxnbnviuz/image/upload/v1687603602/socialMedia/AvatarTwo_isbynr.png",
+];
+
 export const guestUserLoginDetails = {
   username: "emilysmith",
   password: "emily@123Smith",
@@ -25,4 +40,7 @@ export const actionTypes = {
   CREATE_NEW_POST: "CREATE_NEW_POST",
   DELETE_POST: "DELETE_POST",
   EDIT_POST: "EDIT_POST",
+  GET_ONE_USER: "GET_ONE_USER",
+  UPDATE_FOLLOW_USER: "UPDATE_FOLLOW_USER",
+  EDIT_USER_PROFILE: "EDIT_USER_PROFILE",
 };

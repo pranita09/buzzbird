@@ -4,6 +4,7 @@ const initialUsersState = {
   users: [],
   bookmarks: [],
   searchInput: "",
+  user: {},
 };
 
 const {
@@ -12,6 +13,9 @@ const {
   ADD_BOOKMARK,
   REMOVE_BOOKMARK,
   SEARCH_USER,
+  GET_ONE_USER,
+  UPDATE_FOLLOW_USER,
+  EDIT_USER_PROFILE,
 } = actionTypes;
 
 const usersReducer = (state, { type, payload }) => {
@@ -26,6 +30,23 @@ const usersReducer = (state, { type, payload }) => {
       return { ...state, bookmarks: payload };
     case SEARCH_USER:
       return { ...state, searchInput: payload };
+    case GET_ONE_USER:
+      return { ...state, user: payload };
+    case UPDATE_FOLLOW_USER:
+      return {
+        ...state,
+        users: state.users.map((user) => {
+          const updatedUser = payload.find(({ _id }) => _id === user._id);
+          return updatedUser ? updatedUser : user;
+        }),
+      };
+    case EDIT_USER_PROFILE:
+      return {
+        ...state,
+        users: state.users.map((user) =>
+          user._id === payload._id ? payload : user
+        ),
+      };
     default:
       return state;
   }

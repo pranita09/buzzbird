@@ -1,14 +1,35 @@
 import { useRef, useState } from "react";
 import { useAuth } from "../../contexts/auth-context";
 import { PrimaryButton, UserAvatar } from "..";
-import { BsFillImageFill, FaSmile, MdCancel } from "../../utils/icons";
+import {
+  MdOutlineAddPhotoAlternate,
+  MdInsertEmoticon,
+  MdCancel,
+} from "../../utils/icons";
 import { usePosts } from "../../contexts/post-context";
 import { toast } from "react-hot-toast";
 import { uploadMedia } from "../../utils/uploadMedia";
+import { Modal } from "@mui/material";
+import data from "@emoji-mart/data";
+import Picker from "@emoji-mart/react";
+import { useTheme } from "../../contexts/theme-context";
+
+const styles = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  bgcolor: "background.paper",
+  boxShadow: 24,
+  p: 4,
+};
 
 const NewPost = () => {
+  const { isDarkTheme } = useTheme();
   const { currentUser } = useAuth();
   const { createPostHandler } = usePosts();
+
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [content, setContent] = useState("");
   const [media, setMedia] = useState(null);
 
@@ -30,11 +51,12 @@ const NewPost = () => {
     toast.success("Added new post successfully", { id: toastId });
     setContent("");
     setMedia(null);
+    setShowEmojiPicker(false);
     newPostRef.current.innerText = "";
   };
 
   return (
-    <div className="grid grid-cols-[2rem_1fr] gap-2 items-start text-sm border-b border-darkGrey px-4 py-3 cursor-text dark:border-lightGrey">
+    <div className="grid grid-cols-[2.25rem_1fr] gap-2 items-start text-sm border-b border-darkGrey px-4 py-3 cursor-text dark:border-lightGrey">
       <UserAvatar user={currentUser} className="h-9 w-9" />
       <form className="flex flex-col gap-2" onSubmit={submitPostHandler}>
         <div className="w-full outline-none mt-1.5 h-auto">
@@ -70,19 +92,18 @@ const NewPost = () => {
           <label className="cursor-pointer text-xl">
             <input
               type="file"
-              accept="image/*"
+              accept="image/*, video/*"
               className="hidden"
-              onChange={(e) =>
-                Math.round(e.target.files[0].size / 1024000) > 1
-                  ? toast.error("File size should not be more than 1Mb")
-                  : setMedia(e.target.files[0])
-              }
+              onChange={(e) => setMedia(e.target.files[0])}
             />
-            <BsFillImageFill />
+            <MdOutlineAddPhotoAlternate />
           </label>
-          <label className="cursor-pointer text-xl">
-            <input className="hidden" />
-            <FaSmile />
+          <label
+            className="cursor-pointer text-xl"
+            onClick={() => setShowEmojiPicker((prev) => !prev)}
+          >
+            {/* <input className="hidden" /> */}
+            <MdInsertEmoticon />
           </label>
           <PrimaryButton
             type="submit"
@@ -93,6 +114,24 @@ const NewPost = () => {
           </PrimaryButton>
         </div>
       </form>
+
+      <Modal open={showEmojiPicker} onClose={() => setShowEmojiPicker(false)}>
+        <div style={styles}>
+          <Picker
+            data={data}
+            emojiSize={20}
+            emojiButtonSize={28}
+            maxFrequentRows={0}
+            navPosition="bottom"
+            previewPosition="none"
+            theme={isDarkTheme ? "dark" : "light"}
+            onEmojiSelect={(emoji) => {
+              setContent(content + emoji.native);
+              setShowEmojiPicker(false);
+            }}
+          />
+        </div>
+      </Modal>
     </div>
   );
 };

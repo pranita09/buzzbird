@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../contexts/auth-context";
 import { usePosts } from "../../contexts/post-context";
 import { useUsers } from "../../contexts/user-context";
@@ -10,12 +10,15 @@ import {
 } from "../../utils/icons";
 import { PostModal } from "..";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Modal } from "@mui/material";
 
 const PostOptionsModal = ({ post, setShowOptions }) => {
   const { _id, username } = post;
   const { currentUser } = useAuth();
   const {
     usersState: { users },
+    unfollowUserHandler,
+    followUserHandler,
   } = useUsers();
   const { deletePostHandler } = usePosts();
 
@@ -29,6 +32,10 @@ const PostOptionsModal = ({ post, setShowOptions }) => {
   const userAlreadyFollowing = userToFollow.followers.find(
     (user) => user.username === currentUser.username
   );
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentUser, users]);
 
   return (
     <div className="absolute flex flex-col right-1 top-7 w-max rounded-md shadow-lg border border-darkGrey bg-lighterPrimary">
@@ -61,7 +68,15 @@ const PostOptionsModal = ({ post, setShowOptions }) => {
           </button>
         </>
       ) : (
-        <button className="py-2 px-4 text-left cursor-pointer rounded-md hover:bg-lightPrimary flex items-center justify-center">
+        <button
+          className="py-2 px-4 text-left cursor-pointer rounded-md hover:bg-lightPrimary flex items-center justify-center"
+          onClick={() => {
+            userAlreadyFollowing
+              ? unfollowUserHandler(userToFollow?._id)
+              : followUserHandler(userToFollow?._id);
+            setShowOptions(false);
+          }}
+        >
           {userAlreadyFollowing ? (
             <>
               <RiUserUnfollowFill className="mr-2 " /> Unfollow{" "}
@@ -75,17 +90,15 @@ const PostOptionsModal = ({ post, setShowOptions }) => {
         </button>
       )}
 
-      {showPostModal ? (
-        <div className="fixed top-0 left-0 w-full h-full z-90 flex justify-center items-center cursor-default bg-[#00000070] backdrop-blur-[1px]">
+      <Modal open={showPostModal} onClose={() => setShowPostModal(false)}>
+        <>
           <PostModal
             post={post}
             setShowOptions={setShowOptions}
             setShowPostModal={setShowPostModal}
           />
-        </div>
-      ) : (
-        <></>
-      )}
+        </>
+      </Modal>
     </div>
   );
 };

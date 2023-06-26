@@ -8,3 +8,7 @@
   padding: 0;
   margin: 0;
 }
+
+.css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
+  background-color: rgba(0, 0, 0, 0.25);
+}

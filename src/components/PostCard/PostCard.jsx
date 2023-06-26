@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useUsers } from "../../contexts/user-context";
 import { UserAvatar, PostOptionsModal } from "..";
 import {
@@ -14,8 +14,12 @@ import { usePosts } from "../../contexts/post-context";
 import { useAuth } from "../../contexts/auth-context";
 import { debounce } from "../../utils/debounce";
 import { getPostDate } from "../../utils/getPostDate";
+import { useNavigate } from "react-router-dom";
+import { sharePost } from "../../utils/sharePost";
 
 const PostCard = ({ post }) => {
+  const navigate = useNavigate();
+
   const { currentUser } = useAuth();
 
   const {
@@ -29,18 +33,26 @@ const PostCard = ({ post }) => {
 
   const [showOptions, setShowOptions] = useState(false);
 
+  const postModalRef = useRef();
+
   const userWhoPosted = users?.find((user) => user.username === post?.username);
 
   return (
-    <div className="grid grid-cols-[2rem_1fr] gap-2 text-sm border-b border-darkGrey dark:border-lightGrey px-4 py-3 cursor-pointer">
-      <div>
+    <div
+      className="grid grid-cols-[2.25rem_1fr] gap-2 text-sm border-b border-darkGrey dark:border-lightGrey px-3 py-3 cursor-pointer"
+      ref={postModalRef}
+    >
+      <div onClick={() => navigate(`profile/${userWhoPosted?.username}`)}>
         <UserAvatar user={userWhoPosted} className="h-9 w-9" />
       </div>
 
       <div className="flex flex-col gap-2 break-all">
         <div className="flex justify-between">
           <div className="flex items-start 2xl:items-center gap-1.5">
-            <div className="flex flex-col gap-0 2xl:flex-row 2xl:gap-1">
+            <div
+              className="flex flex-col gap-0 2xl:flex-row 2xl:gap-1"
+              onClick={() => navigate(`profile/${userWhoPosted?.username}`)}
+            >
               <span className="font-bold tracking-wide">
                 {userWhoPosted?.firstName + " " + userWhoPosted?.lastName}
               </span>
@@ -77,7 +89,7 @@ const PostCard = ({ post }) => {
           ))}
 
         <div className="flex gap-6 -ml-2 mt-1">
-          <div className="flex justify-center p-2 pr-4">
+          <div className="flex justify-center p-2 mr-4">
             <button
               className="cursor-pointer"
               onClick={() =>
@@ -97,7 +109,7 @@ const PostCard = ({ post }) => {
             )}
           </div>
 
-          <div className="flex justify-center p-2 pr-4">
+          <div className="flex justify-center p-2 mr-4">
             <button className="cursor-pointer">
               <FaRegComments className="text-lg" />
             </button>
@@ -107,7 +119,7 @@ const PostCard = ({ post }) => {
           </div>
 
           <button
-            className="cursor-pointer p-2 pr-4"
+            className="cursor-pointer p-2 mr-4"
             onClick={() =>
               postAlreadyInBookmarks(post?._id)
                 ? removeBookmarkHandler(post?._id)
@@ -121,7 +133,13 @@ const PostCard = ({ post }) => {
             )}
           </button>
 
-          <button className="cursor-pointer p-2 pr-4">
+          <button
+            className="cursor-pointer p-2 mr-4"
+            onClick={(e) => {
+              e.stopPropagation();
+              sharePost(post?._id);
+            }}
+          >
             <MdShare className="text-lg" />
           </button>
         </div>

@@ -10,3 +10,7 @@ export { SuggestedUsers } from "./SuggestedUsers/SuggestedUsers";
 export { ToastWrapper } from "./ToastWrapper/ToastWrapper";
 export { UserAvatar } from "./UserAvatar/UserAvatar";
 export { PostModal } from "./PostModal/PostModal";
+export { ProfileDetails } from "./ProfileDetails/ProfileDetails";
+export { UsersModal } from "./UsersModal/UsersModal";
+export { SettingsModal } from "./SettingsModal/SettingsModal";
+export { EditUserModal } from "./EditUserModal/EditUserModal";

@@ -8,16 +8,18 @@ import {
   HiPlusCircle,
   HiDotsHorizontal,
 } from "../../utils/icons";
-import { PostModal, PrimaryButton, UserAvatar } from "..";
+import { PostModal, PrimaryButton, SettingsModal, UserAvatar } from "..";
 import { useAuth } from "../../contexts/auth-context";
-import { useState } from "react";
+import { React, useState } from "react";
+import { Modal } from "@mui/material";
 
 const SideBar = () => {
   const { currentUser } = useAuth();
   const [showPostModal, setShowPostModal] = useState(false);
+  const [showSettingsModal, setShowSettingsModal] = useState(false);
 
   const activeStyle = {
-    backgroundColor: "#d1fae5",
+    backgroundColor: "#ccfbf1",
     borderRadius: "9999px",
     width: "max-content",
     fontWeight: "bold",
@@ -26,7 +28,7 @@ const SideBar = () => {
 
   return (
     <aside className=" flex bg-[white] dark:bg-darkGrey sm:sticky sm:flex-col sm:justify-between sm:h-screen sm:top-0 sm:overflow-y-auto overflow-x-hidden fixed bottom-0 left-0 w-full items-center sm:border-0 border-t-2 border-darkGrey dark:border-lightGrey dark:text-lightGrey sm:z-0 z-40 ">
-      <ul className="flex items-center sm:items-start justify-around sm:justify-start px-2 py-1 sm:py-4 sm:flex-col gap-3 sm:gap-3 tracking-wide grow">
+      <ul className="flex items-center sm:items-start justify-around sm:justify-start px-2 py-1 sm:py-4 sm:flex-col gap-3 sm:gap-2 tracking-wide grow">
         <li className="sm:pb-2 sm:px-1 hidden sm:block">
           <Link to="/" className="flex items-center">
             <img src={logoImg} alt="buzzbird" className="h-12 w-12 mr-2" />
@@ -71,7 +73,7 @@ const SideBar = () => {
 
         <li>
           <NavLink
-            to="/profile"
+            to={`/profile/${currentUser?.username}`}
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
             className="p-2 lg:py-1 lg:pl-2 lg:pr-4 w-max flex justify-center items-center hover:bg-lighterPrimary hover:rounded-full  dark:hover:text-darkColor dark:active:text-darkColor"
           >
@@ -91,13 +93,19 @@ const SideBar = () => {
           </PrimaryButton>
         </li>
 
-        <li className="flex p-2 w-max sm:hidden">
+        <li
+          className="flex p-2 w-max sm:hidden"
+          onClick={() => setShowSettingsModal(true)}
+        >
           <UserAvatar className="h-8 w-8" user={currentUser} />
         </li>
       </ul>
 
       <ul className="hidden sm:flex tracking-wide pr-2">
-        <li className="p-3 w-max flex items-center justify-center gap-2">
+        <li
+          className="p-3 w-max flex items-center justify-center gap-2 cursor-pointer"
+          onClick={() => setShowSettingsModal(true)}
+        >
           <UserAvatar className="h-10 w-10" user={currentUser} />
           <div className="hidden text-sm lg:inline">
             <p className="font-bold">
@@ -109,13 +117,20 @@ const SideBar = () => {
         </li>
       </ul>
 
-      {showPostModal ? (
-        <div className="fixed top-0 left-0 w-full h-full z-90 flex justify-center items-center cursor-default bg-[#00000070] backdrop-blur-[1px]">
+      <Modal open={showPostModal} onClose={() => setShowPostModal(false)}>
+        <>
           <PostModal setShowPostModal={setShowPostModal} />
-        </div>
-      ) : (
-        <></>
-      )}
+        </>
+      </Modal>
+
+      <Modal
+        open={showSettingsModal}
+        onClose={() => setShowSettingsModal(false)}
+      >
+        <>
+          <SettingsModal setShowSettingsModal={setShowSettingsModal} />
+        </>
+      </Modal>
     </aside>
   );
 };

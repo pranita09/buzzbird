@@ -1,5 +1,4 @@
 import {
-  FaSmile,
   FaRegHeart,
   FaHeart,
   FaRegComments,
@@ -12,6 +11,9 @@ import {
   FaEdit,
   FaTrash,
   FaUserPlus,
+  FaArrowLeft,
+  FaTimes,
+  FaCamera,
 } from "react-icons/fa";
 import {
   MdCancel,
@@ -20,15 +22,20 @@ import {
   MdExplore,
   MdBookmarks,
   MdPerson,
+  MdDateRange,
+  MdOutlineLightMode,
+  MdOutlineDarkMode,
+  MdLogout,
+  MdOutlineAddPhotoAlternate,
+  MdInsertEmoticon,
 } from "react-icons/md";
-import { HiDotsHorizontal, HiPlusCircle } from "react-icons/hi";
+import { HiDotsHorizontal, HiPlusCircle, HiLink } from "react-icons/hi";
 import { FiSearch } from "react-icons/fi";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { RiUserUnfollowFill } from "react-icons/ri";
-import { BsFillImageFill } from "react-icons/bs";
+import { BsPersonCircle } from "react-icons/bs";
 
 export {
-  FaSmile,
   FaRegHeart,
   FaHeart,
   FaRegComments,
@@ -41,6 +48,9 @@ export {
   FaEdit,
   FaTrash,
   FaUserPlus,
+  FaArrowLeft,
+  FaTimes,
+  FaCamera,
   FiSearch,
   MdCancel,
   MdShare,
@@ -48,10 +58,17 @@ export {
   MdExplore,
   MdBookmarks,
   MdPerson,
+  MdDateRange,
+  MdOutlineLightMode,
+  MdOutlineDarkMode,
+  MdLogout,
+  MdOutlineAddPhotoAlternate,
+  MdInsertEmoticon,
   HiDotsHorizontal,
   HiPlusCircle,
+  HiLink,
   AiOutlineEye,
   AiOutlineEyeInvisible,
   RiUserUnfollowFill,
-  BsFillImageFill,
+  BsPersonCircle,
 };

@@ -1,13 +1,27 @@
 import { useUsers } from "../../contexts/user-context";
 import { UserAvatar } from "..";
+import { useNavigate } from "react-router-dom";
+import { actionTypes } from "../../utils/constants";
 
 const SearchedUsersModal = () => {
-  const { searchedUsers } = useUsers();
+  const navigate = useNavigate();
+
+  const { searchedUsers, usersDispatch } = useUsers();
+
+  const { SEARCH_USER } = actionTypes;
+
   return (
     <div className="flex flex-col gap-4 text-sm xl:text-base w-full p-4 z-40 bg-lighterPrimary rounded-md border border-darkGrey sticky top-0 mt-2">
       {searchedUsers.length ? (
         searchedUsers?.map((user) => (
-          <div key={user._id} className="flex flex-start gap-2 cursor-pointer">
+          <div
+            key={user._id}
+            className="flex flex-start gap-2 cursor-pointer"
+            onClick={() => {
+              navigate(`/profile/${user?.username}`);
+              usersDispatch({ type: SEARCH_USER, payload: "" });
+            }}
+          >
             <UserAvatar user={user} className="h-8 w-8" />
             <div className="flex flex-col grow -mt-0.5">
               <span className="text-sm">

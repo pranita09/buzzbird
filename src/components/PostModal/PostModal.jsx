@@ -1,15 +1,35 @@
 import { useAuth } from "../../contexts/auth-context";
 import { PrimaryButton, SecondaryButton, UserAvatar } from "..";
 import { useRef, useState } from "react";
-import { BsFillImageFill, FaSmile, MdCancel } from "../../utils/icons";
+import {
+  MdOutlineAddPhotoAlternate,
+  MdInsertEmoticon,
+  MdCancel,
+} from "../../utils/icons";
 import { toast } from "react-hot-toast";
 import { uploadMedia } from "../../utils/uploadMedia";
 import { usePosts } from "../../contexts/post-context";
+import { Modal } from "@mui/material";
+import data from "@emoji-mart/data";
+import Picker from "@emoji-mart/react";
+import { useTheme } from "../../contexts/theme-context";
 
 const PostModal = ({ post, setShowPostModal, setShowOptions }) => {
+  const { isDarkTheme } = useTheme();
   const { currentUser } = useAuth();
   const { createPostHandler, editPostHandler } = usePosts();
 
+  const styles = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    bgcolor: "background.paper",
+    boxShadow: 24,
+    p: 4,
+  };
+
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [content, setContent] = useState(post || {});
   const [media, setMedia] = useState(null);
 
@@ -56,12 +76,16 @@ const PostModal = ({ post, setShowPostModal, setShowOptions }) => {
     setShowPostModal(false);
     setContent({});
     setMedia(null);
+    setShowEmojiPicker(false);
     postRef.current.innterText = "";
   };
 
   return (
-    <div className="grid grid-cols-[2rem_1fr] gap-2 items-start bg-lighterPrimary text-sm border-darkGrey px-4 py-3 cursor-text w-[80%] sm:w-[50%] shadow-dark shadow-lg rounded-md border">
-      <UserAvatar user={currentUser} className="h-9 w-9" />
+    <div
+      style={styles}
+      className="grid grid-cols-[2.5rem_1fr] gap-2 items-start bg-lighterPrimary text-sm border-darkGrey px-4 py-3 cursor-text w-[90%] sm:w-[60%] xl:w-[45%] shadow-dark shadow-lg rounded-md border"
+    >
+      <UserAvatar user={currentUser} className="h-10 w-10" />
       <form className="flex flex-col gap-4" onSubmit={submitHandler}>
         <div className="w-full break-all outline-none mt-1.5 bg-lighterPrimary">
           <textarea
@@ -106,21 +130,17 @@ const PostModal = ({ post, setShowPostModal, setShowOptions }) => {
             <label className="cursor-pointer text-lg">
               <input
                 type="file"
-                accept="/image*"
+                accept="image/*, video/*"
                 className="hidden"
-                onChange={(e) => {
-                  if (Math.round(e.target.files[0].size / 1024000) > 1) {
-                    toast.error("File size should not be more than 1Mb");
-                  } else {
-                    setMedia(e.target.files[0]);
-                  }
-                }}
+                onChange={(e) => setMedia(e.target.files[0])}
               />
-              <BsFillImageFill />
+              <MdOutlineAddPhotoAlternate className="text-xl" />
             </label>
-            <label className="cursor-pointer text-xl">
-              <input className="hidden" />
-              <FaSmile />
+            <label
+              className="cursor-pointer text-xl"
+              onClick={() => setShowEmojiPicker((prev) => !prev)}
+            >
+              <MdInsertEmoticon className="text-xl" />
             </label>
           </div>
           <div className="flex gap-3">
@@ -144,6 +164,29 @@ const PostModal = ({ post, setShowPostModal, setShowOptions }) => {
           </div>
         </div>
       </form>
+
+      <Modal open={showEmojiPicker} onClose={() => setShowEmojiPicker(false)}>
+        <div style={styles}>
+          <Picker
+            data={data}
+            emojiSize={20}
+            emojiButtonSize={28}
+            maxFrequentRows={0}
+            navPosition="bottom"
+            previewPosition="none"
+            theme={isDarkTheme ? "dark" : "light"}
+            onEmojiSelect={(emoji) => {
+              setContent((prev) => ({
+                ...prev,
+                content: prev.content
+                  ? prev.content + emoji.native
+                  : emoji.native,
+              }));
+              setShowEmojiPicker(false);
+            }}
+          />
+        </div>
+      </Modal>
     </div>
   );
 };
