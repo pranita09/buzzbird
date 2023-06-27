@@ -1,5 +1,11 @@
 import { usePosts } from "../../contexts/post-context";
-import { SideBar, SearchBar, PostCard, SuggestedUsers } from "../../components";
+import {
+  SideBar,
+  SearchBar,
+  PostCard,
+  SuggestedUsers,
+  Loader,
+} from "../../components";
 import { sortPosts } from "../../utils/sortPosts";
 import { actionTypes } from "../../utils/constants";
 import React, { useEffect, useRef } from "react";
@@ -73,7 +79,7 @@ const Explore = () => {
         <div>
           <div>
             {isLoading ? (
-              "Loader"
+              <Loader />
             ) : sortedPosts?.length > 0 ? (
               <>
                 {sortedPosts.map((post, index) => {

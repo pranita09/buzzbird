@@ -1,4 +1,5 @@
 import {
+  Loader,
   NewPost,
   PostCard,
   SearchBar,
@@ -43,7 +44,7 @@ const Home = () => {
           <SortBar />
           <div>
             {isLoading ? (
-              "Loader"
+              <Loader />
             ) : sortedPosts?.length > 0 ? (
               sortedPosts?.map((post) => (
                 <PostCard key={post._id} post={post} />

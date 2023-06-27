@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import {
+  Loader,
   PostCard,
   ProfileDetails,
   SearchBar,
@@ -41,33 +42,39 @@ const UserProfile = () => {
       <SideBar />
 
       <div className="sm:border-x border-darkGrey dark:border-lightGrey">
-        <h1 className=" p-3 sticky top-0 backdrop-blur-md z-20 border-b border-darkGrey dark:border-lightGrey flex items-center">
-          <FaArrowLeft
-            className="mr-5 mx-1 cursor-pointer"
-            onClick={() => navigate(-1)}
-          />
-          <span>
-            <p className="font-bold tracking-wide">
-              {user.firstName + " " + user.lastName}
-            </p>
-            <p className="text-sm text-[grey]">{userPosts?.length} posts</p>
-          </span>
-        </h1>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <>
+            <h1 className=" p-3 sticky top-0 backdrop-blur-md z-20 border-b border-darkGrey dark:border-lightGrey flex items-center">
+              <FaArrowLeft
+                className="mr-5 mx-1 cursor-pointer"
+                onClick={() => navigate(-1)}
+              />
+              <span>
+                <p className="font-bold tracking-wide">
+                  {user.firstName + " " + user.lastName}
+                </p>
+                <p className="text-sm text-[grey]">{userPosts?.length} posts</p>
+              </span>
+            </h1>
 
-        <div>
-          {user ? <ProfileDetails user={user} /> : <></>}
-          {isLoading ? (
-            "Loader"
-          ) : !user ? (
-            <p className="p-4 text-center font-bold">User not found.</p>
-          ) : userPosts?.length ? (
-            sortPosts(userPosts, "Latest")?.map((post) => (
-              <PostCard key={post._id} post={post} />
-            ))
-          ) : (
-            <p className="p-4 text-center font-bold">No posts to show.</p>
-          )}
-        </div>
+            <div>
+              {user ? <ProfileDetails user={user} /> : <></>}
+              {isLoading ? (
+                <Loader />
+              ) : !user ? (
+                <p className="p-4 text-center font-bold">User not found.</p>
+              ) : userPosts?.length ? (
+                sortPosts(userPosts, "Latest")?.map((post) => (
+                  <PostCard key={post._id} post={post} />
+                ))
+              ) : (
+                <p className="p-4 text-center font-bold">No posts to show.</p>
+              )}
+            </div>
+          </>
+        )}
       </div>
 
       <div className="hidden xl:block">
