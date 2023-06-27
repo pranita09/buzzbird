@@ -152,24 +152,6 @@ export const PostsProvider = ({ children }) => {
   const likedByLoggedUser = (post, user) =>
     post?.likes.likedBy.find((likeUser) => likeUser.username === user.username);
 
-  const filteredPosts = (posts) => {
-    if (postsState.filterType) {
-      if (postsState.filterType === "Trending") {
-        return posts.sort((a, b) => b.likes.likeCount - a.likes.likeCount);
-      } else if (postsState.filterType === "Latest") {
-        return posts.sort(
-          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-        );
-      } else if (postsState.filterType === "Oldest") {
-        return posts.sort(
-          (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
-        );
-      }
-    } else {
-      return posts;
-    }
-  };
-
   useEffect(() => {
     getAllPosts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -184,7 +166,6 @@ export const PostsProvider = ({ children }) => {
         likePostHandler,
         dislikePostHandler,
         likedByLoggedUser,
-        filteredPosts,
         createPostHandler,
         deletePostHandler,
         editPostHandler,

@@ -11,6 +11,7 @@ import { usePosts } from "../../contexts/post-context";
 import { FaArrowLeft } from "../../utils/icons";
 import { useEffect } from "react";
 import { useAuth } from "../../contexts/auth-context";
+import { sortPosts } from "../../utils/sortPosts";
 
 const UserProfile = () => {
   const navigate = useNavigate();
@@ -60,7 +61,7 @@ const UserProfile = () => {
           ) : !user ? (
             <p className="p-4 text-center font-bold">User not found.</p>
           ) : userPosts?.length ? (
-            [...userPosts]?.map((post) => (
+            sortPosts(userPosts, "Latest")?.map((post) => (
               <PostCard key={post._id} post={post} />
             ))
           ) : (
