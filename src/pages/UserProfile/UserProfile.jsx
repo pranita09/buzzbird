@@ -23,10 +23,10 @@ const UserProfile = () => {
   const {
     usersState: { user },
     getUserByUsername,
+    isLoading,
   } = useUsers();
   const {
     postsState: { posts },
-    isLoading,
   } = usePosts();
 
   const userPosts = posts?.filter((post) => post.username === user?.username);
