@@ -168,7 +168,16 @@ export const users = [
     createdAt: "2017-05-15T01:06:00+05:30",
     updatedAt: formatDate(),
     following: [],
-    followers: [],
+    followers: [
+      {
+        _id: "t7cZfWIp-q",
+        firstName: "Emily",
+        lastName: "Smith",
+        username: "emilysmith",
+        profileAvatar:
+          "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331085/socialMedia/Emily-Smith_jfepcx.jpg",
+      },
+    ],
     bookmarks: [],
   },
   {
