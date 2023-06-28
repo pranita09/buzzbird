@@ -35,19 +35,24 @@ const Explore = () => {
 
   console.log(page);
   console.log(elementRef.current);
+  console.log(sortedPosts);
 
   useEffect(() => {
     if (sortedPosts.length > 0) {
-      const observer = new IntersectionObserver(handleObserver);
-      if (observer && elementRef.current) {
+      console.log("To check");
+      const observer = new IntersectionObserver(handleObserver, {
+        threshold: 1,
+      });
+      if (elementRef.current) {
         observer.observe(elementRef.current);
       }
       return () => {
         if (observer) {
-          observer.unobserve(elementRef);
+          observer?.unobserve(elementRef);
         }
       };
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
@@ -86,8 +91,9 @@ const Explore = () => {
                   return (
                     <React.Fragment key={post._id}>
                       <PostCard post={post} />
+                      {console.log(index === sortedPosts?.length - 1)}
                       {index === sortedPosts?.length - 1 && (
-                        <div ref={elementRef} className="h-0" />
+                        <div ref={elementRef} />
                       )}
                     </React.Fragment>
                   );
