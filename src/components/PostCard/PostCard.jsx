@@ -46,7 +46,7 @@ const PostCard = ({ post }) => {
         <UserAvatar user={userWhoPosted} className="h-9 w-9" />
       </div>
 
-      <div className="flex flex-col gap-2 break-all">
+      <div className="flex flex-col gap-2 break-words">
         <div className="flex justify-between">
           <div className="flex items-start 2xl:items-center gap-1.5">
             <div
@@ -64,7 +64,7 @@ const PostCard = ({ post }) => {
 
           <div className="relative">
             <HiDotsHorizontal
-              className="cursor-pointer text-lg m-2"
+              className="cursor-pointer text-lg m-2 hover:scale-105"
               onClick={() => setShowOptions((prev) => !prev)}
             />
             {showOptions && (
@@ -99,9 +99,9 @@ const PostCard = ({ post }) => {
               }
             >
               {likedByLoggedUser(post, currentUser) ? (
-                <FaHeart className="text-lg text-red" />
+                <FaHeart className="text-lg text-red hover:scale-125" />
               ) : (
-                <FaRegHeart className="text-lg" />
+                <FaRegHeart className="text-lg hover:scale-125" />
               )}
             </button>
             {post?.likes?.likeCount > 0 && (
@@ -111,7 +111,7 @@ const PostCard = ({ post }) => {
 
           <div className="flex justify-center p-2 mr-4">
             <button className="cursor-pointer">
-              <FaRegComments className="text-lg" />
+              <FaRegComments className="text-lg hover:scale-125" />
             </button>
             {post?.comments.length > 0 && (
               <span className="ml-1">{post?.comments.length}</span>
@@ -127,9 +127,9 @@ const PostCard = ({ post }) => {
             }
           >
             {postAlreadyInBookmarks(post?._id) ? (
-              <FaBookmark className="text-lg" />
+              <FaBookmark className="text-lg hover:scale-125" />
             ) : (
-              <FaRegBookmark className="text-lg" />
+              <FaRegBookmark className="text-lg hover:scale-125" />
             )}
           </button>
 
@@ -140,7 +140,7 @@ const PostCard = ({ post }) => {
               sharePost(post?._id);
             }}
           >
-            <MdShare className="text-lg" />
+            <MdShare className="text-lg hover:scale-125" />
           </button>
         </div>
       </div>

@@ -103,7 +103,7 @@ const Home = () => {
                 {!sortedPosts?.length === postsOfFollowingUsers?.length &&
                   isNextPostLoading && (
                     <div className="text-center text-sm mt-2">
-                      Load more items
+                      Load more posts
                     </div>
                   )}
               </>

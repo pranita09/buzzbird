@@ -101,7 +101,7 @@ const SideBar = () => {
         </li>
       </ul>
 
-      <ul className="hidden sm:flex tracking-wide pr-2">
+      <ul className="hidden sm:flex pr-2">
         <li
           className="p-3 w-max flex items-center justify-center gap-2 cursor-pointer"
           onClick={() => setShowSettingsModal(true)}
@@ -113,7 +113,10 @@ const SideBar = () => {
             </p>
             <p className="font-normal">@{currentUser?.username}</p>
           </div>
-          <HiDotsHorizontal className="ml-4 hidden lg:inline" />
+          <HiDotsHorizontal
+            className="ml-4 hidden lg:inline hover:scale-105"
+            title="Settings Options"
+          />
         </li>
       </ul>
 
