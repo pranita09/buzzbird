@@ -17,3 +17,4 @@ export { EditUserModal } from "./EditUserModal/EditUserModal";
 export { Loader } from "./Loader/Loader";
 export { CommentCard } from "./CommentCard/CommentCard";
 export { CommentOptionsModal } from "./CommentOptionsModal/CommentOptionsModal";
+export { CommentModal } from "./CommentModal/CommentModal";
