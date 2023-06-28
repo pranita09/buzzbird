@@ -198,8 +198,8 @@ export const posts = [
       dislikedBy: [],
     },
     username: "emilysmith",
-    createdAt: "2023-03-17T01:06:00+05:30",
-    updatedAt: "2023-03-17T01:06:00+05:30",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
     comments: [
       {
         _id: "qq83zWjEeXd",
@@ -801,8 +801,8 @@ export const posts = [
       dislikedBy: [],
     },
     username: "emilysmith",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: "2023-03-17T01:06:00+05:30",
+    updatedAt: "2023-03-17T01:06:00+05:30",
     comments: [],
   },
   {
