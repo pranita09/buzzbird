@@ -13,6 +13,9 @@ export const defaultBgImage =
 export const dummyProfileImage =
   "https://res.cloudinary.com/dxnbnviuz/image/upload/v1687603602/socialMedia/AvatarTwo_isbynr.png";
 
+export const errorImage =
+  "https://res.cloudinary.com/dxnbnviuz/image/upload/v1687994901/socialMedia/Oops_404_Error_with_a_broken_robot-cuate_lzgce5.svg";
+
 export const avatarImages = [
   "https://res.cloudinary.com/dxnbnviuz/image/upload/v1687603622/socialMedia/AvatarSix_wqf4ya.png",
   "https://res.cloudinary.com/dxnbnviuz/image/upload/v1687603611/socialMedia/AvatarFour_otab93.png",

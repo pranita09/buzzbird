@@ -8,6 +8,7 @@ import {
   Bookmarks,
   UserProfile,
   SinglePost,
+  PageNotFound,
 } from "../pages";
 import { PrivateRoutes } from "./PrivateRoutes";
 
@@ -26,6 +27,7 @@ const AppRoutes = () => {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
         </Route>
+        <Route path="/*" element={<PageNotFound />} />
       </Routes>
     </div>
   );
