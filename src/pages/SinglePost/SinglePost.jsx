@@ -36,7 +36,7 @@ const SinglePost = () => {
 
   const { currentUser } = useAuth();
   const {
-    postsState: { posts, post: currentPost },
+    postsState: { post: currentPost },
     getSinglePost,
     isLoading,
     likePostHandler,
