@@ -208,8 +208,8 @@ export const posts = [
         username: "livparker",
         profileAvatar:
           "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331058/socialMedia/Olivia-Parker_nbmkdw.jpg",
-        createdAt: "2023-03-19T01:06:00+05:30",
-        updatedAt: "2023-03-19T01:06:00+05:30",
+        createdAt: formatDate(),
+        updatedAt: formatDate(),
       },
       {
         _id: "1N5R81Bzmuh",
@@ -219,8 +219,8 @@ export const posts = [
         username: "aryan987",
         profileAvatar:
           "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686330990/socialMedia/Aryan-Patel_cwyebe.jpg",
-        createdAt: "2023-03-20T01:06:00+05:30",
-        updatedAt: "2023-03-20T01:06:00+05:30",
+        createdAt: formatDate(),
+        updatedAt: formatDate(),
       },
     ],
   },
