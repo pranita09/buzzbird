@@ -84,12 +84,12 @@ const Explore = () => {
                     </React.Fragment>
                   );
                 })}
-                {sortedPosts?.length === posts?.length ||
-                  (isNextPostLoading && (
+                {!sortedPosts?.length === posts?.length &&
+                  isNextPostLoading && (
                     <div className="text-center text-sm mt-2">
                       Load more items
                     </div>
-                  ))}
+                  )}
               </>
             ) : (
               <div className="p-4 text-center text-lg font-bold">

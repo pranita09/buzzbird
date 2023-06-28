@@ -100,12 +100,12 @@ const Home = () => {
                     </React.Fragment>
                   );
                 })}
-                {sortedPosts?.length === postsOfFollowingUsers?.length ||
-                  (isNextPostLoading && (
+                {!sortedPosts?.length === postsOfFollowingUsers?.length &&
+                  isNextPostLoading && (
                     <div className="text-center text-sm mt-2">
                       Load more items
                     </div>
-                  ))}
+                  )}
               </>
             ) : (
               <div className="p-4 text-center text-lg font-bold">
