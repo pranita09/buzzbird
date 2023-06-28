@@ -15,3 +15,5 @@ export { UsersModal } from "./UsersModal/UsersModal";
 export { SettingsModal } from "./SettingsModal/SettingsModal";
 export { EditUserModal } from "./EditUserModal/EditUserModal";
 export { Loader } from "./Loader/Loader";
+export { CommentCard } from "./CommentCard/CommentCard";
+export { CommentOptionsModal } from "./CommentOptionsModal/CommentOptionsModal";

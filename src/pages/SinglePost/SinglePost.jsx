@@ -1,7 +1,396 @@
-export const SinglePost = () => {
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  SideBar,
+  SuggestedUsers,
+  SearchBar,
+  Loader,
+  UserAvatar,
+  PostOptionsModal,
+  PrimaryButton,
+  UsersModal,
+  CommentCard,
+} from "../../components";
+import { usePosts } from "../../contexts/post-context";
+import { useEffect, useRef, useState } from "react";
+import { useAuth } from "../../contexts/auth-context";
+import { useUsers } from "../../contexts/user-context";
+import {
+  FaArrowLeft,
+  HiDotsHorizontal,
+  FaHeart,
+  FaRegHeart,
+  FaRegComments,
+  FaBookmark,
+  FaRegBookmark,
+  MdShare,
+} from "../../utils/icons";
+import { getPostDate } from "../../utils/getPostDate";
+import { sharePost } from "../../utils/sharePost";
+import { Modal } from "@mui/material";
+
+const currentPost = {
+  _id: "",
+  content: "It's my Birthday today!",
+  mediaURL:
+    "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686386278/socialMedia/cake_g0csez.jpg",
+  mediaAlt: "A piece of cake",
+  likes: {
+    likeCount: 5,
+    likedBy: [
+      {
+        _id: "t7cZfWIp-q",
+        firstName: "Emily",
+        lastName: "Smith",
+        username: "emilysmith",
+        profileAvatar:
+          "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331085/socialMedia/Emily-Smith_jfepcx.jpg",
+      },
+      {
+        _id: "79Gksh9otl",
+        firstName: "Sarah",
+        lastName: "Wilson",
+        username: "wilsarah",
+        profileAvatar:
+          "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331082/socialMedia/Sarah-Wilson_io6cpx.jpg",
+      },
+      {
+        _id: "ab8zWjEeXd",
+        firstName: "James",
+        lastName: "Murphy",
+        username: "jamesmurf",
+        profileAvatar:
+          "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331038/socialMedia/James-Murphy_djl3zv.jpg",
+      },
+      {
+        _id: "1T6Be1QpLm",
+        firstName: "Jacob",
+        lastName: "Mitchell",
+        username: "jacobmitch",
+        profileAvatar:
+          "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331002/socialMedia/Jacob-Mitchell_elh9gg.jpg",
+      },
+      {
+        _id: "qq8zWjEeXd",
+        firstName: "Olivia",
+        lastName: "Parker",
+        username: "livparker",
+        profileAvatar:
+          "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331058/socialMedia/Olivia-Parker_nbmkdw.jpg",
+      },
+    ],
+    dislikedBy: [],
+  },
+  username: "livparker",
+  createdAt: "",
+  updatedAt: "",
+  comments: [
+    {
+      _id: "t1cZfWIp-q",
+      comment: "Wish you a very Happy Birthday, dear!",
+      firstName: "Emily",
+      lastName: "Smith",
+      username: "emilysmith",
+      profileAvatar:
+        "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331085/socialMedia/Emily-Smith_jfepcx.jpg",
+      createdAt: "",
+      updatedAt: "",
+    },
+    {
+      _id: "q18zWjEeXd",
+      comment: "Happy Birthday, girl!",
+      firstName: "Olivia",
+      lastName: "Parker",
+      username: "livparker",
+      profileAvatar:
+        "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331058/socialMedia/Olivia-Parker_nbmkdw.jpg",
+      createdAt: "",
+      updatedAt: "",
+    },
+    {
+      _id: "116Be1QpLm",
+      comment: "Happy Birthday! Be always happy!",
+      firstName: "Jacob",
+      lastName: "Mitchell",
+      username: "jacobmitch",
+      profileAvatar:
+        "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331002/socialMedia/Jacob-Mitchell_elh9gg.jpg",
+      createdAt: "",
+      updatedAt: "",
+    },
+  ],
+};
+
+const SinglePost = () => {
+  const { postId } = useParams();
+  const navigate = useNavigate();
+
+  const newCommentRef = useRef();
+
+  const { currentUser } = useAuth();
+  const {
+    getSinglePost,
+    isLoading,
+    likePostHandler,
+    dislikePostHandler,
+    likedByLoggedUser,
+  } = usePosts();
+  const {
+    usersState: { users },
+    addBookmarkHandler,
+    removeBookmarkHandler,
+    postAlreadyInBookmarks,
+  } = useUsers();
+
+  const [showOptions, setShowOptions] = useState(false);
+  const [likesModal, setLikesModal] = useState({
+    show: false,
+    title: "",
+    list: [],
+  });
+
+  const userWhoPosted = users?.find(
+    (user) => user.username === currentPost?.username
+  );
+
+  useEffect(() => {
+    getSinglePost(postId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [postId]);
+
   return (
-    <div>
-      <h1>SinglePost</h1>
+    <div className="grid sm:grid-cols-[5rem_1fr] lg:grid-cols-[12rem_1fr] xl:grid-cols-[13rem_1fr_20rem] w-[100%] lg:w-[80%] mb-16 sm:m-auto dark:bg-darkGrey dark:text-lightGrey transition-all duration-500">
+      <SideBar />
+
+      <div className="sm:border-x border-darkGrey dark:border-lightGrey">
+        <h1 className=" p-3 sticky top-0 backdrop-blur-md z-20 border-b border-darkGrey dark:border-lightGrey flex items-center">
+          <FaArrowLeft
+            className="mr-5 mx-1 cursor-pointer"
+            onClick={() => navigate(-1)}
+          />
+          <span>
+            <p>Post</p>
+          </span>
+        </h1>
+
+        <div>
+          {isLoading ? (
+            <Loader />
+          ) : currentPost ? (
+            <div className="flex flex-col gap-2 text-sm border-b border-darkGrey px-4 py-3 break-words">
+              <div className="grid grid-cols-[2.25rem_1fr] gap-2">
+                <div
+                  className="cursor-pointer"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate(`/profile/${currentPost?.username}`);
+                  }}
+                >
+                  <UserAvatar user={userWhoPosted} className="h-9 w-9" />
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <div className="flex justify-between">
+                    <div
+                      className="flex gap-2"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        navigate(`/profile/${currentPost?.username}`);
+                      }}
+                    >
+                      <div className="flex flex-col cursor-pointer">
+                        <span className="font-bold tracking-wide">
+                          {userWhoPosted?.firstName +
+                            " " +
+                            userWhoPosted?.lastName}
+                        </span>
+                        <span className="text-[grey] -mt-1">
+                          @{userWhoPosted?.username}
+                        </span>
+                      </div>
+                      <span className="text-[grey]">.</span>
+                      <div className="text-[grey]">
+                        {getPostDate(currentPost?.createdAt)}
+                      </div>
+                    </div>
+
+                    <div className="relative">
+                      <HiDotsHorizontal
+                        className="cursor-pointer text-lg m-2 hover:scale-105"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setShowOptions((prev) => !prev);
+                        }}
+                      />
+                      {showOptions && (
+                        <PostOptionsModal
+                          post={currentPost}
+                          setShowOptions={setShowOptions}
+                        />
+                      )}
+                    </div>
+                  </div>
+
+                  <div>{currentPost?.content}</div>
+
+                  {currentPost?.mediaURL &&
+                    (currentPost?.mediaURL.split("/")[4] === "image" ? (
+                      <img
+                        src={currentPost?.mediaURL}
+                        alt={currentPost?.mediaAlt}
+                        className="w-full h-auto rounded-md"
+                      />
+                    ) : (
+                      <video controls className="w-full h-auto rounded-md">
+                        <source src={currentPost?.mediaURL} type="video/mp4" />
+                      </video>
+                    ))}
+                </div>
+              </div>
+
+              {currentPost?.likes.likeCount > 0 && (
+                <button
+                  className="border-t border-darkGrey text-left pt-2 mt-2 cursor-pointer hover:underline"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setLikesModal(() => ({
+                      show: true,
+                      title: "Liked By",
+                      list: currentPost?.likes?.likedBy,
+                    }));
+                  }}
+                >
+                  <span className="font-bold">
+                    {currentPost?.likes?.likeCount}
+                  </span>{" "}
+                  <span className="text-[grey]">Likes</span>
+                </button>
+              )}
+
+              <div className="flex justify-evenly gap-6 mt-1 -mb-1 border-t border-darkGrey">
+                <div className="flex justify-center p-2 mr-4">
+                  <button
+                    className="cursor-pointer"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      likedByLoggedUser(currentPost, currentUser)
+                        ? dislikePostHandler(currentPost?._id)
+                        : likePostHandler(currentPost?._id);
+                    }}
+                  >
+                    {likedByLoggedUser(currentPost, currentUser) ? (
+                      <FaHeart className="text-lg text-red hover:scale-125" />
+                    ) : (
+                      <FaRegHeart className="text-lg hover:scale-125" />
+                    )}
+                  </button>
+                  {currentPost?.likes?.likeCount > 0 && (
+                    <span className="ml-2">
+                      {currentPost?.likes?.likeCount}
+                    </span>
+                  )}
+                </div>
+
+                <div className="flex justify-center p-2 mr-4">
+                  <button
+                    className="cursor-pointer"
+                    onClick={() =>
+                      newCommentRef.current && newCommentRef.current.focus()
+                    }
+                  >
+                    <FaRegComments className="text-lg hover:scale-125" />
+                  </button>
+                  {currentPost?.comments.length > 0 && (
+                    <span className="ml-2">{currentPost?.comments.length}</span>
+                  )}
+                </div>
+
+                <button
+                  className="cursor-pointer p-2 mr-4"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    postAlreadyInBookmarks(currentPost?._id)
+                      ? removeBookmarkHandler(currentPost?._id)
+                      : addBookmarkHandler(currentPost?._id);
+                  }}
+                >
+                  {postAlreadyInBookmarks(currentPost?._id) ? (
+                    <FaBookmark className="text-lg hover:scale-125" />
+                  ) : (
+                    <FaRegBookmark className="text-lg hover:scale-125" />
+                  )}
+                </button>
+
+                <button
+                  className="cursor-pointer p-2 mr-4"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    sharePost(currentPost?._id);
+                  }}
+                >
+                  <MdShare className="text-lg hover:scale-125" />
+                </button>
+              </div>
+
+              <div className="grid grid-cols-[2.25rem_1fr] gap-2 pt-3 border-t border-darkGrey">
+                <UserAvatar user={currentUser} className="h-9 w-9" />
+
+                <form className="flex justify-between">
+                  <input
+                    type="text"
+                    ref={newCommentRef}
+                    placeholder="Post your reply"
+                    className="outline-none bg-inherit w-full"
+                    required
+                  />
+                  <PrimaryButton
+                    type="submit"
+                    className="rounded-md py-0.5 px-3 ml-4 disabled:opacity-50 disabled:cursor-not-allowed"
+                    disabled=""
+                  >
+                    Reply
+                  </PrimaryButton>
+                </form>
+              </div>
+
+              {currentPost?.comments?.length > 0 &&
+                currentPost?.comments
+                  .reverse()
+                  ?.map((comment) => (
+                    <CommentCard
+                      key={comment?._id}
+                      comment={comment}
+                      postId={currentPost?._id}
+                    />
+                  ))}
+            </div>
+          ) : (
+            <p className="p-4 text-center">Post Not Found</p>
+          )}
+        </div>
+      </div>
+
+      {likesModal.show && (
+        <Modal
+          open={likesModal.show}
+          onClose={() =>
+            setLikesModal(() => ({ show: false, title: "", list: [] }))
+          }
+        >
+          <>
+            <UsersModal
+              usersListModal={likesModal}
+              setUsersListModal={setLikesModal}
+            />
+          </>
+        </Modal>
+      )}
+
+      <div className="hidden xl:block">
+        <SearchBar />
+        <SuggestedUsers />
+      </div>
     </div>
   );
 };
+
+export { SinglePost };
