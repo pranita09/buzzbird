@@ -168,8 +168,11 @@ export const PostsProvider = ({ children }) => {
     }
   };
 
-  const likedByLoggedUser = (post, user) =>
-    post?.likes.likedBy.find((likeUser) => likeUser.username === user.username);
+  const likedByLoggedUser = (post, user) => {
+    return post?.likes?.likedBy?.find(
+      (likeUser) => likeUser.username === user.username
+    );
+  };
 
   useEffect(() => {
     getAllPosts();

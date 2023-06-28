@@ -28,98 +28,6 @@ import { getPostDate } from "../../utils/getPostDate";
 import { sharePost } from "../../utils/sharePost";
 import { Modal } from "@mui/material";
 
-const currentPost = {
-  _id: "",
-  content: "It's my Birthday today!",
-  mediaURL:
-    "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686386278/socialMedia/cake_g0csez.jpg",
-  mediaAlt: "A piece of cake",
-  likes: {
-    likeCount: 5,
-    likedBy: [
-      {
-        _id: "t7cZfWIp-q",
-        firstName: "Emily",
-        lastName: "Smith",
-        username: "emilysmith",
-        profileAvatar:
-          "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331085/socialMedia/Emily-Smith_jfepcx.jpg",
-      },
-      {
-        _id: "79Gksh9otl",
-        firstName: "Sarah",
-        lastName: "Wilson",
-        username: "wilsarah",
-        profileAvatar:
-          "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331082/socialMedia/Sarah-Wilson_io6cpx.jpg",
-      },
-      {
-        _id: "ab8zWjEeXd",
-        firstName: "James",
-        lastName: "Murphy",
-        username: "jamesmurf",
-        profileAvatar:
-          "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331038/socialMedia/James-Murphy_djl3zv.jpg",
-      },
-      {
-        _id: "1T6Be1QpLm",
-        firstName: "Jacob",
-        lastName: "Mitchell",
-        username: "jacobmitch",
-        profileAvatar:
-          "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331002/socialMedia/Jacob-Mitchell_elh9gg.jpg",
-      },
-      {
-        _id: "qq8zWjEeXd",
-        firstName: "Olivia",
-        lastName: "Parker",
-        username: "livparker",
-        profileAvatar:
-          "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331058/socialMedia/Olivia-Parker_nbmkdw.jpg",
-      },
-    ],
-    dislikedBy: [],
-  },
-  username: "livparker",
-  createdAt: "",
-  updatedAt: "",
-  comments: [
-    {
-      _id: "t1cZfWIp-q",
-      comment: "Wish you a very Happy Birthday, dear!",
-      firstName: "Emily",
-      lastName: "Smith",
-      username: "emilysmith",
-      profileAvatar:
-        "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331085/socialMedia/Emily-Smith_jfepcx.jpg",
-      createdAt: "",
-      updatedAt: "",
-    },
-    {
-      _id: "q18zWjEeXd",
-      comment: "Happy Birthday, girl!",
-      firstName: "Olivia",
-      lastName: "Parker",
-      username: "livparker",
-      profileAvatar:
-        "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331058/socialMedia/Olivia-Parker_nbmkdw.jpg",
-      createdAt: "",
-      updatedAt: "",
-    },
-    {
-      _id: "116Be1QpLm",
-      comment: "Happy Birthday! Be always happy!",
-      firstName: "Jacob",
-      lastName: "Mitchell",
-      username: "jacobmitch",
-      profileAvatar:
-        "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331002/socialMedia/Jacob-Mitchell_elh9gg.jpg",
-      createdAt: "",
-      updatedAt: "",
-    },
-  ],
-};
-
 const SinglePost = () => {
   const { postId } = useParams();
   const navigate = useNavigate();
@@ -128,6 +36,7 @@ const SinglePost = () => {
 
   const { currentUser } = useAuth();
   const {
+    postsState: { posts, post: currentPost },
     getSinglePost,
     isLoading,
     likePostHandler,
@@ -247,7 +156,7 @@ const SinglePost = () => {
                 </div>
               </div>
 
-              {currentPost?.likes.likeCount > 0 && (
+              {currentPost?.likes?.likeCount > 0 && (
                 <button
                   className="border-t border-darkGrey text-left pt-2 mt-2 cursor-pointer hover:underline"
                   onClick={(e) => {
@@ -299,8 +208,10 @@ const SinglePost = () => {
                   >
                     <FaRegComments className="text-lg hover:scale-125" />
                   </button>
-                  {currentPost?.comments.length > 0 && (
-                    <span className="ml-2">{currentPost?.comments.length}</span>
+                  {currentPost?.comments?.length > 0 && (
+                    <span className="ml-2">
+                      {currentPost?.comments?.length}
+                    </span>
                   )}
                 </div>
 
