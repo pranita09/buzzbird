@@ -2,6 +2,9 @@ import axios from "axios";
 
 const getAllPostsService = async () => await axios.get("/api/posts");
 
+const getSinglePostService = async (postId) =>
+  await axios.get(`/api/posts/${postId}`);
+
 const createPostService = async (content, mediaURL, mediaAlt, encodedToken) =>
   await axios.post(
     "/api/posts",
@@ -54,4 +57,5 @@ export {
   deletePostService,
   likePostService,
   dislikePostService,
+  getSinglePostService,
 };

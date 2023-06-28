@@ -7,6 +7,7 @@ import {
   Explore,
   Bookmarks,
   UserProfile,
+  SinglePost,
 } from "../pages";
 import { PrivateRoutes } from "./PrivateRoutes";
 
@@ -19,6 +20,7 @@ const AppRoutes = () => {
           <Route path="/explore" element={<Explore />} />
           <Route path="/bookmarks" element={<Bookmarks />} />
           <Route path="/profile/:username" element={<UserProfile />} />
+          <Route path="/post/:postId" element={<SinglePost />} />
         </Route>
         <Route path="/auth" element={<Authentication />}>
           <Route path="login" element={<Login />} />

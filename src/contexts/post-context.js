@@ -12,6 +12,7 @@ import {
   dislikePostService,
   editPostService,
   getAllPostsService,
+  getSinglePostService,
   likePostService,
 } from "../services/postsServices";
 import { actionTypes } from "../utils/constants";
@@ -35,6 +36,7 @@ export const PostsProvider = ({ children }) => {
     CREATE_NEW_POST,
     DELETE_POST,
     EDIT_POST,
+    GET_SINGLE_POST,
   } = actionTypes;
 
   const getAllPosts = async () => {
@@ -149,6 +151,23 @@ export const PostsProvider = ({ children }) => {
     }
   };
 
+  const getSinglePost = async (postId) => {
+    setIsLoading(true);
+    try {
+      const {
+        status,
+        data: { post },
+      } = await getSinglePostService(postId);
+      if (status === 200) {
+        postsDispatch({ type: GET_SINGLE_POST, payload: post });
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const likedByLoggedUser = (post, user) =>
     post?.likes.likedBy.find((likeUser) => likeUser.username === user.username);
 
@@ -169,6 +188,7 @@ export const PostsProvider = ({ children }) => {
         createPostHandler,
         deletePostHandler,
         editPostHandler,
+        getSinglePost,
       }}
     >
       {children}

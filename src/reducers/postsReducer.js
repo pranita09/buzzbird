@@ -9,6 +9,7 @@ export const initialPostData = {
 const initialPostsState = {
   posts: [],
   postData: initialPostData,
+  post: {},
   filterType: "Latest",
   page: 1,
   isNextPostLoading: false,
@@ -24,6 +25,7 @@ const {
   EDIT_POST,
   SET_PAGE,
   SET_IS_NEXT_POST_LOADING,
+  GET_SINGLE_POST,
 } = actionTypes;
 
 const postsReducer = (state, { type, payload }) => {
@@ -46,6 +48,8 @@ const postsReducer = (state, { type, payload }) => {
       return { ...state, page: payload };
     case SET_IS_NEXT_POST_LOADING:
       return { ...state, isNextPostLoading: payload };
+    case GET_SINGLE_POST:
+      return { ...state, post: payload };
     default:
       return state;
   }

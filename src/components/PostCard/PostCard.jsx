@@ -41,8 +41,14 @@ const PostCard = ({ post }) => {
     <div
       className="grid grid-cols-[2.25rem_1fr] gap-2 text-sm border-b border-darkGrey dark:border-lightGrey px-3 py-3 cursor-pointer"
       ref={postModalRef}
+      onClick={() => navigate(`/post/${post?._id}`)}
     >
-      <div onClick={() => navigate(`/profile/${userWhoPosted?.username}`)}>
+      <div
+        onClick={(e) => {
+          e.stopPropagation();
+          navigate(`/profile/${userWhoPosted?.username}`);
+        }}
+      >
         <UserAvatar user={userWhoPosted} className="h-9 w-9" />
       </div>
 
@@ -51,7 +57,10 @@ const PostCard = ({ post }) => {
           <div className="flex items-start 2xl:items-center gap-1.5">
             <div
               className="flex flex-col gap-0 2xl:flex-row 2xl:gap-1"
-              onClick={() => navigate(`/profile/${userWhoPosted?.username}`)}
+              onClick={(e) => {
+                e.stopPropagation();
+                navigate(`/profile/${userWhoPosted?.username}`);
+              }}
             >
               <span className="font-bold tracking-wide">
                 {userWhoPosted?.firstName + " " + userWhoPosted?.lastName}
@@ -65,7 +74,10 @@ const PostCard = ({ post }) => {
           <div className="relative">
             <HiDotsHorizontal
               className="cursor-pointer text-lg m-2 hover:scale-105"
-              onClick={() => setShowOptions((prev) => !prev)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowOptions((prev) => !prev);
+              }}
             />
             {showOptions && (
               <PostOptionsModal post={post} setShowOptions={setShowOptions} />
@@ -92,11 +104,12 @@ const PostCard = ({ post }) => {
           <div className="flex justify-center p-2 mr-4">
             <button
               className="cursor-pointer"
-              onClick={() =>
+              onClick={(e) => {
+                e.stopPropagation();
                 likedByLoggedUser(post, currentUser)
                   ? dislikePostHandler(post?._id)
-                  : likePostHandler(post?._id)
-              }
+                  : likePostHandler(post?._id);
+              }}
             >
               {likedByLoggedUser(post, currentUser) ? (
                 <FaHeart className="text-lg text-red hover:scale-125" />
@@ -120,11 +133,12 @@ const PostCard = ({ post }) => {
 
           <button
             className="cursor-pointer p-2 mr-4"
-            onClick={() =>
+            onClick={(e) => {
+              e.stopPropagation();
               postAlreadyInBookmarks(post?._id)
                 ? removeBookmarkHandler(post?._id)
-                : addBookmarkHandler(post?._id)
-            }
+                : addBookmarkHandler(post?._id);
+            }}
           >
             {postAlreadyInBookmarks(post?._id) ? (
               <FaBookmark className="text-lg hover:scale-125" />
