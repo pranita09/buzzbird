@@ -23,6 +23,7 @@
     "react-icons": "^4.9.0",
     "react-router-dom": "^6.12.0",
     "react-scripts": "5.0.1",
+    "spinners-react": "^1.0.7",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

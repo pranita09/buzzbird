@@ -10,6 +10,8 @@ const initialPostsState = {
   posts: [],
   postData: initialPostData,
   filterType: "Latest",
+  page: 1,
+  isNextPostLoading: false,
 };
 
 const {
@@ -20,6 +22,8 @@ const {
   CREATE_NEW_POST,
   DELETE_POST,
   EDIT_POST,
+  SET_PAGE,
+  SET_IS_NEXT_POST_LOADING,
 } = actionTypes;
 
 const postsReducer = (state, { type, payload }) => {
@@ -38,6 +42,10 @@ const postsReducer = (state, { type, payload }) => {
       return { ...state, posts: payload };
     case FILTER_POSTS:
       return { ...state, filterType: payload };
+    case SET_PAGE:
+      return { ...state, page: payload };
+    case SET_IS_NEXT_POST_LOADING:
+      return { ...state, isNextPostLoading: payload };
     default:
       return state;
   }

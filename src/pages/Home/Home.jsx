@@ -1,4 +1,5 @@
 import {
+  Loader,
   NewPost,
   PostCard,
   SearchBar,
@@ -8,13 +9,13 @@ import {
 } from "../../components";
 import { useAuth } from "../../contexts/auth-context";
 import { usePosts } from "../../contexts/post-context";
+import { sortPosts } from "../../utils/sortPosts";
 
 const Home = () => {
   const { currentUser } = useAuth();
   const {
-    postsState: { posts },
+    postsState: { posts, filterType },
     isLoading,
-    filteredPosts,
   } = usePosts();
 
   const postsOfFollowingUsers = posts?.filter(
@@ -24,7 +25,7 @@ const Home = () => {
       ) || currentUser.username === post.username
   );
 
-  const sortedPosts = filteredPosts(postsOfFollowingUsers);
+  const sortedPosts = sortPosts(postsOfFollowingUsers, filterType);
 
   return (
     <div className="grid sm:grid-cols-[5rem_1fr] lg:grid-cols-[12rem_1fr] xl:grid-cols-[13rem_1fr_20rem] w-[100%] lg:w-[80%] mb-16 sm:m-auto dark:bg-darkGrey dark:text-lightGrey transition-all duration-500">
@@ -43,7 +44,7 @@ const Home = () => {
           <SortBar />
           <div>
             {isLoading ? (
-              "Loader"
+              <Loader />
             ) : sortedPosts?.length > 0 ? (
               sortedPosts?.map((post) => (
                 <PostCard key={post._id} post={post} />

@@ -1,4 +1,10 @@
-import { SideBar, SearchBar, PostCard, SuggestedUsers } from "../../components";
+import {
+  SideBar,
+  SearchBar,
+  PostCard,
+  SuggestedUsers,
+  Loader,
+} from "../../components";
 import { usePosts } from "../../contexts/post-context";
 import { useUsers } from "../../contexts/user-context";
 
@@ -27,7 +33,7 @@ const Bookmarks = () => {
         <div>
           <div>
             {isLoading ? (
-              "Loader"
+              <Loader />
             ) : bookmarks?.length > 0 ? (
               [...bookmarks]?.reverse()?.map((bookmarkPostId) => {
                 const post = posts.find(({ _id }) => _id === bookmarkPostId);
