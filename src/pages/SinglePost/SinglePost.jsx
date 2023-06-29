@@ -36,7 +36,7 @@ const SinglePost = () => {
 
   const { currentUser } = useAuth();
   const {
-    postsState: { posts, post: currentPost },
+    postsState: { post: currentPost },
     getSinglePost,
     likePostHandler,
     dislikePostHandler,
@@ -70,6 +70,7 @@ const SinglePost = () => {
 
   useEffect(() => {
     getSinglePost(postId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [postId, currentPost]);
 
   return (
@@ -260,12 +261,11 @@ const SinglePost = () => {
                     className="outline-none bg-inherit w-full"
                     value={commentData}
                     onChange={(e) => setCommentData(e.target.value)}
-                    required
                   />
                   <PrimaryButton
                     type="submit"
-                    className="rounded-md py-0.5 px-3 ml-4 disabled:opacity-50 disabled:cursor-not-allowed"
-                    disabled=""
+                    className="rounded-md py-0.5 px-3 ml-4 disabled:opacity-80 disabled:cursor-not-allowed"
+                    disabled={!commentData.trim()}
                   >
                     Reply
                   </PrimaryButton>
