@@ -20,9 +20,6 @@ const SideBar = () => {
   const [showSettingsModal, setShowSettingsModal] = useState(false);
 
   const activeStyle = {
-    backgroundColor: "#ccfbf1",
-    borderRadius: "9999px",
-    width: "max-content",
     fontWeight: "bold",
     transform: "scale(1.05)",
   };
@@ -140,4 +137,3 @@ const SideBar = () => {
 };
 
 export { SideBar };
-

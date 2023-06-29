@@ -2,13 +2,13 @@ export const logoImageURL =
   "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686490937/socialMedia/buzzbird-logo-black_q7xiek.svg";
 
 export const loginPageHeroImg =
-  "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686487758/socialMedia/front-page-img1_ig7ywf.jpg";
+  "https://res.cloudinary.com/dxnbnviuz/image/upload/w_400,f_auto,q_auto/v1686487758/socialMedia/front-page-img1_ig7ywf.jpg";
 
 export const logoImg =
   "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686667729/socialMedia/bird_yilt7i.png";
 
 export const defaultBgImage =
-  "https://res.cloudinary.com/dxnbnviuz/image/upload/v1687604239/socialMedia/buzzbird-default-bg_deqxio.png";
+  "https://res.cloudinary.com/dxnbnviuz/image/upload/w_400,f_auto,q_auto/v1687604239/socialMedia/buzzbird-default-bg_deqxio.png";
 
 export const dummyProfileImage =
   "https://res.cloudinary.com/dxnbnviuz/image/upload/v1687603602/socialMedia/AvatarTwo_isbynr.png";
