@@ -14,7 +14,7 @@ body::-webkit-scrollbar-thumb {
 
 @supports (scrollbar-color: red blue) {
   * {
-    scrollbar-color: lightgray #0d9488;
+    scrollbar-color: #0d9488 lightgray;
     scrollbar-width: thin;
   }
 }
