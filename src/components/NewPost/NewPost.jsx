@@ -53,7 +53,7 @@ const NewPost = () => {
             ref={newPostRef}
             value={content}
             rows={2}
-            className="w-full outline-none resize-none h-auto"
+            className="w-full dark:bg-darkColor outline-none resize-none h-auto"
             placeholder="What is happening?!"
             onChange={(e) => setContent(e.target.value)}
           ></textarea>

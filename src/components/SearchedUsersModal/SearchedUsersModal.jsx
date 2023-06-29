@@ -11,7 +11,7 @@ const SearchedUsersModal = () => {
   const { SEARCH_USER } = actionTypes;
 
   return (
-    <div className="flex flex-col gap-4 text-sm xl:text-base w-full p-4 z-40 bg-lighterPrimary rounded-md border border-darkGrey sticky top-0 mt-2">
+    <div className="flex flex-col gap-4 text-sm xl:text-base w-full p-4 z-40 bg-lighterPrimary rounded-md border border-darkGrey sticky top-0 mt-2 dark:bg-darkGrey dark:text-lightGrey">
       {searchedUsers.length ? (
         searchedUsers?.map((user) => (
           <div

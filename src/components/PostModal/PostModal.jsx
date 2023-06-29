@@ -72,15 +72,15 @@ const PostModal = ({ post, setShowPostModal, setShowOptions }) => {
   return (
     <div
       style={styles}
-      className="grid grid-cols-[2.5rem_1fr] gap-2 items-start bg-lighterPrimary text-sm border-darkGrey px-4 py-3 cursor-text w-[90%] sm:w-[60%] xl:w-[45%] shadow-dark shadow-lg rounded-md border"
+      className="grid grid-cols-[2.5rem_1fr] gap-2 items-start bg-lighterPrimary text-sm border-darkGrey px-4 py-3 cursor-text w-[90%] sm:w-[60%] xl:w-[45%] shadow-dark shadow-lg rounded-md border dark:bg-darkGrey"
     >
       <UserAvatar user={currentUser} className="h-10 w-10" />
       <form className="flex flex-col gap-4" onSubmit={submitHandler}>
-        <div className="w-full break-all outline-none mt-1.5 bg-lighterPrimary">
+        <div className="w-full break-all outline-none mt-1.5 bg-lighterPrimary dark:bg-darkGrey">
           <textarea
             ref={postRef}
             value={content?.content}
-            className="w-full break-all outline-none bg-lighterPrimary resize-none h-[6rem]"
+            className="w-full break-all outline-none bg-lighterPrimary dark:bg-darkGrey resize-none h-[6rem] dark:text-lightGrey"
             placeholder="What is happening?!"
             onChange={(e) =>
               setContent((prev) => ({ ...prev, content: e.target.value }))
@@ -125,7 +125,7 @@ const PostModal = ({ post, setShowPostModal, setShowOptions }) => {
                 onChange={(e) => setMedia(e.target.files[0])}
               />
               <MdOutlineAddPhotoAlternate
-                className="text-xl scale-110 hover:scale-125"
+                className="text-xl scale-110 hover:scale-125 dark:text-lightGrey"
                 title="Add Photo/GIF"
               />
             </label>
@@ -134,7 +134,7 @@ const PostModal = ({ post, setShowPostModal, setShowOptions }) => {
               onClick={() => setShowEmojiPicker((prev) => !prev)}
             >
               <MdInsertEmoticon
-                className="text-xl scale-110 hover:scale-125"
+                className="text-xl scale-110 hover:scale-125 dark:text-lightGrey"
                 title="Add Emoji"
               />
             </label>

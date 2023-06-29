@@ -38,11 +38,11 @@ const PostOptionsModal = ({ post, setShowOptions }) => {
   }, [currentUser, users]);
 
   return (
-    <div className="absolute flex flex-col right-1 top-7 w-max rounded-md shadow-lg border border-darkGrey bg-lighterPrimary">
+    <div className="absolute flex flex-col right-1 top-7 w-max rounded-md shadow-lg border border-darkGrey bg-lighterPrimary dark:bg-darkGrey">
       {username === currentUser.username ? (
         <>
           <button
-            className="py-2 px-4 text-left cursor-pointer rounded-md hover:bg-lightPrimary flex items-center justify-center"
+            className="py-2 px-4 text-left cursor-pointer rounded-md hover:bg-lightPrimary dark:hover:bg-darkPrimary flex items-center justify-center"
             onClick={() => {
               setShowPostModal(true);
             }}
@@ -51,7 +51,7 @@ const PostOptionsModal = ({ post, setShowOptions }) => {
             Edit
           </button>
           <button
-            className="py-2 px-4 text-left cursor-pointer rounded-md hover:bg-lightPrimary text-red flex items-center justify-center"
+            className="py-2 px-4 text-left cursor-pointer rounded-md hover:bg-lightPrimary dark:hover:bg-darkPrimary text-red flex items-center justify-center"
             onClick={() => {
               deletePostHandler(_id);
               if (pathname !== "/") {
@@ -69,7 +69,7 @@ const PostOptionsModal = ({ post, setShowOptions }) => {
         </>
       ) : (
         <button
-          className="py-2 px-4 text-left cursor-pointer rounded-md hover:bg-lightPrimary flex items-center justify-center"
+          className="py-2 px-4 text-left cursor-pointer rounded-md hover:bg-lightPrimary dark:hover:bg-darkPrimary flex items-center justify-center"
           onClick={() => {
             userAlreadyFollowing
               ? handleBtnsClick(400, unfollowUserHandler, userToFollow?._id)
