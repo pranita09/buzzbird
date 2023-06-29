@@ -36,9 +36,8 @@ const SinglePost = () => {
 
   const { currentUser } = useAuth();
   const {
-    postsState: {posts, post: currentPost },
+    postsState: { posts, post: currentPost },
     getSinglePost,
-    isLoading,
     likePostHandler,
     dislikePostHandler,
     likedByLoggedUser,
@@ -71,8 +70,7 @@ const SinglePost = () => {
 
   useEffect(() => {
     getSinglePost(postId);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [postId, posts]);
+  }, [postId, currentPost]);
 
   return (
     <div className="grid sm:grid-cols-[5rem_1fr] lg:grid-cols-[12rem_1fr] xl:grid-cols-[13rem_1fr_20rem] w-[100%] lg:w-[80%] mb-16 sm:m-auto dark:bg-darkGrey dark:text-lightGrey transition-all duration-500">
@@ -90,9 +88,7 @@ const SinglePost = () => {
         </h1>
 
         <div>
-          {isLoading ? (
-            <Loader />
-          ) : currentPost ? (
+          {currentPost?.username ? (
             <div className="flex flex-col gap-2 text-sm border-b border-darkGrey px-4 py-3 break-words">
               <div className="grid grid-cols-[2.25rem_1fr] gap-2">
                 <div
@@ -288,7 +284,7 @@ const SinglePost = () => {
                   ))}
             </div>
           ) : (
-            <p className="p-4 text-center">Post Not Found</p>
+            <Loader />
           )}
         </div>
       </div>

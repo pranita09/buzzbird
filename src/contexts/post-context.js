@@ -9,6 +9,7 @@ import { initialPostsState, postsReducer } from "../reducers/postsReducer";
 import {
   addCommentService,
   createPostService,
+  deleteCommentService,
   deletePostService,
   dislikePostService,
   editPostService,
@@ -154,7 +155,6 @@ export const PostsProvider = ({ children }) => {
   };
 
   const getSinglePost = async (postId) => {
-    setIsLoading(true);
     try {
       const {
         status,
@@ -165,8 +165,6 @@ export const PostsProvider = ({ children }) => {
       }
     } catch (error) {
       console.error(error);
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -188,8 +186,18 @@ export const PostsProvider = ({ children }) => {
     }
   };
 
-  console.log(postsState.post);
-  console.log(postsState.posts);
+  const deleteCommentHandler = async (postId, commentId) => {
+    setIsLoading(true);
+    try {
+      const response = await deleteCommentService(postId, commentId, token);
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const likedByLoggedUser = (post, user) => {
     return post?.likes?.likedBy?.find(
@@ -216,6 +224,7 @@ export const PostsProvider = ({ children }) => {
         editPostHandler,
         getSinglePost,
         addCommentHandler,
+        deleteCommentHandler,
       }}
     >
       {children}

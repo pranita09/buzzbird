@@ -41,7 +41,6 @@ const PostCard = ({ post }) => {
     <div
       className="grid grid-cols-[2.25rem_1fr] gap-2 text-sm border-b border-darkGrey dark:border-lightGrey px-3 py-3 cursor-pointer"
       ref={postModalRef}
-      onClick={() => navigate(`/post/${post?._id}`)}
     >
       <div
         onClick={(e) => {
@@ -85,7 +84,9 @@ const PostCard = ({ post }) => {
           </div>
         </div>
 
-        <div>{post?.content}</div>
+        <div onClick={() => navigate(`/post/${post?._id}`)}>
+          {post?.content}
+        </div>
 
         {post?.mediaURL &&
           (post?.mediaURL.split("/")[4] === "image" ? (
@@ -93,9 +94,14 @@ const PostCard = ({ post }) => {
               src={post?.mediaURL}
               alt={post?.mediaAlt}
               className="w-full h-auto rounded-md"
+              onClick={() => navigate(`/post/${post?._id}`)}
             />
           ) : (
-            <video controls className="w-full h-auto rounded-md">
+            <video
+              controls
+              className="w-full h-auto rounded-md"
+              onClick={() => navigate(`/post/${post?._id}`)}
+            >
               <source src={post?.mediaURL} type="video/mp4" />
             </video>
           ))}

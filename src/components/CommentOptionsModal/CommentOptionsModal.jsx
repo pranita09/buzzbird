@@ -9,6 +9,7 @@ import {
 import { CommentModal } from "..";
 import { Modal } from "@mui/material";
 import { useUsers } from "../../contexts/user-context";
+import { usePosts } from "../../contexts/post-context";
 
 const CommentOptionsModal = ({ comment, postId, setShowOptions }) => {
   const { currentUser } = useAuth();
@@ -17,6 +18,7 @@ const CommentOptionsModal = ({ comment, postId, setShowOptions }) => {
     unfollowUserHandler,
     followUserHandler,
   } = useUsers();
+  const { deleteCommentHandler } = usePosts();
 
   const [showCommentModal, setShowCommentModal] = useState(false);
 
@@ -44,6 +46,7 @@ const CommentOptionsModal = ({ comment, postId, setShowOptions }) => {
             className="py-2 px-4 text-left cursor-pointer rounded-md hover:bg-lightPrimary text-red flex items-center justify-center"
             onClick={(e) => {
               e.stopPropagation();
+              deleteCommentHandler(postId, comment?._id);
               setShowOptions((prev) => !prev);
             }}
           >
