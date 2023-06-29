@@ -64,7 +64,7 @@ export const posts = [
     comments: [
       {
         _id: "t1cZfWIp-q",
-        comment: "Wish you a very Happy Birthday, dear!",
+        commentData: "Wish you a very Happy Birthday, dear!",
         firstName: "Emily",
         lastName: "Smith",
         username: "emilysmith",
@@ -75,7 +75,7 @@ export const posts = [
       },
       {
         _id: "q18zWjEeXd",
-        comment: "Happy Birthday, girl!",
+        commentData: "Happy Birthday, girl!",
         firstName: "Olivia",
         lastName: "Parker",
         username: "livparker",
@@ -86,7 +86,7 @@ export const posts = [
       },
       {
         _id: "116Be1QpLm",
-        comment: "Happy Birthday! Be always happy!",
+        commentData: "Happy Birthday! Be always happy!",
         firstName: "Jacob",
         lastName: "Mitchell",
         username: "jacobmitch",
@@ -140,7 +140,8 @@ export const posts = [
     comments: [
       {
         _id: "o52gzWjEeX_",
-        comment: "It was lot of fun! Next time will go with all our friends!",
+        commentData:
+          "It was lot of fun! Next time will go with all our friends!",
         firstName: "Rohan",
         lastName: "Roy",
         username: "rohaaan",
@@ -202,7 +203,7 @@ export const posts = [
     comments: [
       {
         _id: "qq83zWjEeXd",
-        comment: "Awesome!",
+        commentData: "Awesome!",
         firstName: "Olivia",
         lastName: "Parker",
         username: "livparker",
@@ -213,7 +214,7 @@ export const posts = [
       },
       {
         _id: "1N5R81Bzmuh",
-        comment: "Keep learning and keep growing!",
+        commentData: "Keep learning and keep growing!",
         firstName: "Aryan",
         lastName: "Patel",
         username: "aryan987",
@@ -283,7 +284,7 @@ export const posts = [
     comments: [
       {
         _id: "79tyGksh9otl",
-        comment: "Wish you all the best! Keep shining!",
+        commentData: "Wish you all the best! Keep shining!",
         firstName: "Sarah",
         lastName: "Wilson",
         username: "wilsarah",
@@ -352,7 +353,7 @@ export const posts = [
     comments: [
       {
         _id: "1NR81Bzmuh12",
-        comment: "Amazing! Looking forward to your new work!",
+        commentData: "Amazing! Looking forward to your new work!",
         firstName: "Aryan",
         lastName: "Patel",
         username: "aryan987",
@@ -363,7 +364,7 @@ export const posts = [
       },
       {
         _id: "o5gzWjEeX_sdcf",
-        comment: "Ohh Wow! Eager to read.",
+        commentData: "Ohh Wow! Eager to read.",
         firstName: "Rohan",
         lastName: "Roy",
         username: "rohaaan",
@@ -374,7 +375,7 @@ export const posts = [
       },
       {
         _id: "LCrc9f0Zl0asd",
-        comment:
+        commentData:
           "Great! Always liked your books. This time also it will be a good read.",
         firstName: "Aditya",
         lastName: "Joshi",
@@ -453,7 +454,7 @@ export const posts = [
     comments: [
       {
         _id: "M1NR81Bzlz2345",
-        comment:
+        commentData:
           "It must be an amazing experience! Let's catch up soon! Eager to hear your experience there!",
         firstName: "Kriti",
         lastName: "Desai",
@@ -548,7 +549,7 @@ export const posts = [
     comments: [
       {
         _id: "t7cZfWIp-qqwer",
-        comment: "Just amazing! You are an amazing artist.",
+        commentData: "Just amazing! You are an amazing artist.",
         firstName: "Emily",
         lastName: "Smith",
         username: "emilysmith",
@@ -618,7 +619,7 @@ export const posts = [
     comments: [
       {
         _id: "qq8zWjEeXdertgf",
-        comment:
+        commentData:
           "I hope you prepared some extra for me also. I am coming right away to your place! 😂",
         firstName: "Olivia",
         lastName: "Parker",
@@ -705,7 +706,7 @@ export const posts = [
     comments: [
       {
         _id: "M1NR81Bertvbn",
-        comment: "🤩",
+        commentData: "🤩",
         firstName: "Ava",
         lastName: "Turner",
         username: "avaturn",
@@ -759,7 +760,7 @@ export const posts = [
     comments: [
       {
         _id: "ab8zWjEeXdwer",
-        comment: "Enjoy bro! Will wait for some gifts from Singapore.😉",
+        commentData: "Enjoy bro! Will wait for some gifts from Singapore.😉",
         firstName: "James",
         lastName: "Murphy",
         username: "jamesmurf",
@@ -871,7 +872,7 @@ export const posts = [
     comments: [
       {
         _id: "qq8zWjEeXd4567",
-        comment: "Boraahaeeeeeee",
+        commentData: "Boraahaeeeeeee",
         firstName: "Olivia",
         lastName: "Parker",
         username: "livparker",
@@ -882,7 +883,7 @@ export const posts = [
       },
       {
         _id: "t7cZfWIp-qpoiuy",
-        comment: "Yaay! Next time we'll go together!",
+        commentData: "Yaay! Next time we'll go together!",
         firstName: "Emily",
         lastName: "Smith",
         username: "emilysmith",
@@ -994,7 +995,7 @@ export const posts = [
     comments: [
       {
         _id: "M1NR81Bzlz98765",
-        comment: "Eager to hear your performance!",
+        commentData: "Eager to hear your performance!",
         firstName: "Kriti",
         lastName: "Desai",
         username: "imkriti",
@@ -1080,7 +1081,7 @@ export const posts = [
     comments: [
       {
         _id: "LCrc9f0Zl0qwaz",
-        comment: "I must praise your photography skills!",
+        commentData: "I must praise your photography skills!",
         firstName: "Aditya",
         lastName: "Joshi",
         username: "adityaj",
@@ -1295,7 +1296,7 @@ export const posts = [
     comments: [
       {
         _id: "1T6Be1QpLmaszx",
-        comment: "Yo! Let's rock there!",
+        commentData: "Yo! Let's rock there!",
         firstName: "Jacob",
         lastName: "Mitchell",
         username: "jacobmitch",
@@ -1306,7 +1307,7 @@ export const posts = [
       },
       {
         _id: "o5gzWjEeX_9876",
-        comment:
+        commentData:
           "Have an incredible time exploring the beaches, soaking up the vibrant culture, and indulging in delicious seafood. Safe travels! ",
         firstName: "Rohan",
         lastName: "Roy",

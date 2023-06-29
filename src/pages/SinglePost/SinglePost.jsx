@@ -36,12 +36,13 @@ const SinglePost = () => {
 
   const { currentUser } = useAuth();
   const {
-    postsState: { post: currentPost },
+    postsState: {posts, post: currentPost },
     getSinglePost,
     isLoading,
     likePostHandler,
     dislikePostHandler,
     likedByLoggedUser,
+    addCommentHandler,
   } = usePosts();
   const {
     usersState: { users },
@@ -50,6 +51,7 @@ const SinglePost = () => {
     postAlreadyInBookmarks,
   } = useUsers();
 
+  const [commentData, setCommentData] = useState("");
   const [showOptions, setShowOptions] = useState(false);
   const [likesModal, setLikesModal] = useState({
     show: false,
@@ -61,10 +63,16 @@ const SinglePost = () => {
     (user) => user.username === currentPost?.username
   );
 
+  const commentSubmitHandler = (e) => {
+    e.preventDefault();
+    addCommentHandler(currentPost?._id, { commentData });
+    setCommentData("");
+  };
+
   useEffect(() => {
     getSinglePost(postId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [postId]);
+  }, [postId, posts]);
 
   return (
     <div className="grid sm:grid-cols-[5rem_1fr] lg:grid-cols-[12rem_1fr] xl:grid-cols-[13rem_1fr_20rem] w-[100%] lg:w-[80%] mb-16 sm:m-auto dark:bg-darkGrey dark:text-lightGrey transition-all duration-500">
@@ -245,12 +253,17 @@ const SinglePost = () => {
               <div className="grid grid-cols-[2.25rem_1fr] gap-2 pt-3 border-t border-darkGrey">
                 <UserAvatar user={currentUser} className="h-9 w-9" />
 
-                <form className="flex justify-between">
+                <form
+                  className="flex justify-between"
+                  onSubmit={commentSubmitHandler}
+                >
                   <input
                     type="text"
                     ref={newCommentRef}
                     placeholder="Post your reply"
                     className="outline-none bg-inherit w-full"
+                    value={commentData}
+                    onChange={(e) => setCommentData(e.target.value)}
                     required
                   />
                   <PrimaryButton

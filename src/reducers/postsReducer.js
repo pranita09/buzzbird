@@ -26,6 +26,7 @@ const {
   SET_PAGE,
   SET_IS_NEXT_POST_LOADING,
   GET_SINGLE_POST,
+  ADD_NEW_COMMENT,
 } = actionTypes;
 
 const postsReducer = (state, { type, payload }) => {
@@ -50,6 +51,14 @@ const postsReducer = (state, { type, payload }) => {
       return { ...state, isNextPostLoading: payload };
     case GET_SINGLE_POST:
       return { ...state, post: payload };
+    case ADD_NEW_COMMENT:
+      return {
+        ...state,
+        posts: payload,
+        post: payload.find((eachPost) =>
+          eachPost._id === state?.post?._id ? eachPost : state.post
+        ),
+      };
     default:
       return state;
   }

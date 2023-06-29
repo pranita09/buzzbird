@@ -7,6 +7,7 @@ import {
 } from "react";
 import { initialPostsState, postsReducer } from "../reducers/postsReducer";
 import {
+  addCommentService,
   createPostService,
   deletePostService,
   dislikePostService,
@@ -37,6 +38,7 @@ export const PostsProvider = ({ children }) => {
     DELETE_POST,
     EDIT_POST,
     GET_SINGLE_POST,
+    ADD_NEW_COMMENT,
   } = actionTypes;
 
   const getAllPosts = async () => {
@@ -168,6 +170,27 @@ export const PostsProvider = ({ children }) => {
     }
   };
 
+  const addCommentHandler = async (postId, commentData) => {
+    setIsLoading(true);
+    try {
+      const {
+        status,
+        data: { posts },
+      } = await addCommentService(postId, commentData, token);
+      if (status === 201) {
+        postsDispatch({ type: ADD_NEW_COMMENT, payload: posts });
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong!");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  console.log(postsState.post);
+  console.log(postsState.posts);
+
   const likedByLoggedUser = (post, user) => {
     return post?.likes?.likedBy?.find(
       (likeUser) => likeUser.username === user.username
@@ -192,6 +215,7 @@ export const PostsProvider = ({ children }) => {
         deletePostHandler,
         editPostHandler,
         getSinglePost,
+        addCommentHandler,
       }}
     >
       {children}

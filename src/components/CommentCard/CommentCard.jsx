@@ -55,7 +55,7 @@ const CommentCard = ({ comment, postId }) => {
             )}
           </div>
         </div>
-        <div>{comment?.comment}</div>
+        <div>{comment?.commentData}</div>
       </div>
     </div>
   );

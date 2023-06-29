@@ -50,6 +50,32 @@ const dislikePostService = async (postId, encodedToken) =>
     }
   );
 
+const addCommentService = async (postId, commentData, encodedToken) =>
+  await axios.post(
+    `/api/comments/add/${postId}`,
+    { commentData: commentData },
+    { headers: { authorization: encodedToken } }
+  );
+
+const editCommentService = async (
+  postId,
+  commentId,
+  commentData,
+  encodedToken
+) =>
+  await axios.post(
+    `/api/comments/edit/${postId}/${commentId}`,
+    { commentData: commentData },
+    { headers: { authorization: encodedToken } }
+  );
+
+const deleteCommentService = async (postId, commentId, encodedToken) =>
+  await axios.delete(
+    `/api/comments/delete/${postId}/${commentId}`,
+    {},
+    { headers: { authorization: encodedToken } }
+  );
+
 export {
   getAllPostsService,
   createPostService,
@@ -58,4 +84,7 @@ export {
   likePostService,
   dislikePostService,
   getSinglePostService,
+  addCommentService,
+  editCommentService,
+  deleteCommentService,
 };
