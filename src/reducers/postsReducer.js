@@ -28,6 +28,7 @@ const {
   GET_SINGLE_POST,
   ADD_NEW_COMMENT,
   DELETE_COMMENT,
+  EDIT_COMMENT,
 } = actionTypes;
 
 const postsReducer = (state, { type, payload }) => {
@@ -61,6 +62,14 @@ const postsReducer = (state, { type, payload }) => {
         ),
       };
     case DELETE_COMMENT:
+      return {
+        ...state,
+        posts: payload,
+        post: payload.find((eachPost) =>
+          eachPost._id === state?.post?._id ? eachPost : state.post
+        ),
+      };
+    case EDIT_COMMENT:
       return {
         ...state,
         posts: payload,

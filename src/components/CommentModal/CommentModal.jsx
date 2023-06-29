@@ -10,7 +10,7 @@ const CommentModal = ({
   setShowOptions,
 }) => {
   const { currentUser } = useAuth();
-  const { addCommentHandler } = usePosts();
+  const { addCommentHandler, editCommentHandler } = usePosts();
 
   const [commentData, setCommentData] = useState(comment?.commentData || "");
   const newCommentRef = useRef();
@@ -28,11 +28,13 @@ const CommentModal = ({
   const submitCommentHandler = (e) => {
     e.preventDefault();
     if (comment) {
+      editCommentHandler(postId, comment?._id, { commentData });
     } else {
       addCommentHandler(postId, { commentData });
     }
     setCommentData("");
     setShowCommentModal(false);
+    comment && setShowOptions(false);
   };
 
   return (
@@ -58,7 +60,7 @@ const CommentModal = ({
             className="py-1.5 px-5 rounded-md disabled:opacity-80 border-lightPrimary"
             disabled={!commentData?.trim()}
           >
-            {comment ? "Save" : "Post"}
+            {comment ? "Save" : "Reply"}
           </PrimaryButton>
           <SecondaryButton
             type="reset"

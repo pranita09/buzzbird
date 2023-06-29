@@ -264,7 +264,7 @@ const SinglePost = () => {
                   />
                   <PrimaryButton
                     type="submit"
-                    className="rounded-md py-0.5 px-3 ml-4 disabled:opacity-80 disabled:cursor-not-allowed"
+                    className="rounded-md px-3 ml-4 disabled:opacity-80 disabled:cursor-not-allowed"
                     disabled={!commentData.trim()}
                   >
                     Reply

@@ -12,6 +12,7 @@ import {
   deleteCommentService,
   deletePostService,
   dislikePostService,
+  editCommentService,
   editPostService,
   getAllPostsService,
   getSinglePostService,
@@ -41,6 +42,7 @@ export const PostsProvider = ({ children }) => {
     GET_SINGLE_POST,
     ADD_NEW_COMMENT,
     DELETE_COMMENT,
+    EDIT_COMMENT,
   } = actionTypes;
 
   const getAllPosts = async () => {
@@ -185,6 +187,22 @@ export const PostsProvider = ({ children }) => {
     }
   };
 
+  const editCommentHandler = async (postId, commentId, commentData) => {
+    try {
+      const {
+        status,
+        data: { posts },
+      } = await editCommentService(postId, commentId, commentData, token);
+      if (status === 201) {
+        postsDispatch({ type: EDIT_COMMENT, payload: posts });
+        toast.success("Updated comment successfully!");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong");
+    }
+  };
+
   const deleteCommentHandler = async (postId, commentId) => {
     try {
       const {
@@ -226,6 +244,7 @@ export const PostsProvider = ({ children }) => {
         editPostHandler,
         getSinglePost,
         addCommentHandler,
+        editCommentHandler,
         deleteCommentHandler,
       }}
     >
