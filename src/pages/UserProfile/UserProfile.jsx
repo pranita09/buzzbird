@@ -17,7 +17,6 @@ const UserProfile = () => {
   const { username } = useParams();
 
   const { currentUser } = useAuth();
-
   const {
     usersState: { user },
     getUserByUsername,
@@ -26,6 +25,8 @@ const UserProfile = () => {
   const {
     postsState: { posts },
   } = usePosts();
+
+  document.title = `${user?.firstName} ${user?.lastName} | BuzzBird`;
 
   const userPosts = posts?.filter((post) => post.username === user?.username);
 

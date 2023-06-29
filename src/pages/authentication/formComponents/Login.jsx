@@ -15,6 +15,8 @@ const Login = () => {
     showPwd: false,
   });
 
+  document.title = "Login | BuzzBird";
+
   const loginFormInputHandler = (event) => {
     const { name, value } = event.target;
     setLoginDetails({ ...loginDetails, [name]: value });

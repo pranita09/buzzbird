@@ -57,6 +57,8 @@ const SinglePost = () => {
     list: [],
   });
 
+  document.title = "Post | BuzzBird";
+
   const userWhoPosted = users?.find(
     (user) => user.username === currentPost?.username
   );

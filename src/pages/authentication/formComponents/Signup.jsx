@@ -19,6 +19,8 @@ const Signup = () => {
     show: { pwd: false, confirmPwd: false },
   });
 
+  document.title = "SignUp | BuzzBird";
+
   const signupFormInputHandler = (event) => {
     const { name, value } = event.target;
     if (name === "confirmPassword") {

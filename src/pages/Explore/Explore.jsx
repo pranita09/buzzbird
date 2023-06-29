@@ -44,6 +44,8 @@ const Explore = () => {
     postsDispatch,
   ]);
 
+  document.title = "Explore | BuzzBird";
+
   useEffect(() => {
     let timeoutId;
     if (isNextPostLoading) {

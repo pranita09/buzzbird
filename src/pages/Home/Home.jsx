@@ -57,6 +57,8 @@ const Home = () => {
     postsDispatch,
   ]);
 
+  document.title = "BuzzBird";
+
   useEffect(() => {
     let timeoutId;
     if (isNextPostLoading) {
