@@ -40,6 +40,7 @@ export const PostsProvider = ({ children }) => {
     EDIT_POST,
     GET_SINGLE_POST,
     ADD_NEW_COMMENT,
+    DELETE_COMMENT,
   } = actionTypes;
 
   const getAllPosts = async () => {
@@ -169,7 +170,6 @@ export const PostsProvider = ({ children }) => {
   };
 
   const addCommentHandler = async (postId, commentData) => {
-    setIsLoading(true);
     try {
       const {
         status,
@@ -177,25 +177,27 @@ export const PostsProvider = ({ children }) => {
       } = await addCommentService(postId, commentData, token);
       if (status === 201) {
         postsDispatch({ type: ADD_NEW_COMMENT, payload: posts });
+        toast.success("Posted comment successfully.");
       }
     } catch (error) {
       console.error(error);
       toast.error("Something went wrong!");
-    } finally {
-      setIsLoading(false);
     }
   };
 
   const deleteCommentHandler = async (postId, commentId) => {
-    setIsLoading(true);
     try {
-      const response = await deleteCommentService(postId, commentId, token);
-      console.log(response);
+      const {
+        status,
+        data: { posts },
+      } = await deleteCommentService(postId, commentId, token);
+      if (status === 201) {
+        postsDispatch({ type: DELETE_COMMENT, payload: posts });
+        toast.success("Comment deleted.");
+      }
     } catch (error) {
       console.error(error);
       toast.error("Something went wrong.");
-    } finally {
-      setIsLoading(false);
     }
   };
 

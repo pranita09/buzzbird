@@ -70,7 +70,7 @@ const editCommentService = async (
   );
 
 const deleteCommentService = async (postId, commentId, encodedToken) =>
-  await axios.delete(
+  await axios.post(
     `/api/comments/delete/${postId}/${commentId}`,
     {},
     { headers: { authorization: encodedToken } }
