@@ -9,7 +9,8 @@ import { Modal } from "@mui/material";
 
 const ProfileDetails = ({ user }) => {
   const { currentUser, logoutHandler } = useAuth();
-  const { followUserHandler, unfollowUserHandler } = useUsers();
+  const { followUserHandler, unfollowUserHandler, handleBtnsClick } =
+    useUsers();
 
   const [editUserModal, setEditUserModal] = useState(false);
   const [usersListModal, setUsersListModal] = useState({
@@ -60,8 +61,8 @@ const ProfileDetails = ({ user }) => {
                     className="py-1 px-3 rounded"
                     onClick={() =>
                       userAlreadyFollowing
-                        ? unfollowUserHandler(user?._id)
-                        : followUserHandler(user?._id)
+                        ? handleBtnsClick(400, unfollowUserHandler, user?._id)
+                        : handleBtnsClick(400, followUserHandler, user?._id)
                     }
                   >
                     {userAlreadyFollowing ? "UnFollow" : "Follow"}

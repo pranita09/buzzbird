@@ -11,7 +11,6 @@ import {
   FaBookmark,
   MdShare,
 } from "../../utils/icons";
-// import { debounce } from "../../utils/debounce";
 import { getPostDate } from "../../utils/getPostDate";
 import { sharePost } from "../../utils/sharePost";
 import { Modal } from "@mui/material";
@@ -25,6 +24,7 @@ const PostCard = ({ post }) => {
     addBookmarkHandler,
     removeBookmarkHandler,
     postAlreadyInBookmarks,
+    handleBtnsClick,
   } = useUsers();
   const { likePostHandler, dislikePostHandler, likedByLoggedUser } = usePosts();
 
@@ -111,8 +111,8 @@ const PostCard = ({ post }) => {
               onClick={(e) => {
                 e.stopPropagation();
                 likedByLoggedUser(post, currentUser)
-                  ? dislikePostHandler(post?._id)
-                  : likePostHandler(post?._id);
+                  ? handleBtnsClick(400, dislikePostHandler, post?._id)
+                  : handleBtnsClick(400, likePostHandler, post?._id);
               }}
             >
               {likedByLoggedUser(post, currentUser) ? (
@@ -146,8 +146,8 @@ const PostCard = ({ post }) => {
             onClick={(e) => {
               e.stopPropagation();
               postAlreadyInBookmarks(post?._id)
-                ? removeBookmarkHandler(post?._id)
-                : addBookmarkHandler(post?._id);
+                ? handleBtnsClick(400, removeBookmarkHandler, post?._id)
+                : handleBtnsClick(400, addBookmarkHandler, post?._id);
             }}
           >
             {postAlreadyInBookmarks(post?._id) ? (

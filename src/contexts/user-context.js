@@ -3,6 +3,7 @@ import {
   useContext,
   useEffect,
   useReducer,
+  useRef,
   useState,
 } from "react";
 import { toast } from "react-hot-toast";
@@ -30,6 +31,8 @@ export const UsersProvider = ({ children }) => {
     initialUsersState
   );
   const [isLoading, setIsLoading] = useState(false);
+
+  const timerId = useRef();
 
   const {
     GET_ALL_USERS,
@@ -204,6 +207,13 @@ export const UsersProvider = ({ children }) => {
     }
   };
 
+  const handleBtnsClick = (delay, callback, ...args) => {
+    clearTimeout(timerId.current);
+    timerId.current = setTimeout(() => {
+      callback(...args);
+    }, delay);
+  };
+
   const postAlreadyInBookmarks = (postId) =>
     usersState?.bookmarks?.find((id) => id === postId);
 
@@ -235,6 +245,7 @@ export const UsersProvider = ({ children }) => {
         followUserHandler,
         unfollowUserHandler,
         editUserProfileHandler,
+        handleBtnsClick,
       }}
     >
       {children}

@@ -10,6 +10,7 @@ const SuggestedUsers = () => {
     usersState: { users },
     followUserHandler,
     isLoading,
+    handleBtnsClick,
   } = useUsers();
 
   const filteredUsers = users
@@ -54,7 +55,9 @@ const SuggestedUsers = () => {
 
                   <PrimaryButton
                     className="py-1 px-2 rounded-md"
-                    onClick={() => followUserHandler(user?._id)}
+                    onClick={() =>
+                      handleBtnsClick(400, followUserHandler, user?._id)
+                    }
                   >
                     Follow
                   </PrimaryButton>

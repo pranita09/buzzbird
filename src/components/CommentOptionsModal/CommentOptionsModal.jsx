@@ -15,6 +15,7 @@ const CommentOptionsModal = ({ comment, postId, setShowOptions }) => {
     usersState: { users },
     unfollowUserHandler,
     followUserHandler,
+    handleBtnsClick,
   } = useUsers();
   const { deleteCommentHandler } = usePosts();
 
@@ -58,8 +59,8 @@ const CommentOptionsModal = ({ comment, postId, setShowOptions }) => {
           onClick={(e) => {
             e.stopPropagation();
             userAlreadyFollowing
-              ? unfollowUserHandler(userToFollow?._id)
-              : followUserHandler(userToFollow?._id);
+              ? handleBtnsClick(400, unfollowUserHandler, userToFollow?._id)
+              : handleBtnsClick(400, followUserHandler, userToFollow?._id);
             setShowOptions(false);
           }}
         >

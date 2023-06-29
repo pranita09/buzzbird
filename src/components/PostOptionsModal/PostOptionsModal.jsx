@@ -18,6 +18,7 @@ const PostOptionsModal = ({ post, setShowOptions }) => {
     usersState: { users },
     unfollowUserHandler,
     followUserHandler,
+    handleBtnsClick,
   } = useUsers();
   const { deletePostHandler } = usePosts();
 
@@ -71,8 +72,8 @@ const PostOptionsModal = ({ post, setShowOptions }) => {
           className="py-2 px-4 text-left cursor-pointer rounded-md hover:bg-lightPrimary flex items-center justify-center"
           onClick={() => {
             userAlreadyFollowing
-              ? unfollowUserHandler(userToFollow?._id)
-              : followUserHandler(userToFollow?._id);
+              ? handleBtnsClick(400, unfollowUserHandler, userToFollow?._id)
+              : handleBtnsClick(400, followUserHandler, userToFollow?._id);
             setShowOptions(false);
           }}
         >

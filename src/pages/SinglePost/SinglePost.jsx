@@ -46,6 +46,7 @@ const SinglePost = () => {
     addBookmarkHandler,
     removeBookmarkHandler,
     postAlreadyInBookmarks,
+    handleBtnsClick,
   } = useUsers();
 
   const [commentData, setCommentData] = useState("");
@@ -185,8 +186,16 @@ const SinglePost = () => {
                     onClick={(e) => {
                       e.stopPropagation();
                       likedByLoggedUser(currentPost, currentUser)
-                        ? dislikePostHandler(currentPost?._id)
-                        : likePostHandler(currentPost?._id);
+                        ? handleBtnsClick(
+                            400,
+                            dislikePostHandler,
+                            currentPost?._id
+                          )
+                        : handleBtnsClick(
+                            400,
+                            likePostHandler,
+                            currentPost?._id
+                          );
                     }}
                   >
                     {likedByLoggedUser(currentPost, currentUser) ? (
@@ -223,8 +232,16 @@ const SinglePost = () => {
                   onClick={(e) => {
                     e.stopPropagation();
                     postAlreadyInBookmarks(currentPost?._id)
-                      ? removeBookmarkHandler(currentPost?._id)
-                      : addBookmarkHandler(currentPost?._id);
+                      ? handleBtnsClick(
+                          400,
+                          removeBookmarkHandler,
+                          currentPost?._id
+                        )
+                      : handleBtnsClick(
+                          400,
+                          addBookmarkHandler,
+                          currentPost?._id
+                        );
                   }}
                 >
                   {postAlreadyInBookmarks(currentPost?._id) ? (
