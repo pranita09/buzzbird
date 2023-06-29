@@ -82,7 +82,7 @@ const ProfileDetails = ({ user }) => {
             <div className="flex gap-2 items-center">
               <HiLink className="text-lg" />
               <Link to={user?.website} target="_blank">
-                <span className="hover:underline cursor-pointer text-sm text-[blue]">
+                <span className="hover:underline cursor-pointer text-sm text-[blue] dark:text-[skyblue]">
                   {user?.website?.split("/")[2]}
                 </span>
               </Link>
@@ -151,4 +151,3 @@ const ProfileDetails = ({ user }) => {
 };
 
 export { ProfileDetails };
-

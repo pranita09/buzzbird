@@ -25,13 +25,13 @@ const EditUserModal = ({ setEditUserModal }) => {
   return (
     <div
       style={styles}
-      className="mx-4 text-sm border border-darkGrey p-4 w-80 rounded overflow-y-auto bg-lighterPrimary"
+      className="mx-4 text-sm border border-darkGrey p-4 w-80 rounded overflow-y-auto bg-lighterPrimary dark:bg-darkGrey dark:text-lightGrey"
     >
       <form className="flex flex-col gap-2.5" onSubmit={editProfileFormHandler}>
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <button
-              className="hover:bg-darkGrey hover:text-lightGrey h-min p-1 mr-3 rounded-full"
+              className="hover:bg-darkGrey hover:text-lightGrey dark:hover:bg-lightGrey dark:hover:text-darkGrey h-min p-1 mr-3 rounded-full"
               type="button"
               onClick={() => setEditUserModal(false)}
             >
@@ -143,7 +143,7 @@ const EditUserModal = ({ setEditUserModal }) => {
           <label className="w-full">
             <div className="text-xs">First Name</div>
             <input
-              className="bg-lighterPrimary w-full text-sm outline-none border-none"
+              className="bg-lighterPrimary dark:bg-darkGrey w-full text-sm outline-none border-none"
               type="text"
               name="firstName"
               value={editInput.firstName}
@@ -158,7 +158,7 @@ const EditUserModal = ({ setEditUserModal }) => {
           <label className="w-full">
             <div className="text-xs">Last Name</div>
             <input
-              className="bg-lighterPrimary w-full text-sm outline-none border-none"
+              className="bg-lighterPrimary dark:bg-darkGrey w-full text-sm outline-none border-none"
               type="text"
               name="lastName"
               value={editInput.lastName}
@@ -173,7 +173,7 @@ const EditUserModal = ({ setEditUserModal }) => {
           <label className="w-full">
             <div className="text-xs">Bio</div>
             <input
-              className="bg-lighterPrimary w-full text-sm outline-none border-none"
+              className="bg-lighterPrimary dark:bg-darkGrey w-full text-sm outline-none border-none"
               type="text"
               name="bio"
               value={editInput.bio}
@@ -188,7 +188,7 @@ const EditUserModal = ({ setEditUserModal }) => {
           <label className="w-full">
             <div className="text-xs">Website</div>
             <input
-              className="bg-lighterPrimary w-full text-sm outline-none border-none"
+              className="bg-lighterPrimary dark:bg-darkGrey w-full text-sm outline-none border-none"
               type="text"
               name="website"
               value={editInput.website}
@@ -206,11 +206,11 @@ const EditUserModal = ({ setEditUserModal }) => {
       >
         <div
           style={styles}
-          className="mx-4 text-sm border border-darkGrey p-4 w-60 rounded-md overflow-y-auto bg-lighterPrimary flex flex-col gap-4"
+          className="mx-4 text-sm border border-darkGrey p-4 w-60 rounded-md overflow-y-auto bg-lighterPrimary dark:bg-darkGrey dark:text-lightGrey flex flex-col gap-4"
         >
           <div className="flex items-center">
             <button
-              className="hover:bg-darkGrey hover:text-lightGrey text-sm h-min p-0.5 mr-3 rounded-full"
+              className="hover:bg-darkGrey hover:text-lightGrey dark:hover:bg-lightGrey dark:hover:text-darkGrey text-sm h-min p-0.5 mr-3 rounded-full"
               type="button"
               onClick={() => setShowAvatarOptions(false)}
             >

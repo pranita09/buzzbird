@@ -30,15 +30,15 @@ const CommentModal = ({
   return (
     <div
       style={styles}
-      className="grid grid-cols-[2.5rem_1fr] gap-2 items-start bg-lighterPrimary text-sm border-darkGrey px-4 py-3 cursor-text w-[90%] sm:w-[60%] xl:w-[45%] shadow-dark shadow-lg rounded-md border"
+      className="grid grid-cols-[2.5rem_1fr] gap-2 items-start bg-lighterPrimary text-sm border-darkGrey px-4 py-3 cursor-text w-[90%] sm:w-[60%] xl:w-[45%] shadow-dark shadow-lg rounded-md border dark:bg-darkGrey"
     >
       <UserAvatar user={currentUser} className="h-10 w-10" />
       <form className="flex flex-col gap-4" onSubmit={submitCommentHandler}>
-        <div className="w-full break-all outline-none mt-1.5 bg-lighterPrimary">
+        <div className="w-full break-all outline-none mt-1.5 bg-lighterPrimary dark:bg-darkGrey">
           <textarea
             ref={newCommentRef}
             value={commentData}
-            className="w-full break-all outline-none bg-lighterPrimary resize-none h-[3rem]"
+            className="w-full break-all outline-none bg-lighterPrimary dark:bg-darkGrey resize-none h-[3rem] dark:text-lightGrey"
             placeholder="Post your reply"
             onChange={(e) => setCommentData(e.target.value)}
           />

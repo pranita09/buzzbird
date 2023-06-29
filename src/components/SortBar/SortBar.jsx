@@ -31,14 +31,14 @@ const SortBar = () => {
         </button>
 
         {showSortModal && (
-          <div className="absolute right-0 w-max text-sm flex flex-col gap-0.5 items-start py-1 px-1 shadow-lg border rounded border-darkGrey dark:border-lightGrey z-10 bg-lighterPrimary">
+          <div className="absolute right-0 w-max text-sm flex flex-col gap-0.5 items-start py-1 px-1 shadow-lg border rounded border-darkGrey dark:border-lightGrey z-10 bg-lighterPrimary dark:bg-darkGrey dark:text-lightGrey">
             <button
               style={{
                 backgroundColor:
                   filterType === "Trending" ? "#99f6e4" : "#d1fae5",
                 fontWeight: filterType === "Trending" && "bold",
               }}
-              className="flex justify-center py-1 px-3 rounded-md w-full hover:bg-lightPrimary"
+              className="flex justify-center py-1 px-3 rounded-md w-full dark:text-darkGrey"
               onClick={() => {
                 postsDispatch({ type: FILTER_POSTS, payload: "Trending" });
                 setShowSortModal((prev) => !prev);
@@ -53,7 +53,7 @@ const SortBar = () => {
                   filterType === "Latest" ? "#99f6e4" : "#d1fae5",
                 fontWeight: filterType === "Latest" && "bold",
               }}
-              className="flex justify-center py-1 px-3 rounded-md w-full hover:bg-lightPrimary"
+              className="flex justify-center py-1 px-3 rounded-md w-full dark:text-darkGrey"
               onClick={() => {
                 postsDispatch({ type: FILTER_POSTS, payload: "Latest" });
                 setShowSortModal((prev) => !prev);
@@ -68,7 +68,7 @@ const SortBar = () => {
                   filterType === "Oldest" ? "#99f6e4" : "#d1fae5",
                 fontWeight: filterType === "Oldest" && "bold",
               }}
-              className="flex justify-center py-1 px-3 rounded-md w-full hover:bg-lightPrimary"
+              className="flex justify-center py-1 px-3 rounded-md w-full dark:text-darkGrey"
               onClick={() => {
                 postsDispatch({ type: FILTER_POSTS, payload: "Oldest" });
                 setShowSortModal((prev) => !prev);

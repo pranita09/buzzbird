@@ -9,7 +9,7 @@ const CommentCard = ({ comment, postId }) => {
   const [showOptions, setShowOptions] = useState(false);
 
   return (
-    <div className="grid grid-cols-[2.25rem_1fr] gap-2 pt-3 border-t border-darkGrey">
+    <div className="grid grid-cols-[2.25rem_1fr] gap-2 pt-3 border-t border-darkGrey ">
       <div
         onClick={(e) => {
           e.stopPropagation();

@@ -13,11 +13,11 @@ const SettingsModal = ({ setShowSettingsModal }) => {
   return (
     <div
       style={styles}
-      className="flex flex-col w-max rounded-md shadow-lg border border-darkGrey bg-lighterPrimary"
+      className="flex flex-col w-max rounded-md shadow-lg border border-darkGrey bg-lighterPrimary dark:bg-darkGrey p-4 dark:text-lightGrey"
     >
       <>
         <button
-          className="py-2 px-4 text-left cursor-pointer rounded-md hover:bg-lightPrimary flex items-center justify-center"
+          className="py-2 px-4 text-left cursor-pointer rounded-md hover:bg-lightPrimary dark:hover:bg-darkPrimary flex items-center justify-center"
           onClick={() => {
             setIsDarkTheme(!isDarkTheme);
             setShowSettingsModal(false);
@@ -31,7 +31,7 @@ const SettingsModal = ({ setShowSettingsModal }) => {
           )}
         </button>
         <button
-          className="py-2 px-4 text-left cursor-pointer rounded-md hover:bg-lightPrimary text-red flex items-center justify-center"
+          className="py-2 px-4 text-left cursor-pointer rounded-md hover:bg-lightPrimary dark:hover:bg-darkPrimary text-red flex items-center justify-center"
           onClick={() => {
             logoutHandler();
             setShowSettingsModal(false);

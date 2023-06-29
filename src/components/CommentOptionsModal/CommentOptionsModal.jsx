@@ -28,11 +28,11 @@ const CommentOptionsModal = ({ comment, postId, setShowOptions }) => {
   );
 
   return (
-    <div className="absolute flex flex-col right-1 top-7 w-max rounded-md shadow-lg border border-darkGrey bg-lighterPrimary">
+    <div className="absolute flex flex-col right-1 top-7 w-max rounded-md shadow-lg border border-darkGrey bg-lighterPrimary dark:bg-darkGrey">
       {comment?.username === currentUser?.username ? (
         <>
           <button
-            className="py-2 px-4 text-left cursor-pointer rounded-md hover:bg-lightPrimary flex items-center justify-center"
+            className="py-2 px-4 text-left cursor-pointer rounded-md hover:bg-lightPrimary dark:hover:bg-darkPrimary flex items-center justify-center"
             onClick={(e) => {
               e.stopPropagation();
               setShowCommentModal(true);
@@ -42,7 +42,7 @@ const CommentOptionsModal = ({ comment, postId, setShowOptions }) => {
             Edit
           </button>
           <button
-            className="py-2 px-4 text-left cursor-pointer rounded-md hover:bg-lightPrimary text-red flex items-center justify-center"
+            className="py-2 px-4 text-left cursor-pointer rounded-md hover:bg-lightPrimary dark:hover:bg-darkPrimary text-red flex items-center justify-center"
             onClick={(e) => {
               e.stopPropagation();
               deleteCommentHandler(postId, comment?._id);
@@ -55,7 +55,7 @@ const CommentOptionsModal = ({ comment, postId, setShowOptions }) => {
         </>
       ) : (
         <button
-          className="py-2 px-4 text-left cursor-pointer rounded-md hover:bg-lightPrimary flex items-center justify-center"
+          className="py-2 px-4 text-left cursor-pointer rounded-md hover:bg-lightPrimary dark:hover:bg-darkPrimary flex items-center justify-center"
           onClick={(e) => {
             e.stopPropagation();
             userAlreadyFollowing

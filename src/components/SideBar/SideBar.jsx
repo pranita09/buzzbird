@@ -25,7 +25,7 @@ const SideBar = () => {
   };
 
   return (
-    <aside className=" flex bg-[white] dark:bg-darkGrey sm:sticky sm:flex-col sm:justify-between sm:h-screen sm:top-0 sm:overflow-y-auto overflow-x-hidden fixed bottom-0 left-0 w-full items-center sm:border-0 border-t-2 border-darkGrey dark:border-lightGrey dark:text-lightGrey sm:z-0 z-40 ">
+    <aside className=" flex bg-[white] dark:bg-darkColor sm:sticky sm:flex-col sm:justify-between sm:h-screen sm:top-0 sm:overflow-y-auto overflow-x-hidden fixed bottom-0 left-0 w-full items-center sm:border-0 border-t-2 border-darkGrey dark:border-lightGrey dark:text-lightGrey sm:z-0 z-40 ">
       <ul className="flex items-center sm:items-start justify-around sm:justify-start px-2 py-1 sm:py-4 sm:flex-col gap-3 sm:gap-2 tracking-wide grow">
         <li className="sm:pb-2 sm:px-1 hidden sm:block">
           <Link to="/" className="flex items-center">
@@ -40,7 +40,7 @@ const SideBar = () => {
           <NavLink
             to="/"
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
-            className="p-2 lg:py-1 lg:pl-2 lg:pr-4 w-max flex justify-center items-center hover:bg-lighterPrimary hover:rounded-full  dark:hover:text-darkColor active:dark:text-darkColor"
+            className="p-2 lg:py-1 lg:pl-2 lg:pr-4 w-max flex justify-center items-center hover:bg-lighterPrimary dark:hover:bg-lightPrimary hover:rounded-full  dark:hover:text-darkColor active:dark:text-darkColor"
           >
             <MdHome className="px-0.5 text-3xl lg:pr-2" />
             <span className="hidden lg:inline">Home</span>
@@ -51,7 +51,7 @@ const SideBar = () => {
           <NavLink
             to="/explore"
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
-            className="p-2 lg:py-1 lg:pl-2 lg:pr-4 w-max flex justify-center items-center hover:bg-lighterPrimary hover:rounded-full  dark:hover:text-darkColor dark:active:text-darkColor"
+            className="p-2 lg:py-1 lg:pl-2 lg:pr-4 w-max flex justify-center items-center hover:bg-lighterPrimary dark:hover:bg-lightPrimary hover:rounded-full  dark:hover:text-darkColor dark:active:text-darkColor"
           >
             <MdExplore className="px-0.5 text-3xl lg:pr-2" />
             <span className="hidden lg:inline">Explore</span>
@@ -62,7 +62,7 @@ const SideBar = () => {
           <NavLink
             to="/bookmarks"
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
-            className="p-2 lg:py-1 lg:pl-2 lg:pr-4 w-max flex justify-center items-center hover:bg-lighterPrimary hover:rounded-full  dark:hover:text-darkColor dark:active:text-darkColor"
+            className="p-2 lg:py-1 lg:pl-2 lg:pr-4 w-max flex justify-center items-center hover:bg-lighterPrimary dark:hover:bg-lightPrimary hover:rounded-full  dark:hover:text-darkColor dark:active:text-darkColor"
           >
             <MdBookmarks className="px-0.5 text-3xl lg:pr-2" />
             <span className="hidden lg:inline">Bookmarks</span>
@@ -73,7 +73,7 @@ const SideBar = () => {
           <NavLink
             to={`/profile/${currentUser?.username}`}
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
-            className="p-2 lg:py-1 lg:pl-2 lg:pr-4 w-max flex justify-center items-center hover:bg-lighterPrimary hover:rounded-full  dark:hover:text-darkColor dark:active:text-darkColor"
+            className="p-2 lg:py-1 lg:pl-2 lg:pr-4 w-max flex justify-center items-center hover:bg-lighterPrimary dark:hover:bg-lightPrimary hover:rounded-full  dark:hover:text-darkColor dark:active:text-darkColor"
           >
             <MdPerson className="px-0.5 text-3xl lg:pr-2" />
             <span className="hidden lg:inline">Profile</span>
@@ -84,7 +84,7 @@ const SideBar = () => {
           className=" sm:flex px-0 sm:px-1 lg:p-0 w-max lg:w-full cursor-pointer"
           onClick={() => setShowPostModal(true)}
         >
-          <HiPlusCircle className="px-2 text-[2.75rem] hover:bg-lighterPrimary hover:rounded-full  dark:hover:text-darkColor lg:hidden" />
+          <HiPlusCircle className="px-2 text-[2.75rem] hover:bg-lighterPrimary dark:hover:bg-lightPrimary hover:rounded-full  dark:hover:text-darkColor lg:hidden" />
           <PrimaryButton className="mx-2 rounded-lg w-max lf:w-full py-1 pl-2 pr-4  justify-center items-center hidden lg:flex">
             <HiPlusCircle className="px-0.5 text-3xl lg:pr-2" />
             <span className="hidden lg:inline lg:pr-2">New Post</span>
