@@ -1,5 +1,4 @@
-import React, { useRef, useEffect } from "react";
-import { useAuth, usePosts } from "../../index";
+import React, { useEffect, useRef } from "react";
 import {
   Loader,
   NewPost,
@@ -9,8 +8,9 @@ import {
   SortBar,
   SuggestedUsers,
 } from "../../components";
-import { sortPosts } from "../../utils/sortPosts";
+import { useAuth, usePosts } from "../../index";
 import { actionTypes } from "../../utils/constants";
+import { sortPosts } from "../../utils/sortPosts";
 
 const Home = () => {
   const { currentUser } = useAuth();

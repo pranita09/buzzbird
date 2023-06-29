@@ -1,30 +1,30 @@
+import { Modal } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { usePosts, useAuth, useUsers } from "../../index";
 import {
-  SideBar,
-  SuggestedUsers,
-  SearchBar,
+  CommentCard,
   Loader,
-  UserAvatar,
   PostOptionsModal,
   PrimaryButton,
+  SearchBar,
+  SideBar,
+  SuggestedUsers,
+  UserAvatar,
   UsersModal,
-  CommentCard,
 } from "../../components";
+import { useAuth, usePosts, useUsers } from "../../index";
+import { getPostDate } from "../../utils/getPostDate";
 import {
   FaArrowLeft,
-  HiDotsHorizontal,
-  FaHeart,
-  FaRegHeart,
-  FaRegComments,
   FaBookmark,
+  FaHeart,
   FaRegBookmark,
+  FaRegComments,
+  FaRegHeart,
+  HiDotsHorizontal,
   MdShare,
 } from "../../utils/icons";
-import { getPostDate } from "../../utils/getPostDate";
 import { sharePost } from "../../utils/sharePost";
-import { Modal } from "@mui/material";
 
 const SinglePost = () => {
   const { postId } = useParams();

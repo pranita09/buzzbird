@@ -1,14 +1,14 @@
+import { Modal } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useAuth, usePosts, useUsers } from "../../index";
 import { PostModal } from "..";
+import { useAuth, usePosts, useUsers } from "../../index";
 import {
   FaEdit,
   FaTrash,
   FaUserPlus,
   RiUserUnfollowFill,
 } from "../../utils/icons";
-import { Modal } from "@mui/material";
 
 const PostOptionsModal = ({ post, setShowOptions }) => {
   const { _id, username } = post;

@@ -1,19 +1,19 @@
+import { Modal } from "@mui/material";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { usePosts, useAuth, useUsers } from "../../index";
-import { UserAvatar, PostOptionsModal, CommentModal } from "..";
+import { CommentModal, PostOptionsModal, UserAvatar } from "..";
+import { useAuth, usePosts, useUsers } from "../../index";
+import { getPostDate } from "../../utils/getPostDate";
 import {
-  HiDotsHorizontal,
-  FaRegHeart,
-  FaHeart,
-  FaRegComments,
-  FaRegBookmark,
   FaBookmark,
+  FaHeart,
+  FaRegBookmark,
+  FaRegComments,
+  FaRegHeart,
+  HiDotsHorizontal,
   MdShare,
 } from "../../utils/icons";
-import { getPostDate } from "../../utils/getPostDate";
 import { sharePost } from "../../utils/sharePost";
-import { Modal } from "@mui/material";
 
 const PostCard = ({ post }) => {
   const navigate = useNavigate();

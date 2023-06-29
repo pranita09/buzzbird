@@ -1,17 +1,17 @@
+import { Modal } from "@mui/material";
 import { React, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { useAuth } from "../../index";
 import { PostModal, PrimaryButton, SettingsModal, UserAvatar } from "..";
+import { useAuth } from "../../index";
 import { logoImg } from "../../utils/constants";
 import {
-  MdHome,
-  MdExplore,
-  MdBookmarks,
-  MdPerson,
-  HiPlusCircle,
   HiDotsHorizontal,
+  HiPlusCircle,
+  MdBookmarks,
+  MdExplore,
+  MdHome,
+  MdPerson,
 } from "../../utils/icons";
-import { Modal } from "@mui/material";
 
 const SideBar = () => {
   const { currentUser } = useAuth();
@@ -140,3 +140,4 @@ const SideBar = () => {
 };
 
 export { SideBar };
+

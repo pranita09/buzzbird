@@ -1,7 +1,7 @@
-import { useUsers } from "../../index";
 import { SearchedUsersModal } from "..";
-import { FiSearch } from "../../utils/icons";
+import { useUsers } from "../../index";
 import { actionTypes } from "../../utils/constants";
+import { FiSearch } from "../../utils/icons";
 
 const SearchBar = () => {
   const {

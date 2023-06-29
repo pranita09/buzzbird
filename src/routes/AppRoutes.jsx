@@ -1,17 +1,17 @@
-import { Routes, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import { ResetScroll } from "../components";
 import {
   Authentication,
-  Login,
-  Signup,
-  Home,
-  Explore,
   Bookmarks,
-  UserProfile,
-  SinglePost,
+  Explore,
+  Home,
+  Login,
   PageNotFound,
+  Signup,
+  SinglePost,
+  UserProfile,
 } from "../pages";
 import { PrivateRoutes } from "./PrivateRoutes";
-import { ResetScroll } from "../components";
 
 const AppRoutes = () => {
   return (

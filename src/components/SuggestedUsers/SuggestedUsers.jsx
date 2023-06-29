@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { useAuth, useUsers } from "../../index";
 import { Loader, PrimaryButton, UserAvatar } from "..";
+import { useAuth, useUsers } from "../../index";
 
 const SuggestedUsers = () => {
   const navigate = useNavigate();

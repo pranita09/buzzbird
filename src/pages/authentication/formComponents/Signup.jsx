@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../../index";
 import { PrimaryButton } from "../../../components";
+import { useAuth } from "../../../index";
 import { logoImageURL } from "../../../utils/constants";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "../../../utils/icons";
 

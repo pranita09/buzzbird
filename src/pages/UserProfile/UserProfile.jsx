@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useUsers, usePosts, useAuth } from "../../index";
 import {
   Loader,
   PostCard,
@@ -9,6 +8,7 @@ import {
   SideBar,
   SuggestedUsers,
 } from "../../components";
+import { useAuth, usePosts, useUsers } from "../../index";
 import { FaArrowLeft } from "../../utils/icons";
 import { sortPosts } from "../../utils/sortPosts";
 
