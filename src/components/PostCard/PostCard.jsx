@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
-import { useUsers } from "../../contexts/user-context";
+import { useNavigate } from "react-router-dom";
+import { usePosts, useAuth, useUsers } from "../../index";
 import { UserAvatar, PostOptionsModal, CommentModal } from "..";
 import {
   HiDotsHorizontal,
@@ -10,11 +11,8 @@ import {
   FaBookmark,
   MdShare,
 } from "../../utils/icons";
-import { usePosts } from "../../contexts/post-context";
-import { useAuth } from "../../contexts/auth-context";
 // import { debounce } from "../../utils/debounce";
 import { getPostDate } from "../../utils/getPostDate";
-import { useNavigate } from "react-router-dom";
 import { sharePost } from "../../utils/sharePost";
 import { Modal } from "@mui/material";
 

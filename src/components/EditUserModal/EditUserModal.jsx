@@ -1,22 +1,9 @@
 import { useState } from "react";
-import { avatarImages } from "../../utils/constants";
+import { useUsers, useAuth } from "../../index";
+import { UserAvatar, PrimaryButton } from "..";
+import { avatarImages, styles } from "../../utils/constants";
 import { FaTimes, FaCamera, BsPersonCircle } from "../../utils/icons";
-import { PrimaryButton } from "../Buttons/Buttons";
-import { UserAvatar } from "../UserAvatar/UserAvatar";
 import { Modal } from "@mui/material";
-import { useUsers } from "../../contexts/user-context";
-import { useAuth } from "../../contexts/auth-context";
-
-const styles = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  bgcolor: "background.paper",
-  border: "1px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
 
 const EditUserModal = ({ setEditUserModal }) => {
   const { currentUser } = useAuth();

@@ -1,9 +1,9 @@
-import { AiOutlineEye, AiOutlineEyeInvisible } from "../../../utils/icons";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../index";
 import { PrimaryButton } from "../../../components";
 import { logoImageURL } from "../../../utils/constants";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../../contexts/auth-context";
-import { useState } from "react";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "../../../utils/icons";
 
 const Signup = () => {
   const navigate = useNavigate();

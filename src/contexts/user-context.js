@@ -5,7 +5,8 @@ import {
   useReducer,
   useState,
 } from "react";
-import { useAuth } from "./auth-context";
+import { toast } from "react-hot-toast";
+import { useAuth } from "../index";
 import { usersReducer, initialUsersState } from "../reducers/usersReducer";
 import { actionTypes } from "../utils/constants";
 import {
@@ -18,7 +19,6 @@ import {
   removeBookmarkService,
   unfollowUserService,
 } from "../services/usersServices";
-import { toast } from "react-hot-toast";
 
 export const UsersContext = createContext();
 

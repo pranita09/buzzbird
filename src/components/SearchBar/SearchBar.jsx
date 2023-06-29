@@ -1,14 +1,16 @@
+import { useUsers } from "../../index";
+import { SearchedUsersModal } from "..";
 import { FiSearch } from "../../utils/icons";
-import { useUsers } from "../../contexts/user-context";
 import { actionTypes } from "../../utils/constants";
-import { SearchedUsersModal } from "../SearchedUsersModal/SearchedUsersModal";
 
 const SearchBar = () => {
   const {
     usersState: { searchInput },
     usersDispatch,
   } = useUsers();
+
   const { SEARCH_USER } = actionTypes;
+
   return (
     <div className="sticky top-[15px] mr-1 xl:mr-0 z-30">
       <div className="relative xl:mx-4 2xl:my-3 rounded-lg border border-darkGrey focus-within:border-darkPrimary bg-lightGrey ">

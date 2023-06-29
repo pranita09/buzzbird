@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import { useAuth, usePosts } from "../../index";
 import {
   Loader,
   NewPost,
@@ -8,8 +9,6 @@ import {
   SortBar,
   SuggestedUsers,
 } from "../../components";
-import { useAuth } from "../../contexts/auth-context";
-import { usePosts } from "../../contexts/post-context";
 import { sortPosts } from "../../utils/sortPosts";
 import { actionTypes } from "../../utils/constants";
 

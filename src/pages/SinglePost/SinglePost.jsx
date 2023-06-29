@@ -1,4 +1,6 @@
+import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { usePosts, useAuth, useUsers } from "../../index";
 import {
   SideBar,
   SuggestedUsers,
@@ -10,10 +12,6 @@ import {
   UsersModal,
   CommentCard,
 } from "../../components";
-import { usePosts } from "../../contexts/post-context";
-import { useEffect, useRef, useState } from "react";
-import { useAuth } from "../../contexts/auth-context";
-import { useUsers } from "../../contexts/user-context";
 import {
   FaArrowLeft,
   HiDotsHorizontal,

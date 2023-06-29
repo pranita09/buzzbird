@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserAvatar } from "../UserAvatar/UserAvatar";
+import { CommentOptionsModal, UserAvatar } from "..";
 import { getPostDate } from "../../utils/getPostDate";
 import { HiDotsHorizontal } from "../../utils/icons";
-import { CommentOptionsModal } from "..";
 
 const CommentCard = ({ comment, postId }) => {
   const navigate = useNavigate();
   const [showOptions, setShowOptions] = useState(false);
+
   return (
     <div className="grid grid-cols-[2.25rem_1fr] gap-2 pt-3 border-t border-darkGrey">
       <div

@@ -1,3 +1,4 @@
+import { usePosts, useUsers } from "../../index";
 import {
   SideBar,
   SearchBar,
@@ -5,15 +6,12 @@ import {
   SuggestedUsers,
   Loader,
 } from "../../components";
-import { usePosts } from "../../contexts/post-context";
-import { useUsers } from "../../contexts/user-context";
 
 const Bookmarks = () => {
   const {
     usersState: { bookmarks },
     isLoading,
   } = useUsers();
-
   const {
     postsState: { posts },
   } = usePosts();

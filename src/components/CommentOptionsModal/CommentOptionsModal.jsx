@@ -1,15 +1,13 @@
 import { useState } from "react";
-import { useAuth } from "../../contexts/auth-context";
+import { useUsers, usePosts, useAuth } from "../../index";
+import { CommentModal } from "..";
+import { Modal } from "@mui/material";
 import {
   FaEdit,
   FaTrash,
   FaUserPlus,
   RiUserUnfollowFill,
 } from "../../utils/icons";
-import { CommentModal } from "..";
-import { Modal } from "@mui/material";
-import { useUsers } from "../../contexts/user-context";
-import { usePosts } from "../../contexts/post-context";
 
 const CommentOptionsModal = ({ comment, postId, setShowOptions }) => {
   const { currentUser } = useAuth();

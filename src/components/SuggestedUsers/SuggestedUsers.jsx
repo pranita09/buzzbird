@@ -1,7 +1,6 @@
-import { useAuth } from "../../contexts/auth-context";
-import { useUsers } from "../../contexts/user-context";
-import { Loader, PrimaryButton, UserAvatar } from "..";
 import { useNavigate } from "react-router-dom";
+import { useAuth, useUsers } from "../../index";
+import { Loader, PrimaryButton, UserAvatar } from "..";
 
 const SuggestedUsers = () => {
   const navigate = useNavigate();
@@ -12,10 +11,6 @@ const SuggestedUsers = () => {
     followUserHandler,
     isLoading,
   } = useUsers();
-
-  // const userData = users?.find(
-  //   (user) => user.username === currentUser.username
-  // );
 
   const filteredUsers = users
     ?.filter((dbUser) => dbUser.username !== currentUser?.username)

@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useUsers, usePosts, useAuth } from "../../index";
 import {
   Loader,
   PostCard,
@@ -7,11 +9,7 @@ import {
   SideBar,
   SuggestedUsers,
 } from "../../components";
-import { useUsers } from "../../contexts/user-context";
-import { usePosts } from "../../contexts/post-context";
 import { FaArrowLeft } from "../../utils/icons";
-import { useEffect } from "react";
-import { useAuth } from "../../contexts/auth-context";
 import { sortPosts } from "../../utils/sortPosts";
 
 const UserProfile = () => {

@@ -1,5 +1,5 @@
-import { useAuth } from "../../contexts/auth-context";
-import { useTheme } from "../../contexts/theme-context";
+import { useAuth, useTheme } from "../../index";
+import { styles } from "../../utils/constants";
 import {
   MdOutlineLightMode,
   MdOutlineDarkMode,
@@ -9,16 +9,7 @@ import {
 const SettingsModal = ({ setShowSettingsModal }) => {
   const { logoutHandler } = useAuth();
   const { isDarkTheme, setIsDarkTheme } = useTheme();
-  const styles = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    bgcolor: "background.paper",
-    border: "1px solid #000",
-    boxShadow: 24,
-    p: 4,
-  };
+
   return (
     <div
       style={styles}

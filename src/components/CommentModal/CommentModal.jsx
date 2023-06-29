@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { PrimaryButton, SecondaryButton, UserAvatar } from "..";
-import { useAuth } from "../../contexts/auth-context";
-import { usePosts } from "../../contexts/post-context";
+import { useAuth, usePosts } from "../../index";
+import { styles } from "../../utils/constants";
 
 const CommentModal = ({
   comment,
@@ -14,16 +14,6 @@ const CommentModal = ({
 
   const [commentData, setCommentData] = useState(comment?.commentData || "");
   const newCommentRef = useRef();
-
-  const styles = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    bgcolor: "background.paper",
-    boxShadow: 24,
-    p: 4,
-  };
 
   const submitCommentHandler = (e) => {
     e.preventDefault();

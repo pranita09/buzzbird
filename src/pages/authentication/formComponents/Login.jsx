@@ -1,9 +1,9 @@
-import { AiOutlineEye, AiOutlineEyeInvisible } from "../../../utils/icons";
-import { PrimaryButton, SecondaryButton } from "../../../components";
-import { logoImageURL, guestUserLoginDetails } from "../../../utils/constants";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useAuth } from "../../../contexts/auth-context";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../index";
+import { PrimaryButton, SecondaryButton } from "../../../components";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "../../../utils/icons";
+import { logoImageURL, guestUserLoginDetails } from "../../../utils/constants";
 
 const Login = () => {
   const navigate = useNavigate();

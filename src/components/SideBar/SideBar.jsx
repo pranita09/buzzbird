@@ -1,4 +1,7 @@
+import { React, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useAuth } from "../../index";
+import { PostModal, PrimaryButton, SettingsModal, UserAvatar } from "..";
 import { logoImg } from "../../utils/constants";
 import {
   MdHome,
@@ -8,13 +11,11 @@ import {
   HiPlusCircle,
   HiDotsHorizontal,
 } from "../../utils/icons";
-import { PostModal, PrimaryButton, SettingsModal, UserAvatar } from "..";
-import { useAuth } from "../../contexts/auth-context";
-import { React, useState } from "react";
 import { Modal } from "@mui/material";
 
 const SideBar = () => {
   const { currentUser } = useAuth();
+
   const [showPostModal, setShowPostModal] = useState(false);
   const [showSettingsModal, setShowSettingsModal] = useState(false);
 

@@ -1,19 +1,14 @@
-import { SecondaryButton } from "../Buttons/Buttons";
-import { UserAvatar } from "../UserAvatar/UserAvatar";
-import { HiLink, MdDateRange } from "../../utils/icons";
-import { Link } from "react-router-dom";
-import { useAuth } from "../../contexts/auth-context";
-import { getPostDate } from "../../utils/getPostDate";
-import { useUsers } from "../../contexts/user-context";
-import { defaultBgImage } from "../../utils/constants";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useAuth, useUsers } from "../../index";
+import { SecondaryButton, UserAvatar, UsersModal, EditUserModal } from "..";
+import { HiLink, MdDateRange } from "../../utils/icons";
+import { defaultBgImage } from "../../utils/constants";
+import { getPostDate } from "../../utils/getPostDate";
 import { Modal } from "@mui/material";
-import { UsersModal } from "../UsersModal/UsersModal";
-import { EditUserModal } from "../EditUserModal/EditUserModal";
 
 const ProfileDetails = ({ user }) => {
   const { currentUser, logoutHandler } = useAuth();
-
   const { followUserHandler, unfollowUserHandler } = useUsers();
 
   const [editUserModal, setEditUserModal] = useState(false);
