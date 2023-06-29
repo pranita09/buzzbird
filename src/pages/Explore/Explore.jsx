@@ -23,38 +23,26 @@ const Explore = () => {
 
   const sortedPosts = sortPosts(posts, "Latest").slice(0, page * 5);
 
-  const handleObserver = (entries) => {
-    console.log("here");
-    const entry = entries[0];
-    console.log("INSIDE handleobserver", entry);
-    if (entry.isIntersecting) {
-      postsDispatch({ type: SET_IS_NEXT_POST_LOADING, payload: true });
-      postsDispatch({ type: SET_PAGE, payload: page + 1 });
-    }
-  };
-
-  console.log(page);
-  console.log(elementRef.current);
-  console.log(sortedPosts);
-
   useEffect(() => {
     if (sortedPosts.length > 0) {
-      console.log("To check");
-      const observer = new IntersectionObserver(handleObserver, {
-        threshold: 1,
+      const observer = new IntersectionObserver((entries) => {
+        const entry = entries[0];
+        if (entry.isIntersecting) {
+          postsDispatch({ type: SET_IS_NEXT_POST_LOADING, payload: true });
+          postsDispatch({ type: SET_PAGE, payload: page + 1 });
+        }
       });
       if (elementRef.current) {
         observer.observe(elementRef.current);
       }
-      return () => {
-        if (observer) {
-          observer?.unobserve(elementRef);
-        }
-      };
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page]);
+  }, [
+    page,
+    sortedPosts.length,
+    SET_IS_NEXT_POST_LOADING,
+    SET_PAGE,
+    postsDispatch,
+  ]);
 
   useEffect(() => {
     let timeoutId;
@@ -66,15 +54,14 @@ const Explore = () => {
     return () => {
       clearTimeout(timeoutId);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isNextPostLoading, sortedPosts]);
+  }, [isNextPostLoading, sortedPosts, SET_IS_NEXT_POST_LOADING, postsDispatch]);
 
   return (
     <div className="grid sm:grid-cols-[5rem_1fr] lg:grid-cols-[12rem_1fr] xl:grid-cols-[13rem_1fr_20rem] w-[100%] lg:w-[80%] mb-16 sm:m-auto dark:bg-darkGrey dark:text-lightGrey transition-all duration-500">
       <SideBar />
 
       <div className="sm:border-x border-darkGrey dark:border-lightGrey">
-        <h1 className=" p-4 sticky top-0 backdrop-blur-md z-20 border-b border-darkGrey dark:border-lightGrey flex items-center justify-between">
+        <h1 className=" p-4 sticky top-0 backdrop-blur-md z-20 border-b border-darkGrey dark:border-lightGrey flex items-center justify-between gap-4">
           <span className="text-xl font-bold">Explore</span>
           <div className="block xl:hidden">
             <SearchBar />
@@ -91,14 +78,18 @@ const Explore = () => {
                   return (
                     <React.Fragment key={post._id}>
                       <PostCard post={post} />
-                      {console.log(index === sortedPosts?.length - 1)}
                       {index === sortedPosts?.length - 1 && (
                         <div ref={elementRef} />
                       )}
                     </React.Fragment>
                   );
                 })}
-                {isNextPostLoading && <div>Loader more items</div>}
+                {!sortedPosts?.length === posts?.length &&
+                  isNextPostLoading && (
+                    <div className="text-center text-sm mt-2">
+                      Load more posts
+                    </div>
+                  )}
               </>
             ) : (
               <div className="p-4 text-center text-lg font-bold">

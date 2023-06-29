@@ -2,6 +2,9 @@ import axios from "axios";
 
 const getAllPostsService = async () => await axios.get("/api/posts");
 
+const getSinglePostService = async (postId) =>
+  await axios.get(`/api/posts/${postId}`);
+
 const createPostService = async (content, mediaURL, mediaAlt, encodedToken) =>
   await axios.post(
     "/api/posts",
@@ -47,6 +50,32 @@ const dislikePostService = async (postId, encodedToken) =>
     }
   );
 
+const addCommentService = async (postId, commentData, encodedToken) =>
+  await axios.post(
+    `/api/comments/add/${postId}`,
+    { commentData: commentData },
+    { headers: { authorization: encodedToken } }
+  );
+
+const editCommentService = async (
+  postId,
+  commentId,
+  commentData,
+  encodedToken
+) =>
+  await axios.post(
+    `/api/comments/edit/${postId}/${commentId}`,
+    { commentData: commentData },
+    { headers: { authorization: encodedToken } }
+  );
+
+const deleteCommentService = async (postId, commentId, encodedToken) =>
+  await axios.post(
+    `/api/comments/delete/${postId}/${commentId}`,
+    {},
+    { headers: { authorization: encodedToken } }
+  );
+
 export {
   getAllPostsService,
   createPostService,
@@ -54,4 +83,8 @@ export {
   deletePostService,
   likePostService,
   dislikePostService,
+  getSinglePostService,
+  addCommentService,
+  editCommentService,
+  deleteCommentService,
 };

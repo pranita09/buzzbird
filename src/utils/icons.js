@@ -14,6 +14,7 @@ import {
   FaArrowLeft,
   FaTimes,
   FaCamera,
+  FaAngleDoubleLeft,
 } from "react-icons/fa";
 import {
   MdCancel,
@@ -51,6 +52,7 @@ export {
   FaArrowLeft,
   FaTimes,
   FaCamera,
+  FaAngleDoubleLeft,
   FiSearch,
   MdCancel,
   MdShare,

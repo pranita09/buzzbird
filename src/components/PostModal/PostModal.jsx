@@ -103,6 +103,7 @@ const PostModal = ({ post, setShowPostModal, setShowOptions }) => {
               <img
                 src={media ? URL.createObjectURL(media) : content?.mediaURL}
                 alt={content?.mediaAlt || media.name.split(".")[0]}
+                className="w-full max-h-[350px] rounded-md object-cover"
               />
               <button
                 type="button"
@@ -134,13 +135,19 @@ const PostModal = ({ post, setShowPostModal, setShowOptions }) => {
                 className="hidden"
                 onChange={(e) => setMedia(e.target.files[0])}
               />
-              <MdOutlineAddPhotoAlternate className="text-xl" />
+              <MdOutlineAddPhotoAlternate
+                className="text-xl scale-110 hover:scale-125"
+                title="Add Photo/GIF"
+              />
             </label>
             <label
               className="cursor-pointer text-xl"
               onClick={() => setShowEmojiPicker((prev) => !prev)}
             >
-              <MdInsertEmoticon className="text-xl" />
+              <MdInsertEmoticon
+                className="text-xl scale-110 hover:scale-125"
+                title="Add Emoji"
+              />
             </label>
           </div>
           <div className="flex gap-3">

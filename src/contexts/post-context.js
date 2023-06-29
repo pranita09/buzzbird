@@ -7,11 +7,15 @@ import {
 } from "react";
 import { initialPostsState, postsReducer } from "../reducers/postsReducer";
 import {
+  addCommentService,
   createPostService,
+  deleteCommentService,
   deletePostService,
   dislikePostService,
+  editCommentService,
   editPostService,
   getAllPostsService,
+  getSinglePostService,
   likePostService,
 } from "../services/postsServices";
 import { actionTypes } from "../utils/constants";
@@ -35,6 +39,10 @@ export const PostsProvider = ({ children }) => {
     CREATE_NEW_POST,
     DELETE_POST,
     EDIT_POST,
+    GET_SINGLE_POST,
+    ADD_NEW_COMMENT,
+    DELETE_COMMENT,
+    EDIT_COMMENT,
   } = actionTypes;
 
   const getAllPosts = async () => {
@@ -149,8 +157,73 @@ export const PostsProvider = ({ children }) => {
     }
   };
 
-  const likedByLoggedUser = (post, user) =>
-    post?.likes.likedBy.find((likeUser) => likeUser.username === user.username);
+  const getSinglePost = async (postId) => {
+    try {
+      const {
+        status,
+        data: { post },
+      } = await getSinglePostService(postId);
+      if (status === 200) {
+        postsDispatch({ type: GET_SINGLE_POST, payload: post });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const addCommentHandler = async (postId, commentData) => {
+    try {
+      const {
+        status,
+        data: { posts },
+      } = await addCommentService(postId, commentData, token);
+      if (status === 201) {
+        postsDispatch({ type: ADD_NEW_COMMENT, payload: posts });
+        toast.success("Posted comment successfully.");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong!");
+    }
+  };
+
+  const editCommentHandler = async (postId, commentId, commentData) => {
+    try {
+      const {
+        status,
+        data: { posts },
+      } = await editCommentService(postId, commentId, commentData, token);
+      if (status === 201) {
+        postsDispatch({ type: EDIT_COMMENT, payload: posts });
+        toast.success("Updated comment successfully!");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong");
+    }
+  };
+
+  const deleteCommentHandler = async (postId, commentId) => {
+    try {
+      const {
+        status,
+        data: { posts },
+      } = await deleteCommentService(postId, commentId, token);
+      if (status === 201) {
+        postsDispatch({ type: DELETE_COMMENT, payload: posts });
+        toast.success("Comment deleted.");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong.");
+    }
+  };
+
+  const likedByLoggedUser = (post, user) => {
+    return post?.likes?.likedBy?.find(
+      (likeUser) => likeUser.username === user.username
+    );
+  };
 
   useEffect(() => {
     getAllPosts();
@@ -169,6 +242,10 @@ export const PostsProvider = ({ children }) => {
         createPostHandler,
         deletePostHandler,
         editPostHandler,
+        getSinglePost,
+        addCommentHandler,
+        editCommentHandler,
+        deleteCommentHandler,
       }}
     >
       {children}

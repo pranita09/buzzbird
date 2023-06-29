@@ -27,7 +27,7 @@ const SortBar = () => {
           className="p-1 px-2 text-lg"
           onClick={() => setShowSortModal((prev) => !prev)}
         >
-          <FaFilter />
+          <FaFilter title="Filters" className="hover:scale-110" />
         </button>
 
         {showSortModal && (

@@ -9,6 +9,7 @@ export const initialPostData = {
 const initialPostsState = {
   posts: [],
   postData: initialPostData,
+  post: {},
   filterType: "Latest",
   page: 1,
   isNextPostLoading: false,
@@ -24,6 +25,10 @@ const {
   EDIT_POST,
   SET_PAGE,
   SET_IS_NEXT_POST_LOADING,
+  GET_SINGLE_POST,
+  ADD_NEW_COMMENT,
+  DELETE_COMMENT,
+  EDIT_COMMENT,
 } = actionTypes;
 
 const postsReducer = (state, { type, payload }) => {
@@ -46,6 +51,32 @@ const postsReducer = (state, { type, payload }) => {
       return { ...state, page: payload };
     case SET_IS_NEXT_POST_LOADING:
       return { ...state, isNextPostLoading: payload };
+    case GET_SINGLE_POST:
+      return { ...state, post: payload };
+    case ADD_NEW_COMMENT:
+      return {
+        ...state,
+        posts: payload,
+        post: payload.find((eachPost) =>
+          eachPost._id === state?.post?._id ? eachPost : state.post
+        ),
+      };
+    case DELETE_COMMENT:
+      return {
+        ...state,
+        posts: payload,
+        post: payload.find((eachPost) =>
+          eachPost._id === state?.post?._id ? eachPost : state.post
+        ),
+      };
+    case EDIT_COMMENT:
+      return {
+        ...state,
+        posts: payload,
+        post: payload.find((eachPost) =>
+          eachPost._id === state?.post?._id ? eachPost : state.post
+        ),
+      };
     default:
       return state;
   }

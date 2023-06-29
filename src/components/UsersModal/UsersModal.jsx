@@ -25,7 +25,10 @@ const UsersModal = ({ usersListModal, setUsersListModal }) => {
     >
       <div className="flex justify-between items-center mb-4">
         <div className="text-xl font-semibold">{title}</div>
-        <button className="hover:bg-darkGrey hover:text-lightGrey h-min w-min hover:rounded-full p-1">
+        <button
+          className="hover:bg-darkGrey hover:text-lightGrey h-min w-min hover:rounded-full p-1"
+          onClick={() => setUsersListModal(false)}
+        >
           <FaTimes />
         </button>
       </div>

@@ -89,21 +89,27 @@ const NewPost = () => {
         </div>
 
         <div className="ml-auto flex items-center gap-4 mt-1.5">
-          <label className="cursor-pointer text-xl">
+          <label className="cursor-pointer">
             <input
               type="file"
               accept="image/*, video/*"
               className="hidden"
               onChange={(e) => setMedia(e.target.files[0])}
             />
-            <MdOutlineAddPhotoAlternate />
+            <MdOutlineAddPhotoAlternate
+              className="text-xl scale-110 hover:scale-125"
+              title="Add Photo/GIF"
+            />
           </label>
           <label
-            className="cursor-pointer text-xl"
+            className="cursor-pointer"
             onClick={() => setShowEmojiPicker((prev) => !prev)}
           >
             {/* <input className="hidden" /> */}
-            <MdInsertEmoticon />
+            <MdInsertEmoticon
+              className="text-xl scale-110 hover:scale-125"
+              title="Add Emoji"
+            />
           </label>
           <PrimaryButton
             type="submit"
