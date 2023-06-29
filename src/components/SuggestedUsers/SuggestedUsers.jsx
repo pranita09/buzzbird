@@ -1,7 +1,6 @@
-import { useAuth } from "../../contexts/auth-context";
-import { useUsers } from "../../contexts/user-context";
-import { Loader, PrimaryButton, UserAvatar } from "..";
 import { useNavigate } from "react-router-dom";
+import { useAuth, useUsers } from "../../index";
+import { Loader, PrimaryButton, UserAvatar } from "..";
 
 const SuggestedUsers = () => {
   const navigate = useNavigate();
@@ -11,11 +10,8 @@ const SuggestedUsers = () => {
     usersState: { users },
     followUserHandler,
     isLoading,
+    handleBtnsClick,
   } = useUsers();
-
-  // const userData = users?.find(
-  //   (user) => user.username === currentUser.username
-  // );
 
   const filteredUsers = users
     ?.filter((dbUser) => dbUser.username !== currentUser?.username)
@@ -59,7 +55,9 @@ const SuggestedUsers = () => {
 
                   <PrimaryButton
                     className="py-1 px-2 rounded-md"
-                    onClick={() => followUserHandler(user?._id)}
+                    onClick={() =>
+                      handleBtnsClick(400, followUserHandler, user?._id)
+                    }
                   >
                     Follow
                   </PrimaryButton>

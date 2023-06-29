@@ -1,15 +1,13 @@
 import { useState } from "react";
-import { useAuth } from "../../contexts/auth-context";
+import { useUsers, usePosts, useAuth } from "../../index";
+import { CommentModal } from "..";
+import { Modal } from "@mui/material";
 import {
   FaEdit,
   FaTrash,
   FaUserPlus,
   RiUserUnfollowFill,
 } from "../../utils/icons";
-import { CommentModal } from "..";
-import { Modal } from "@mui/material";
-import { useUsers } from "../../contexts/user-context";
-import { usePosts } from "../../contexts/post-context";
 
 const CommentOptionsModal = ({ comment, postId, setShowOptions }) => {
   const { currentUser } = useAuth();
@@ -17,6 +15,7 @@ const CommentOptionsModal = ({ comment, postId, setShowOptions }) => {
     usersState: { users },
     unfollowUserHandler,
     followUserHandler,
+    handleBtnsClick,
   } = useUsers();
   const { deleteCommentHandler } = usePosts();
 
@@ -60,8 +59,8 @@ const CommentOptionsModal = ({ comment, postId, setShowOptions }) => {
           onClick={(e) => {
             e.stopPropagation();
             userAlreadyFollowing
-              ? unfollowUserHandler(userToFollow?._id)
-              : followUserHandler(userToFollow?._id);
+              ? handleBtnsClick(400, unfollowUserHandler, userToFollow?._id)
+              : handleBtnsClick(400, followUserHandler, userToFollow?._id);
             setShowOptions(false);
           }}
         >

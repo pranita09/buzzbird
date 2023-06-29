@@ -1,33 +1,22 @@
-import { useAuth } from "../../contexts/auth-context";
-import { PrimaryButton, SecondaryButton, UserAvatar } from "..";
 import { useRef, useState } from "react";
+import { toast } from "react-hot-toast";
+import { usePosts, useAuth, useTheme } from "../../index";
+import { PrimaryButton, SecondaryButton, UserAvatar } from "..";
 import {
   MdOutlineAddPhotoAlternate,
   MdInsertEmoticon,
   MdCancel,
 } from "../../utils/icons";
-import { toast } from "react-hot-toast";
+import { styles } from "../../utils/constants";
 import { uploadMedia } from "../../utils/uploadMedia";
-import { usePosts } from "../../contexts/post-context";
 import { Modal } from "@mui/material";
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
-import { useTheme } from "../../contexts/theme-context";
 
 const PostModal = ({ post, setShowPostModal, setShowOptions }) => {
   const { isDarkTheme } = useTheme();
   const { currentUser } = useAuth();
   const { createPostHandler, editPostHandler } = usePosts();
-
-  const styles = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    bgcolor: "background.paper",
-    boxShadow: 24,
-    p: 4,
-  };
 
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [content, setContent] = useState(post || {});

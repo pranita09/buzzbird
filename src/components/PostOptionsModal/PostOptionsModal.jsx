@@ -1,24 +1,24 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "../../contexts/auth-context";
-import { usePosts } from "../../contexts/post-context";
-import { useUsers } from "../../contexts/user-context";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useAuth, usePosts, useUsers } from "../../index";
+import { PostModal } from "..";
 import {
   FaEdit,
   FaTrash,
   FaUserPlus,
   RiUserUnfollowFill,
 } from "../../utils/icons";
-import { PostModal } from "..";
-import { useLocation, useNavigate } from "react-router-dom";
 import { Modal } from "@mui/material";
 
 const PostOptionsModal = ({ post, setShowOptions }) => {
   const { _id, username } = post;
+
   const { currentUser } = useAuth();
   const {
     usersState: { users },
     unfollowUserHandler,
     followUserHandler,
+    handleBtnsClick,
   } = useUsers();
   const { deletePostHandler } = usePosts();
 
@@ -72,8 +72,8 @@ const PostOptionsModal = ({ post, setShowOptions }) => {
           className="py-2 px-4 text-left cursor-pointer rounded-md hover:bg-lightPrimary flex items-center justify-center"
           onClick={() => {
             userAlreadyFollowing
-              ? unfollowUserHandler(userToFollow?._id)
-              : followUserHandler(userToFollow?._id);
+              ? handleBtnsClick(400, unfollowUserHandler, userToFollow?._id)
+              : handleBtnsClick(400, followUserHandler, userToFollow?._id);
             setShowOptions(false);
           }}
         >

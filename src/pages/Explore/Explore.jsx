@@ -1,4 +1,5 @@
-import { usePosts } from "../../contexts/post-context";
+import React, { useEffect, useRef } from "react";
+import { usePosts } from "../../index";
 import {
   SideBar,
   SearchBar,
@@ -8,7 +9,6 @@ import {
 } from "../../components";
 import { sortPosts } from "../../utils/sortPosts";
 import { actionTypes } from "../../utils/constants";
-import React, { useEffect, useRef } from "react";
 
 const Explore = () => {
   const {
@@ -43,6 +43,8 @@ const Explore = () => {
     SET_PAGE,
     postsDispatch,
   ]);
+
+  document.title = "Explore | BuzzBird";
 
   useEffect(() => {
     let timeoutId;

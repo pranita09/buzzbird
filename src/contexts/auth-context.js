@@ -1,14 +1,16 @@
 import { createContext, useContext, useState } from "react";
-import { loginService, signupService } from "../services/authServices";
-import { toast } from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
+import { loginService, signupService } from "../services/authServices";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   const location = useLocation();
+
   const localStorageToken = JSON.parse(localStorage.getItem("loginDetails"));
+
   const [token, setToken] = useState(localStorageToken?.token || "");
   const [currentUser, setCurrentUser] = useState(localStorageToken?.user);
   const [loading, setIsLoading] = useState(false);

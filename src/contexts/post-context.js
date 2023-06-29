@@ -5,6 +5,8 @@ import {
   useReducer,
   useState,
 } from "react";
+import { toast } from "react-hot-toast";
+import { useAuth } from "../index";
 import { initialPostsState, postsReducer } from "../reducers/postsReducer";
 import {
   addCommentService,
@@ -19,13 +21,12 @@ import {
   likePostService,
 } from "../services/postsServices";
 import { actionTypes } from "../utils/constants";
-import { useAuth } from "./auth-context";
-import { toast } from "react-hot-toast";
 
 export const PostsContext = createContext();
 
 export const PostsProvider = ({ children }) => {
   const { token } = useAuth();
+  
   const [postsState, postsDispatch] = useReducer(
     postsReducer,
     initialPostsState

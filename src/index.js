@@ -4,10 +4,12 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter as Router } from "react-router-dom";
-import { AuthProvider } from "./contexts/auth-context";
-import { ThemeProvider } from "./contexts/theme-context";
-import { PostsProvider } from "./contexts/post-context";
-import { UsersProvider } from "./contexts/user-context";
+import { AuthProvider, useAuth } from "./contexts/auth-context";
+import { ThemeProvider, useTheme } from "./contexts/theme-context";
+import { PostsProvider, usePosts } from "./contexts/post-context";
+import { UsersProvider, useUsers } from "./contexts/user-context";
+
+export { useAuth, useTheme, usePosts, useUsers };
 
 // Call make Server
 makeServer();

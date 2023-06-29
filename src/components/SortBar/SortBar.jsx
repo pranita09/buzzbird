@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
-import { FaFilter, FaFire, FaArrowUp, FaArrowDown } from "../../utils/icons";
+import { usePosts } from "../../index";
 import { actionTypes } from "../../utils/constants";
-import { usePosts } from "../../contexts/post-context";
 import { useOnClickOutside } from "../../utils/useOnClickOutside";
+import { FaFilter, FaFire, FaArrowUp, FaArrowDown } from "../../utils/icons";
 
 const SortBar = () => {
   const {

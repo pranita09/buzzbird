@@ -4,6 +4,7 @@ import { FaAngleDoubleLeft } from "../../utils/icons";
 
 const PageNotFound = () => {
   const navigate = useNavigate();
+  document.title = "Page Not Found";
   return (
     <div className="h-screen flex flex-col justify-center items-center gap-10 -mt-10">
       <img
