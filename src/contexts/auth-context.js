@@ -35,7 +35,7 @@ export const AuthProvider = ({ children }) => {
       }
     } catch (error) {
       console.error(error);
-      toast.error("User does not exist! Please enter correct details.");
+      toast.error("Please enter correct details.");
     } finally {
       setIsLoading(false);
     }

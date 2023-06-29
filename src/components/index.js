@@ -18,3 +18,4 @@ export { Loader } from "./Loader/Loader";
 export { CommentCard } from "./CommentCard/CommentCard";
 export { CommentOptionsModal } from "./CommentOptionsModal/CommentOptionsModal";
 export { CommentModal } from "./CommentModal/CommentModal";
+export { ResetScroll } from "./ResetScroll/ResetScroll";

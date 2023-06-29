@@ -26,7 +26,7 @@ export const PostsContext = createContext();
 
 export const PostsProvider = ({ children }) => {
   const { token } = useAuth();
-  
+
   const [postsState, postsDispatch] = useReducer(
     postsReducer,
     initialPostsState
@@ -143,7 +143,7 @@ export const PostsProvider = ({ children }) => {
       } = await dislikePostService(postId, token);
       if (status === 201) {
         postsDispatch({ type: DISLIKE_POST, payload: posts });
-        toast.success("Disliked the post");
+        toast.success("Unliked the post");
       }
     } catch (error) {
       const {
