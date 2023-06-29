@@ -2,7 +2,7 @@ import { Modal } from "@mui/material";
 import { useState } from "react";
 import { PrimaryButton, UserAvatar } from "..";
 import { useAuth, useUsers } from "../../index";
-import { avatarImages, styles } from "../../utils/constants";
+import { avatarImages, defaultBgImage, styles } from "../../utils/constants";
 import { BsPersonCircle, FaCamera, FaTimes } from "../../utils/icons";
 
 const EditUserModal = ({ setEditUserModal }) => {
@@ -51,6 +51,8 @@ const EditUserModal = ({ setEditUserModal }) => {
                 coverImage
                   ? URL.createObjectURL(coverImage)
                   : editInput.backgroundImage
+                  ? editInput.backgroundImage
+                  : defaultBgImage
               }
               alt={coverImage ? "UpdatedCoverImage" : "CoverImage"}
               className="object-cover h-24 w-full rounded opacity-90 "
