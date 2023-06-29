@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { useUsers } from "../../contexts/user-context";
-import { UserAvatar, PostOptionsModal } from "..";
+import { UserAvatar, PostOptionsModal, CommentModal } from "..";
 import {
   HiDotsHorizontal,
   FaRegHeart,
@@ -16,22 +16,22 @@ import { useAuth } from "../../contexts/auth-context";
 import { getPostDate } from "../../utils/getPostDate";
 import { useNavigate } from "react-router-dom";
 import { sharePost } from "../../utils/sharePost";
+import { Modal } from "@mui/material";
 
 const PostCard = ({ post }) => {
   const navigate = useNavigate();
 
   const { currentUser } = useAuth();
-
   const {
     usersState: { users },
     addBookmarkHandler,
     removeBookmarkHandler,
     postAlreadyInBookmarks,
   } = useUsers();
-
   const { likePostHandler, dislikePostHandler, likedByLoggedUser } = usePosts();
 
   const [showOptions, setShowOptions] = useState(false);
+  const [showCommentModal, setShowCommentModal] = useState(false);
 
   const postModalRef = useRef();
 
@@ -129,7 +129,13 @@ const PostCard = ({ post }) => {
           </div>
 
           <div className="flex justify-center p-2 mr-4">
-            <button className="cursor-pointer">
+            <button
+              className="cursor-pointer"
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowCommentModal(true);
+              }}
+            >
               <FaRegComments className="text-lg hover:scale-125" />
             </button>
             {post?.comments.length > 0 && (
@@ -164,6 +170,15 @@ const PostCard = ({ post }) => {
           </button>
         </div>
       </div>
+
+      <Modal open={showCommentModal} onClose={() => setShowCommentModal(false)}>
+        <>
+          <CommentModal
+            postId={post?._id}
+            setShowCommentModal={setShowCommentModal}
+          />
+        </>
+      </Modal>
     </div>
   );
 };
