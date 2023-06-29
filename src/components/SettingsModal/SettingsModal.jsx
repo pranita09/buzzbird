@@ -1,9 +1,9 @@
 import { useAuth, useTheme } from "../../index";
 import { styles } from "../../utils/constants";
 import {
-  MdOutlineLightMode,
-  MdOutlineDarkMode,
   MdLogout,
+  MdOutlineDarkMode,
+  MdOutlineLightMode,
 } from "../../utils/icons";
 
 const SettingsModal = ({ setShowSettingsModal }) => {

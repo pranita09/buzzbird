@@ -1,11 +1,11 @@
-import { usePosts, useUsers } from "../../index";
 import {
-  SideBar,
-  SearchBar,
-  PostCard,
-  SuggestedUsers,
   Loader,
+  PostCard,
+  SearchBar,
+  SideBar,
+  SuggestedUsers,
 } from "../../components";
+import { usePosts, useUsers } from "../../index";
 
 const Bookmarks = () => {
   const {

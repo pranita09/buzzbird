@@ -1,14 +1,14 @@
 import React, { useEffect, useRef } from "react";
-import { usePosts } from "../../index";
 import {
-  SideBar,
-  SearchBar,
-  PostCard,
-  SuggestedUsers,
   Loader,
+  PostCard,
+  SearchBar,
+  SideBar,
+  SuggestedUsers,
 } from "../../components";
-import { sortPosts } from "../../utils/sortPosts";
+import { usePosts } from "../../index";
 import { actionTypes } from "../../utils/constants";
+import { sortPosts } from "../../utils/sortPosts";
 
 const Explore = () => {
   const {

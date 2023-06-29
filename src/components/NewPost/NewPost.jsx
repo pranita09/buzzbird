@@ -1,17 +1,17 @@
-import { useRef, useState } from "react";
-import { toast } from "react-hot-toast";
-import { usePosts, useAuth, useTheme } from "../../index";
-import { PrimaryButton, UserAvatar } from "..";
-import {
-  MdOutlineAddPhotoAlternate,
-  MdInsertEmoticon,
-  MdCancel,
-} from "../../utils/icons";
-import { styles } from "../../utils/constants";
-import { uploadMedia } from "../../utils/uploadMedia";
-import { Modal } from "@mui/material";
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
+import { Modal } from "@mui/material";
+import { useRef, useState } from "react";
+import { toast } from "react-hot-toast";
+import { PrimaryButton, UserAvatar } from "..";
+import { useAuth, usePosts, useTheme } from "../../index";
+import { styles } from "../../utils/constants";
+import {
+  MdCancel,
+  MdInsertEmoticon,
+  MdOutlineAddPhotoAlternate,
+} from "../../utils/icons";
+import { uploadMedia } from "../../utils/uploadMedia";
 
 const NewPost = () => {
   const { isDarkTheme } = useTheme();

@@ -1,11 +1,11 @@
+import { Modal } from "@mui/material";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { EditUserModal, SecondaryButton, UserAvatar, UsersModal } from "..";
 import { useAuth, useUsers } from "../../index";
-import { SecondaryButton, UserAvatar, UsersModal, EditUserModal } from "..";
-import { HiLink, MdDateRange } from "../../utils/icons";
 import { defaultBgImage } from "../../utils/constants";
 import { getPostDate } from "../../utils/getPostDate";
-import { Modal } from "@mui/material";
+import { HiLink, MdDateRange } from "../../utils/icons";
 
 const ProfileDetails = ({ user }) => {
   const { currentUser, logoutHandler } = useAuth();
@@ -151,3 +151,4 @@ const ProfileDetails = ({ user }) => {
 };
 
 export { ProfileDetails };
+

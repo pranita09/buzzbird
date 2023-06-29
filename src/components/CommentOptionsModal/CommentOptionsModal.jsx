@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { useUsers, usePosts, useAuth } from "../../index";
-import { CommentModal } from "..";
 import { Modal } from "@mui/material";
+import { useState } from "react";
+import { CommentModal } from "..";
+import { useAuth, usePosts, useUsers } from "../../index";
 import {
   FaEdit,
   FaTrash,
