@@ -2,6 +2,9 @@
 
 [BuzzBird](https://buzzbird-v1.netlify.app/) - A social media website where you can connect with your friends.
 
+https://github.com/pranita09/buzzbird/assets/66015794/7b7c03b7-f7c0-428b-bd27-f00b7006d594
+
+
 ## How to install and run locally?
 
 ```
@@ -70,6 +73,7 @@ $ npm start
 - Search Users
 - Toasts
 - Loaders
+- Responsive
 
 ## Built with -
 
