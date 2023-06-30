@@ -65,6 +65,7 @@ $ npm start
   - Login
   - Signup
 - Video Upload
+- 404 Error Page
 - Dark Mode
 - Search Users
 - Toasts
