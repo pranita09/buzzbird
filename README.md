@@ -59,11 +59,12 @@ $ npm start
 - Comments list
 - Edit/Delete own comments
 
-### Other Features
+### [Other Features](https://buzzbird-v1.netlify.app)
 
 - Authentication
   - Login
   - Signup
+- Video Upload
 - Dark Mode
 - Search Users
 - Toasts
