@@ -89,11 +89,22 @@ const PostModal = ({ post, setShowPostModal, setShowOptions }) => {
 
           {content?.mediaURL || media ? (
             <div className="relative">
-              <img
-                src={media ? URL.createObjectURL(media) : content?.mediaURL}
-                alt={content?.mediaAlt || media.name.split(".")[0]}
-                className="w-full max-h-[350px] rounded-md object-cover"
-              />
+              {content?.mediaURL?.split("/")[4] === "video" ||
+              media?.type?.includes("video") ? (
+                <video controls className="w-full h-auto rounded-md">
+                  <source
+                    src={media ? URL.createObjectURL(media) : content?.mediaURL}
+                    type="video/mp4"
+                  />
+                </video>
+              ) : (
+                <img
+                  src={media ? URL.createObjectURL(media) : content?.mediaURL}
+                  alt={content?.mediaAlt || media.name.split(".")[0]}
+                  className="w-full max-h-[350px] rounded-md object-cover"
+                />
+              )}
+
               <button
                 type="button"
                 className="absolute top-1.5 left-2 text-lg"
@@ -126,7 +137,7 @@ const PostModal = ({ post, setShowPostModal, setShowOptions }) => {
               />
               <MdOutlineAddPhotoAlternate
                 className="text-xl scale-110 hover:scale-125 dark:text-lightGrey"
-                title="Add Photo/GIF"
+                title="Add Photo/GIF/Video"
               />
             </label>
             <label

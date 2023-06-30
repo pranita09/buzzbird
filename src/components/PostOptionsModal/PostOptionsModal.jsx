@@ -43,7 +43,8 @@ const PostOptionsModal = ({ post, setShowOptions }) => {
         <>
           <button
             className="py-2 px-4 text-left cursor-pointer rounded-md hover:bg-lightPrimary dark:hover:bg-darkPrimary flex items-center justify-center"
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               setShowPostModal(true);
             }}
           >
@@ -52,7 +53,8 @@ const PostOptionsModal = ({ post, setShowOptions }) => {
           </button>
           <button
             className="py-2 px-4 text-left cursor-pointer rounded-md hover:bg-lightPrimary dark:hover:bg-darkPrimary text-red flex items-center justify-center"
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               deletePostHandler(_id);
               if (pathname !== "/") {
                 setTimeout(() => {
@@ -70,7 +72,8 @@ const PostOptionsModal = ({ post, setShowOptions }) => {
       ) : (
         <button
           className="py-2 px-4 text-left cursor-pointer rounded-md hover:bg-lightPrimary dark:hover:bg-darkPrimary flex items-center justify-center"
-          onClick={() => {
+          onClick={(e) => {
+            e.stopPropagation();
             userAlreadyFollowing
               ? handleBtnsClick(400, unfollowUserHandler, userToFollow?._id)
               : handleBtnsClick(400, followUserHandler, userToFollow?._id);

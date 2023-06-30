@@ -44,6 +44,8 @@ const NewPost = () => {
     newPostRef.current.innerText = "";
   };
 
+  console.log(media);
+
   return (
     <div className="grid grid-cols-[2.25rem_1fr] gap-2 items-start text-sm border-b border-darkGrey px-4 py-3 cursor-text dark:border-lightGrey">
       <UserAvatar user={currentUser} className="h-9 w-9" />
@@ -59,11 +61,18 @@ const NewPost = () => {
           ></textarea>
           {media ? (
             <div className="relative">
-              <img
-                src={URL.createObjectURL(media)}
-                alt="demo"
-                className="w-full h-auto rounded-md"
-              />
+              {media?.type?.includes("video") ? (
+                <video controls className="w-full h-auto rounded-md">
+                  <source src={URL.createObjectURL(media)} type="video/mp4" />
+                </video>
+              ) : (
+                <img
+                  src={URL.createObjectURL(media)}
+                  alt="demo"
+                  className="w-full h-auto rounded-md"
+                />
+              )}
+
               <button
                 type="button"
                 className="absolute top-1.5 left-2 text-lg"
@@ -87,14 +96,13 @@ const NewPost = () => {
             />
             <MdOutlineAddPhotoAlternate
               className="text-xl scale-110 hover:scale-125"
-              title="Add Photo/GIF"
+              title="Add Photo/GIF/Video"
             />
           </label>
           <label
             className="cursor-pointer"
             onClick={() => setShowEmojiPicker((prev) => !prev)}
           >
-            {/* <input className="hidden" /> */}
             <MdInsertEmoticon
               className="text-xl scale-110 hover:scale-125"
               title="Add Emoji"
