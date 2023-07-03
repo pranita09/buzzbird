@@ -34,8 +34,19 @@ export const AuthProvider = ({ children }) => {
         navigate(location?.state?.from?.pathname || "/", { replace: true });
       }
     } catch (error) {
+      const {
+        response: { status },
+      } = error;
+      if (status === 404) {
+        toast.error("The username you entered is not registered.");
+      } else if (status === 401) {
+        toast.error(
+          "The credentials you entered are invalid. Please try again."
+        );
+      } else {
+        toast.error("Something went wrong");
+      }
       console.error(error);
-      toast.error("Please enter correct details.");
     } finally {
       setIsLoading(false);
     }
@@ -67,8 +78,15 @@ export const AuthProvider = ({ children }) => {
         navigate("/", { replace: true });
       }
     } catch (error) {
+      const {
+        response: { status },
+      } = error;
+      if (status === 422) {
+        toast.error("Username Already Exists. Please choose another one.");
+      } else {
+        toast.error("Something went wrong");
+      }
       console.error(error);
-      toast.error("Something went wrong! Please try again.");
     } finally {
       setIsLoading(false);
     }
