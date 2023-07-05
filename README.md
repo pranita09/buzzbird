@@ -21,43 +21,43 @@ $ npm start
 - Posts of users you follow
 - User Suggestions
   - Follow users
-- Like/ Unlike a Post
-- Add/ Remove bookmark on a post
+- Like/Unlike a Post
+- Add/Remove bookmark on a post
 - Comment on a post
-- Create/ Edit post with Image and Emoji Upload
-- Delete Own posts
+- Create/Edit posts with Images and Emoji Upload
+- Delete your Own posts
 - Share post link
-- Sort posts based on Latest/ Trending / Oldest.
+- Sort posts based on Latest/Trending/Oldest.
 - Infinite Scroll
 
 ### [Explore Page](https://buzzbird-v1.netlify.app/explore)
 
 - All Posts from latest to oldest
-- Infinite Scoll
+- Infinite Scroll
 
 ### [Bookmarks Page](https://buzzbird-v1.netlify.app/bookmarks)
 
 - User Bookmarked posts list
   - Remove from Bookmarks
-  - Like / Comment
+  - Like/Comment
 
 ### [Profile Page](https://buzzbird-v1.netlify.app/profile/emilysmith)
 
-- Edit Own Profile with Image Upload
+- Edit your Own Profile with an Image Upload
 - Can choose from Avatar options also
 - Edit background cover photo
-- Follow/ Unfollow users.
-- Check followers/ following list.
+- Follow/Unfollow users.
+- Check followers/following list.
 - Logout
-- List of all posts posted by user
+- List of all posts posted by the user
 
 ### [Single Post Page](https://buzzbird-v1.netlify.app/post/175ece04-a8b3-4cf5-a9f1-4de2c84c8b7c)
 
 - Like/Unlike post
-- Add/ Remove bookmark on a post
+- Add/Remove bookmark on a post
 - Comment on a post
 - Share post link
-- Edit/ Delete posts
+- Edit/Delete posts
 - Liked By Users List
 - Comments list
 - Edit/Delete own comments
