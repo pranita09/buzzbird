@@ -28,11 +28,11 @@ const NewPost = () => {
     event.preventDefault();
     const toastId = toast.loading("Creating new post..");
     if (media) {
-      const resp = await uploadMedia(media);
+      const response = await uploadMedia(media);
       createPostHandler({
         content,
-        media: resp.url,
-        mediaAlt: resp.original_filename,
+        media: response.url,
+        mediaAlt: response.original_filename,
       });
     } else {
       createPostHandler({ content, media: "", mediaAlt: "" });
@@ -43,8 +43,6 @@ const NewPost = () => {
     setShowEmojiPicker(false);
     newPostRef.current.innerText = "";
   };
-
-  console.log(media);
 
   return (
     <div className="grid grid-cols-[2.25rem_1fr] gap-2 items-start text-sm border-b border-darkGrey px-4 py-3 cursor-text dark:border-lightGrey">

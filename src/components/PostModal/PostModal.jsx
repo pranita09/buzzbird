@@ -47,11 +47,11 @@ const PostModal = ({ post, setShowPostModal, setShowOptions }) => {
     } else {
       const toastId = toast.loading("Creating new post..");
       if (media) {
-        const resp = await uploadMedia(media);
+        const response = await uploadMedia(media);
         createPostHandler({
           content: content?.content,
-          media: resp.url,
-          mediaAlt: resp.original_filename,
+          media: response.url,
+          mediaAlt: response.original_filename,
         });
       } else {
         createPostHandler({

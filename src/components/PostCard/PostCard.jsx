@@ -97,6 +97,7 @@ const PostCard = ({ post }) => {
           ) : (
             <video
               controls
+              autoPlay
               className="w-full h-auto rounded-md"
               onClick={() => navigate(`/post/${post?._id}`)}
             >
