@@ -155,7 +155,13 @@ const SinglePost = () => {
                         className="w-full h-auto rounded-md"
                       />
                     ) : (
-                      <video controls className="w-full h-auto rounded-md">
+                      <video
+                        controls
+                        autoplay
+                        loop
+                        muted
+                        className="w-full h-auto rounded-md"
+                      >
                         <source src={currentPost?.mediaURL} type="video/mp4" />
                       </video>
                     ))}

@@ -226,6 +226,70 @@ export const posts = [
     ],
   },
   {
+    _id: "eaf91a20-5b28-a6b2-bae97d76681a",
+    content: "We can’t get over this and neither can our captain! 💙",
+    mediaURL:
+      "https://res.cloudinary.com/dxnbnviuz/video/upload/w_400,f_auto,q_auto/v1688734224/socialMedia/FootBallTeam-Win_tmno3r.mp4",
+    mediaAlt: "FootBallStadium",
+    likes: {
+      likeCount: 3,
+      likedBy: [
+        {
+          _id: "1T6Be1QpLm",
+          firstName: "Jacob",
+          lastName: "Mitchell",
+          username: "jacobmitch",
+          profileAvatar:
+            "https://res.cloudinary.com/dxnbnviuz/image/upload/w_400,f_auto,q_auto/v1686331002/socialMedia/Jacob-Mitchell_elh9gg.jpg",
+        },
+        {
+          _id: "o5gzWjEeX_",
+          firstName: "Rohan",
+          lastName: "Roy",
+          username: "rohaaan",
+          profileAvatar:
+            "https://res.cloudinary.com/dxnbnviuz/image/upload/w_400,f_auto,q_auto/v1686330965/socialMedia/Rohan-Roy_zk6dlm.jpg",
+        },
+        {
+          _id: "M1NR81Bzlz",
+          firstName: "Kriti",
+          lastName: "Desai",
+          username: "imkriti",
+          profileAvatar:
+            "https://res.cloudinary.com/dxnbnviuz/image/upload/w_400,f_auto,q_auto/v1686331046/socialMedia/Kriti-Desai_wuflhp.jpg",
+        },
+      ],
+      dislikedBy: [],
+    },
+    username: "adityaj",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    comments: [
+      {
+        _id: "1T6Be1QpLmaszx",
+        commentData: "India! India!!!",
+        firstName: "Jacob",
+        lastName: "Mitchell",
+        username: "jacobmitch",
+        profileAvatar:
+          "https://res.cloudinary.com/dxnbnviuz/image/upload/w_400,f_auto,q_auto/v1686331002/socialMedia/Jacob-Mitchell_elh9gg.jpg",
+        createdAt: formatDate(),
+        updatedAt: formatDate(),
+      },
+      {
+        _id: "o5gzWjEeX_9876",
+        commentData: "What an incredible match it was!",
+        firstName: "Rohan",
+        lastName: "Roy",
+        username: "rohaaan",
+        profileAvatar:
+          "https://res.cloudinary.com/dxnbnviuz/image/upload/w_400,f_auto,q_auto/v1686330965/socialMedia/Rohan-Roy_zk6dlm.jpg",
+        createdAt: formatDate(),
+        updatedAt: formatDate(),
+      },
+    ],
+  },
+  {
     _id: "39475b82-0f43-40f1-a98f-a145c52c02db",
     content:
       "Stepping into the fashion scene like a style supernova! From runway inspirations to street chic, I'm here to make heads turn and trends ignite.",
