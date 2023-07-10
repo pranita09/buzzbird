@@ -10,7 +10,7 @@ import {
   RiUserUnfollowFill,
 } from "../../utils/icons";
 
-const PostOptionsModal = ({ post, setShowOptions }) => {
+const PostOptionsModal = ({ post, setShowOptions, fromBookmarks }) => {
   const { _id, username } = post;
 
   const { currentUser } = useAuth();
@@ -51,23 +51,25 @@ const PostOptionsModal = ({ post, setShowOptions }) => {
             <FaEdit className="mr-2" />
             Edit
           </button>
-          <button
-            className="py-2 px-4 text-left cursor-pointer rounded-md hover:bg-lightPrimary dark:hover:bg-darkPrimary text-red flex items-center justify-center"
-            onClick={(e) => {
-              e.stopPropagation();
-              deletePostHandler(_id);
-              if (pathname !== "/") {
-                setTimeout(() => {
-                  navigate("/");
-                  window.scroll({ top: 0, behavior: "smooth" });
-                }, 2000);
-              }
-              setShowOptions((prev) => !prev);
-            }}
-          >
-            <FaTrash className="mr-2 " />
-            Delete
-          </button>
+          {!fromBookmarks && (
+            <button
+              className="py-2 px-4 text-left cursor-pointer rounded-md hover:bg-lightPrimary dark:hover:bg-darkPrimary text-red flex items-center justify-center"
+              onClick={(e) => {
+                e.stopPropagation();
+                deletePostHandler(_id);
+                if (pathname !== "/") {
+                  setTimeout(() => {
+                    navigate("/");
+                    window.scroll({ top: 0, behavior: "smooth" });
+                  }, 2000);
+                }
+                setShowOptions((prev) => !prev);
+              }}
+            >
+              <FaTrash className="mr-2 " />
+              Delete
+            </button>
+          )}
         </>
       ) : (
         <button

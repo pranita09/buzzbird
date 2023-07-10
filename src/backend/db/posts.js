@@ -227,10 +227,10 @@ export const posts = [
   },
   {
     _id: "eaf91a20-5b28-a6b2-bae97d76681a",
-    content: "We can’t get over this and neither can our captain! 💙",
-    mediaURL:
-      "https://res.cloudinary.com/dxnbnviuz/video/upload/w_400,f_auto,q_auto/v1688734224/socialMedia/FootBallTeam-Win_tmno3r.mp4",
-    mediaAlt: "FootBallStadium",
+    content:
+      "We can’t get over yestaerday's football match and neither can our captain! 💙",
+    mediaURL: "",
+    mediaAlt: "",
     likes: {
       likeCount: 3,
       likedBy: [

@@ -191,7 +191,7 @@ const EditUserModal = ({ setEditUserModal }) => {
             <div className="text-xs">Website</div>
             <input
               className="bg-lighterPrimary dark:bg-darkGrey w-full text-sm outline-none border-none"
-              type="text"
+              type="url"
               name="website"
               value={editInput.website}
               onChange={(e) =>

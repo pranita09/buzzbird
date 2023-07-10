@@ -37,7 +37,7 @@ const Bookmarks = () => {
             ) : bookmarks?.length > 0 ? (
               [...bookmarks]?.reverse()?.map((bookmarkPostId) => {
                 const post = posts.find(({ _id }) => _id === bookmarkPostId);
-                return <PostCard key={post._id} post={post} />;
+                return <PostCard key={post._id} post={post} fromBookmarks />;
               })
             ) : (
               <div className="p-4 text-center text-lg font-bold">

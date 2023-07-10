@@ -15,7 +15,7 @@ import {
 } from "../../utils/icons";
 import { sharePost } from "../../utils/sharePost";
 
-const PostCard = ({ post }) => {
+const PostCard = ({ post, fromBookmarks }) => {
   const navigate = useNavigate();
 
   const { currentUser } = useAuth();
@@ -77,7 +77,11 @@ const PostCard = ({ post }) => {
               }}
             />
             {showOptions && (
-              <PostOptionsModal post={post} setShowOptions={setShowOptions} />
+              <PostOptionsModal
+                post={post}
+                setShowOptions={setShowOptions}
+                fromBookmarks={fromBookmarks}
+              />
             )}
           </div>
         </div>
